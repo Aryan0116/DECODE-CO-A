@@ -1,0 +1,43 @@
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.2s ease;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.custom-cursor::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(59, 130, 246, 0.7);
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.custom-cursor.active {
+    display: block;
+}
+
+.custom-cursor.hover::after {
+    transform: scale(2);
+    background-color: rgba(59, 130, 246, 0.4);
+}
+
+.custom-cursor.click::after {
+    transform: scale(0.5);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+    .custom-cursor {
+        display: none !important;
+    }
+}

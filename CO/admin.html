@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - User Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .btn { cursor: pointer; padding: 5px 10px; border: none; }
+        .btn-delete { background-color: red; color: white; }
+        .btn-clear { background-color: darkred; color: white; padding: 10px; margin-top: 20px; }
+        .user-data {
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            background-color: #f9f9f9;
+            padding: 5px;
+            border: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h2>Admin Panel - User Data</h2>
+
+    <h3>Users and Data</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Data</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="usersTable"></tbody>
+    </table>
+
+    <button class="btn btn-clear" onclick="clearAllData()">Clear All Users and Data</button>
+
+    <script src="utils/localStorage.js"></script>
+    <script>
+        function deleteUser(userId) {
+            const users = getAllUsers().filter(user => user.id !== userId);
+            localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users));
+            renderUsers();
+        }
+
+        function clearAllData() {
+            localStorage.removeItem(STORAGE_KEYS.USERS);
+            document.getElementById('usersTable').innerHTML = '<tr><td colspan="5">No users found</td></tr>';
+        }
+
+        function renderUsers() {
+            const usersTable = document.getElementById('usersTable');
+            usersTable.innerHTML = ''; // Clear previous entries
+
+            const users = getAllUsers();
+
+            if (users.length === 0) {
+                usersTable.innerHTML = '<tr><td colspan="5">No users found</td></tr>';
+                return;
+            }
+
+            users.forEach(user => {
+                const row = `<tr>
+                    <td>${user.id}</td>
+                    <td>${user.name || 'N/A'}</td>
+                    <td>${user.email || 'N/A'}</td>
+                    <td><div class="user-data">${JSON.stringify(user, null, 2)}</div></td>
+                    <td><button class="btn btn-delete" onclick="deleteUser('${user.id}')">Delete</button></td>
+                </tr>`;
+                usersTable.innerHTML += row;
+            });
+        }
+
+        // Ensure script runs after DOM loads
+        window.onload = function () {
+            renderUsers();
+        };
+    </script>
+</body>
+</html>
