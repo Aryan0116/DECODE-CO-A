@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Logic Gates</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin: 40px 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    .gates-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1200px;
+    }
+    .gate {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gate:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    .gate h3 {
+      color: #34495e;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.4em;
+    }
+    .inputs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .input-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background-color: #ecf0f1;
+      color: #2c3e50;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .input-btn:hover {
+      background-color: #bdc3c7;
+    }
+    .input-btn.on {
+      background-color: #2ecc71;
+      color: white;
+    }
+    .output {
+      font-size: 2em;
+      text-align: center;
+      color: #2c3e50;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #ecf0f1;
+      transition: all 0.3s ease;
+    }
+    .output.on {
+      background-color: #3498db;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Interactive Logic Gates</h1>
+  <div class="gates-container">
+    <div class="gate" id="andGate">
+      <h3>AND Gate</h3>
+      <div class="inputs">
+        <button class="input-btn" onclick="toggleInput('and', 0)">0</button>
+        <button class="input-btn" onclick="toggleInput('and', 1)">0</button>
+      </div>
+      <div class="output" id="andOutput">0</div>
+    </div>
+
+    <div class="gate" id="orGate">
+      <h3>OR Gate</h3>
+      <div class="inputs">
+        <button class="input-btn" onclick="toggleInput('or', 0)">0</button>
+        <button class="input-btn" onclick="toggleInput('or', 1)">0</button>
+      </div>
+      <div class="output" id="orOutput">0</div>
+    </div>
+
+    <div class="gate" id="notGate">
+      <h3>NOT Gate</h3>
+      <div class="inputs">
+        <button class="input-btn" onclick="toggleInput('not', 0)">0</button>
+      </div>
+      <div class="output" id="notOutput">1</div>
+    </div>
+
+    <div class="gate" id="nandGate">
+      <h3>NAND Gate</h3>
+      <div class="inputs">
+        <button class="input-btn" onclick="toggleInput('nand', 0)">0</button>
+        <button class="input-btn" onclick="toggleInput('nand', 1)">0</button>
+      </div>
+      <div class="output" id="nandOutput">1</div>
+    </div>
+
+    <div class="gate" id="norGate">
+      <h3>NOR Gate</h3>
+      <div class="inputs">
+        <button class="input-btn" onclick="toggleInput('nor', 0)">0</button>
+        <button class="input-btn" onclick="toggleInput('nor', 1)">0</button>
+      </div>
+      <div class="output" id="norOutput">1</div>
+    </div>
+
+    <div class="gate" id="xorGate">
+      <h3>XOR Gate</h3>
+      <div class="inputs">
+        <button class="input-btn" onclick="toggleInput('xor', 0)">0</button>
+        <button class="input-btn" onclick="toggleInput('xor', 1)">0</button>
+      </div>
+      <div class="output" id="xorOutput">0</div>
+    </div>
+  </div>
+
+  <script>
+    const gateStates = {
+      and: [0, 0],
+      or: [0, 0],
+      not: [0],
+      nand: [0, 0],
+      nor: [0, 0],
+      xor: [0, 0]
+    };
+
+    function toggleInput(gate, index) {
+      gateStates[gate][index] = 1 - gateStates[gate][index];
+
+      const gateDiv = document.getElementById(gate + 'Gate');
+      const btn = gateDiv.getElementsByClassName('input-btn')[index];
+      btn.classList.toggle('on');
+      btn.textContent = gateStates[gate][index];
+
+      let output = 0;
+      switch(gate) {
+        case 'and':
+          output = gateStates.and[0] && gateStates.and[1];
+          break;
+        case 'or':
+          output = gateStates.or[0] || gateStates.or[1];
+          break;
+        case 'not':
+          output = !gateStates.not[0];
+          break;
+        case 'nand':
+          output = !(gateStates.nand[0] && gateStates.nand[1]);
+          break;
+        case 'nor':
+          output = !(gateStates.nor[0] || gateStates.nor[1]);
+          break;
+        case 'xor':
+          output = gateStates.xor[0] ^ gateStates.xor[1];
+          break;
+      }
+
+      const outputDiv = document.getElementById(gate + 'Output');
+      outputDiv.textContent = output ? 1 : 0;
+      outputDiv.classList.toggle('on', output === 1);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Base Conversion</title>
+  <link rel="stylesheet" href="stylescon.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Interactive Number Base Conversion</h1>
+    <label for="inputNumber">Enter Number:</label>
+    <input type="text" id="inputNumber" placeholder="Enter number here">
+
+    <label for="inputBase">Input Base:</label>
+    <select id="inputBase">
+      <option value="2">Binary</option>
+      <option value="10">Decimal</option>
+      <option value="8">Octal</option>
+      <option value="16">Hexadecimal</option>
+    </select>
+
+    <label for="targetBase">Target Base:</label>
+    <select id="targetBase">
+      <option value="2">Binary</option>
+      <option value="10">Decimal</option>
+      <option value="8">Octal</option>
+      <option value="16">Hexadecimal</option>
+    </select>
+
+    <button onclick="startConversionAnimation()">Convert</button>
+
+    <div id="conversionSteps" class="conversion-steps">
+      <h2>Conversion Steps:</h2>
+      <div id="stepContainer"></div>
+      <p id="finalResult" class="final-result"></p>
+    </div>
+  </div>
+  <script src="scriptcon.js"></script>
+</body>
+</html>

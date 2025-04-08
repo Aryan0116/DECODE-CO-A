@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Logic Simulations</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 1.5rem;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            color: #4a4a4a;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Digital Logic Simulations</h1>
+    </header>
+    <main>
+        <div class="card-container">
+            <div class="card" data-url="zz.html">
+                <h2>Gate Simulation</h2>
+                <p>Explore logic gates and their operations</p>
+            </div>
+            <div class="card" data-url="indexgate.html">
+                <h2>Truth Table</h2>
+                <p>Generate and analyze truth tables</p>
+            </div> <div class="card" data-url="gg.html">
+                <h2>COA CALCULATOR</h2>
+                <p>Calculates the Memory,Performance,Cache ,Pipeline and VM</p>
+            </div>
+            <div class="card" data-url="hh.html">
+                <h2>Cache Replacement Algo</h2>
+                <p>Cache Replacement Algo</p>
+            </div>
+            <div class="card" data-url="indexcon.html">
+                <h2>Binary Conversion</h2>
+                <p>Convert between binary and decimal</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+
+            // Animate cards on page load
+            gsap.from(cards, {
+                duration: 0.8,
+                opacity: 0,
+                y: 50,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+
+            // Add click event listeners to cards
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const url = card.getAttribute('data-url');
+                    if (url) {
+                        gsap.to(card, {
+                            duration: 0.2,
+                            scale: 0.95,
+                            yoyo: true,
+                            repeat: 1,
+                            onComplete: () => {
+                                window.open(url, '_blank');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Animate header
+            gsap.from('header h1', {
+                duration: 1,
+                opacity: 0,
+                y: -50,
+                ease: 'power3.out'
+            });
+        });
+    </script>
+</body>
+</html>

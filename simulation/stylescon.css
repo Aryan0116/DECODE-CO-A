@@ -1,0 +1,134 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f4c75, #3282b8);
+  color: #fff;
+  animation: gradientBG 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.container {
+  width: 80%;
+  max-width: 500px;
+  background-color: rgba(27, 38, 44, 0.9);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 2em;
+  color: #bbe1fa;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+label {
+  font-size: 1.1em;
+  color: #bbe1fa;
+  display: block;
+  margin: 15px 0 8px;
+  text-align: left;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  color: #1b262c;
+  background-color: #f0f8ff;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+  box-shadow: 0 0 0 2px #3282b8;
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #3282b8;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(50, 130, 184, 0.4);
+}
+
+button:hover {
+  background-color: #bbe1fa;
+  color: #1b262c;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(50, 130, 184, 0.6);
+}
+
+.conversion-steps {
+  margin-top: 30px;
+  background: rgba(15, 76, 117, 0.8);
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.step {
+  opacity: 0;
+  transform: translateY(20px);
+  background: #bbe1fa;
+  color: #1b262c;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 6px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.95em;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.final-result {
+  margin-top: 25px;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #ffd700;
+  opacity: 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}

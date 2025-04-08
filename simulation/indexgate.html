@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Circuit Solver</title>
+    <link rel="stylesheet" href="stylesgate.css">
+</head>
+<body>
+    <h1>Digital Circuit Solver</h1>
+    <div id="input-section">
+        <h2>Define Your Circuit</h2>
+        <label for="inputs">Number of Inputs:</label>
+        <input type="number" id="inputs" min="1" value="2">
+        
+        <label for="gates">Gates (comma-separated, e.g., AND, OR, NOT):</label>
+        <input type="text" id="gates" placeholder="AND, OR, NOT">
+        
+        <button id="generate-circuit">Generate Circuit</button>
+    </div>
+    
+    <div id="circuit-canvas"></div>
+    
+    <h2>Truth Table</h2>
+    <div id="truth-table"></div>
+
+    <script src="scriptgate.js"></script>
+</body>
+</html>

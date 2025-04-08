@@ -1,0 +1,228 @@
+/* Global Styles and Animations */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #FF4081;
+    --background-color: #f8f9fa;
+    --text-color: #333;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes borderFlow {
+    0% { border-color: var(--primary-color); }
+    50% { border-color: var(--secondary-color); }
+    100% { border-color: var(--primary-color); }
+}
+
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Headings */
+h1, h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+h1::after, h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    border-radius: 2px;
+}
+
+h1:hover, h2:hover {
+    color: var(--secondary-color);
+    animation: pulse 1s infinite;
+}
+
+/* Input Section */
+#input-section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out 0.3s backwards;
+}
+
+/* Input Fields */
+input, select, button {
+    margin: 10px;
+    padding: 12px 15px;
+    width: 250px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+/* Buttons */
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-speed);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Circuit Canvas */
+#circuit-canvas {
+    background-color: white;
+    border: 3px dashed #ddd;
+    width: 100%;
+    height: 300px;
+    margin: 2rem 0;
+    position: relative;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+    animation: borderFlow 3s infinite;
+}
+
+#circuit-canvas:hover {
+    border-style: solid;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Gates */
+.gate {
+    width: 70px;
+    height: 70px;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    line-height: 70px;
+    position: absolute;
+    cursor: pointer;
+    background-color: white;
+    transition: all var(--transition-speed);
+    user-select: none;
+}
+
+.gate:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Truth Table */
+#truth-table {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out 0.6s backwards;
+}
+
+#truth-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+#truth-table th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px;
+    font-weight: 500;
+}
+
+#truth-table td {
+    padding: 12px;
+    border: 1px solid #eee;
+    transition: background-color var(--transition-speed);
+}
+
+#truth-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+#truth-table tr:hover td {
+    background-color: rgba(33, 150, 243, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    input, select, button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    #circuit-canvas {
+        height: 200px;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}

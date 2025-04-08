@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computer Architecture Calculator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .calculator-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .calculator-card h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #5f6368;
+            font-size: 0.9em;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .visualization {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            min-height: 150px;
+        }
+
+        .explanation {
+            background: #e8f0fe;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9em;
+            color: #1a73e8;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .calculate-btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .result {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            color: #1a73e8;
+        }
+
+        .pipeline-stage {
+            height: 40px;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            background: #e8f0fe;
+            border-radius: 4px;
+            padding: 0 10px;
+            position: relative;
+        }
+
+        .memory-block {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            margin: 2px;
+            background: #e8f0fe;
+            border: 1px solid #1a73e8;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 4px;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            cursor: help;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #1a73e8; margin-bottom: 20px;">Computer Architecture Calculator</h1>
+        
+        <div class="tabs">
+            <button class="tab active" onclick="showCalculator('memory')">Memory</button>
+            <button class="tab" onclick="showCalculator('performance')">Performance</button>
+            <button class="tab" onclick="showCalculator('cache')">Cache</button>
+            <button class="tab" onclick="showCalculator('pipeline')">Pipeline</button>
+            <button class="tab" onclick="showCalculator('virtual')">Virtual Memory</button>
+        </div>
+
+        <div class="calculator-grid">
+            <!-- Memory Address Calculator -->
+            <div class="calculator-card" id="memoryCalculator">
+                <h3>Memory Address Calculator</h3>
+                <div class="explanation">
+                    Memory addressing is fundamental to computer architecture. The calculator helps determine:
+                    • Number of bits needed for addressing
+                    • Total addressable memory locations
+                    • Word organization
+                </div>
+                <div class="input-group">
+                    <label>Memory Size (bytes) <span class="tooltip">ℹ️<span class="tooltiptext">Total memory capacity in bytes</span></span></label>
+                    <input type="number" id="memorySize" placeholder="e.g., 1024">
+                </div>
+                <div class="input-group">
+                    <label>Word Size (bits) <span class="tooltip">ℹ️<span class="tooltiptext">Number of bits in each word</span></span></label>
+                    <input type="number" id="wordSize" placeholder="e.g., 32">
+                </div>
+                <button class="calculate-btn" onclick="calculateMemoryAddress()">Calculate</button>
+                <div class="visualization" id="memoryVisualization"></div>
+                <div class="result" id="memoryResult"></div>
+            </div>
+
+            <!-- Pipeline Calculator -->
+            <div class="calculator-card" id="pipelineCalculator">
+                <h3>Pipeline Performance Calculator</h3>
+                <div class="explanation">
+                    Pipeline analysis helps understand:
+                    • Instruction throughput
+                    • Pipeline hazards
+                    • Performance improvement over non-pipelined
+                </div>
+                <div class="input-group">
+                    <label>Number of Pipeline Stages <span class="tooltip">ℹ️<span class="tooltiptext">Number of stages in the pipeline (e.g., 5 for classic RISC)</span></span></label>
+                    <input type="number" id="pipelineStages" placeholder="e.g., 5">
+                </div>
+                <div class="input-group">
+                    <label>Clock Cycle Time (ns) <span class="tooltip">ℹ️<span class="tooltiptext">Duration of one clock cycle</span></span></label>
+                    <input type="number" id="cycleTime" placeholder="e.g., 1">
+                </div>
+                <div class="input-group">
+                    <label>Number of Instructions <span class="tooltip">ℹ️<span class="tooltiptext">Total instructions to be executed</span></span></label>
+                    <input type="number" id="instructionCount" placeholder="e.g., 100">
+                </div>
+                <button class="calculate-btn" onclick="calculatePipeline()">Calculate</button>
+                <div class="visualization" id="pipelineVisualization"></div>
+                <div class="result" id="pipelineResult"></div>
+            </div>
+            <div class="calculator-card" id="performanceCalculator">
+                <h3>CPU Performance Calculator</h3>
+                <div class="explanation">
+                    <strong>Key Performance Formulas:</strong><br>
+                    • CPU Time = Instructions × CPI × Clock Cycle Time<br>
+                    • MIPS = (Instructions × 10^6) / (CPU Time × 10^6)<br>
+                    • IPC (Instructions per Cycle) = 1/CPI<br>
+                    • Speedup = (Old CPU Time) / (New CPU Time)
+                </div>
+                <div class="input-group">
+                    <label>Clock Rate (MHz) <span class="tooltip">ℹ️<span class="tooltiptext">CPU frequency in Megahertz</span></span></label>
+                    <input type="number" id="clockRate" placeholder="e.g., 2400">
+                </div>
+                <div class="input-group">
+                    <label>CPI (Cycles Per Instruction) <span class="tooltip">ℹ️<span class="tooltiptext">Average cycles needed per instruction</span></span></label>
+                    <input type="number" id="cpi" step="0.1" placeholder="e.g., 2.5">
+                </div>
+                <div class="input-group">
+                    <label>Instruction Count <span class="tooltip">ℹ️<span class="tooltiptext">Total number of instructions to execute</span></span></label>
+                    <input type="number" id="instructionCount" placeholder="e.g., 1000000">
+                </div>
+                <button class="calculate-btn" onclick="calculatePerformance()">Calculate Performance</button>
+                <div class="visualization" id="performanceVisualization"></div>
+                <div class="result" id="performanceResult"></div>
+            </div>
+
+            <!-- Cache Calculator -->
+            <div class="calculator-card" id="cacheCalculator">
+                <h3>Cache Memory Calculator</h3>
+                <div class="explanation">
+                    <strong>Cache Formulas & Concepts:</strong><br>
+                    • Number of Sets = Cache Size / (Block Size × Associativity)<br>
+                    • Index Bits = log₂(Number of Sets)<br>
+                    • Offset Bits = log₂(Block Size)<br>
+                    • Tag Bits = Address Size - (Index Bits + Offset Bits)<br>
+                    • AMAT = Hit Time + (Miss Rate × Miss Penalty)
+                </div>
+                <div class="input-group">
+                    <label>Cache Size (KB) <span class="tooltip">ℹ️<span class="tooltiptext">Total cache size in Kilobytes</span></span></label>
+                    <input type="number" id="cacheSize" placeholder="e.g., 64">
+                </div>
+                <div class="input-group">
+                    <label>Block Size (bytes) <span class="tooltip">ℹ️<span class="tooltiptext">Size of each cache block</span></span></label>
+                    <input type="number" id="blockSize" placeholder="e.g., 64">
+                </div>
+                <div class="input-group">
+                    <label>Associativity <span class="tooltip">ℹ️<span class="tooltiptext">Number of ways in set-associative cache</span></span></label>
+                    <select id="associativity">
+                        <option value="1">Direct Mapped (1-way)</option>
+                        <option value="2">2-way Set Associative</option>
+                        <option value="4">4-way Set Associative</option>
+                        <option value="8">8-way Set Associative</option>
+                        <option value="16">16-way Set Associative</option>
+                        <option value="0">Fully Associative</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Hit Time (ns) <span class="tooltip">ℹ️<span class="tooltiptext">Time to access cache on hit</span></span></label>
+                    <input type="number" id="hitTime" step="0.1" placeholder="e.g., 1">
+                </div>
+                <div class="input-group">
+                    <label>Miss Penalty (ns) <span class="tooltip">ℹ️<span class="tooltiptext">Additional time on cache miss</span></span></label>
+                    <input type="number" id="missPenalty" placeholder="e.g., 10">
+                </div>
+                <div class="input-group">
+                    <label>Miss Rate (%) <span class="tooltip">ℹ️<span class="tooltiptext">Percentage of cache misses</span></span></label>
+                    <input type="number" id="missRate" step="0.1" min="0" max="100" placeholder="e.g., 5">
+                </div>
+                <button class="calculate-btn" onclick="calculateCache()">Calculate Cache Parameters</button>
+                <div class="visualization" id="cacheVisualization"></div>
+                <div class="result" id="cacheResult"></div>
+            </div>
+        </div>
+            <!-- Virtual Memory Calculator -->
+            <div class="calculator-card" id="virtualMemoryCalculator">
+                <h3>Virtual Memory Calculator</h3>
+                <div class="explanation">
+                    Virtual memory calculations involve:
+                    • Page table entries
+                    • Address translation
+                    • Memory mapping
+                </div>
+                <div class="input-group">
+                    <label>Virtual Address Size (bits) <span class="tooltip">ℹ️<span class="tooltiptext">Size of virtual address space</span></span></label>
+                    <input type="number" id="virtualAddressSize" placeholder="e.g., 32">
+                </div>
+                <div class="input-group">
+                    <label>Page Size (KB) <span class="tooltip">ℹ️<span class="tooltiptext">Size of each memory page</span></span></label>
+                    <input type="number" id="pageSize" placeholder="e.g., 4">
+                </div>
+                <div class="input-group">
+                    <label>Physical Memory Size (MB) <span class="tooltip">ℹ️<span class="tooltiptext">Total available physical memory</span></span></label>
+                    <input type="number" id="physicalMemorySize" placeholder="e.g., 1024">
+                </div>
+                <button class="calculate-btn" onclick="calculateVirtualMemory()">Calculate</button>
+                <div class="visualization" id="virtualMemoryVisualization"></div>
+                <div class="result" id="virtualMemoryResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Memory Address Visualization
+        function visualizeMemory(memorySize, wordSize) {
+            const container = document.getElementById('memoryVisualization');
+            container.innerHTML = '';
+            
+            // Create memory block visualization
+            const blocksToShow = Math.min(32, memorySize / (wordSize / 8));
+            for (let i = 0; i < blocksToShow; i++) {
+                const block = document.createElement('div');
+                block.className = 'memory-block';
+                block.textContent = i;
+                container.appendChild(block);
+            }
+        }
+
+        // Pipeline Visualization
+        function visualizePipeline(stages, instructions) {
+            const container = document.getElementById('pipelineVisualization');
+            container.innerHTML = '';
+            
+            // Create pipeline stages visualization
+            for (let i = 0; i < Math.min(5, stages); i++) {
+                const stage = document.createElement('div');
+                stage.className = 'pipeline-stage';
+                stage.textContent = `Stage ${i + 1}`;
+                container.appendChild(stage);
+            }
+        }
+
+        // Virtual Memory Visualization
+        function visualizeVirtualMemory(pageSize, physicalSize) {
+            const container = document.getElementById('virtualMemoryVisualization');
+            container.innerHTML = '';
+            
+            // Create page table visualization
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", "150");
+            svg.setAttribute("viewBox", "0 0 400 150");
+            
+            // Add virtual to physical mapping visualization
+            const virtualRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            virtualRect.setAttribute("x", "50");
+            virtualRect.setAttribute("y", "20");
+            virtualRect.setAttribute("width", "100");
+            virtualRect.setAttribute("height", "100");
+            virtualRect.setAttribute("fill", "#e8f0fe");
+            virtualRect.setAttribute("stroke", "#1a73e8");
+            
+            const physicalRect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            physicalRect.setAttribute("x", "250");
+            physicalRect.setAttribute("y", "20");
+            physicalRect.setAttribute("width", "100");
+            physicalRect.setAttribute("height", "100");
+            physicalRect.setAttribute("fill", "#e8f0fe");
+            physicalRect.setAttribute("stroke", "#1a73e8");
+            
+            // Add arrows
+            const arrow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            arrow.setAttribute("d", "M 150 70 L 250 70");
+            arrow.setAttribute("stroke", "#1a73e8");
+            arrow.setAttribute("marker-end", "url(#arrowhead)");
+            
+            svg.appendChild(virtualRect);
+            svg.appendChild(physicalRect);
+            svg.appendChild(arrow);
+            
+            container.appendChild(svg);
+        }
+
+        // Enhanced Memory Address Calculator
+        function calculateMemoryAddress() {
+            const memorySize = parseInt(document.getElementById('memorySize').value);
+            const wordSize = parseInt(document.getElementById('wordSize').value);
+            
+            if (memorySize && wordSize) {
+                const addressBits = Math.ceil(Math.log2(memorySize));
+                const wordsInMemory = Math.floor(memorySize / (wordSize / 8));
+                const result = `
+                    <strong>Address Space:</strong><br>
+                    • Address bits needed: ${addressBits} bits<br>
+                    • Total words: ${wordsInMemory.toLocaleString()}<br>
+                    • Byte addressable locations: ${memorySize.toLocaleString()}<br><br>
+                    <strong>Memory Organization:</strong><br>
+                    • Word size: ${wordSize} bits<br>
+                    • Bytes per word: ${wordSize/8}<br>
+                    • Total memory size: ${memorySize.toLocaleString()} bytes
+                `;
+                document.getElementById('memoryResult').innerHTML = result;
+                visualizeMemory(memorySize, wordSize);
+            }
+        }
+
+        // Pipeline Calculator
+        function calculatePipeline() {
+            const stages = parseInt(document.getElementById('pipelineStages').value);
+            const cycleTime = parseFloat(document.getElementById('cycleTime').value);
+            const instructions = parseInt(document.getElementById('instructionCount').value);
+            
+            if (stages && cycleTime && instructions) {
+                const nonPipelinedTime = instructions * stages * cycleTime;
+                const pipelinedTime = ((stages - 1) + instructions) * cycleTime;
+                const speedup = nonPipelinedTime / pipelinedTime;
+                
+                const result = `
+                    <strong>Pipeline Analysis:</strong><br>
+                    • Non-pipelined execution time: ${nonPipelinedTime.toFixed(2)} ns<br>
+                    • Pipelined execution time: ${pipelinedTime.toFixed(2)} ns<br>
+                    • Speedup: ${speedup.toFixed(2)}x<br>
+                    • Theoretical max speedup: ${stages.toFixed(2)}x<br><br>
+                    <strong>Additional Metrics:</strong><br>
+                    • Pipeline efficiency: ${((speedup/stages)*100).toFixed(2)}%<br>
+                    • Throughput: ${(1000/cycleTime).toFixed(2)} MIPS (max)
+                `;
+                document.getElementById('pipelineResult').innerHTML = result;
+                visualizePipeline(stages, instructions);
+            }
+        }
+
+        // Virtual Memory Calculator
+        function calculateVirtualMemory() {
+            const virtualAddressSize = parseInt(document.getElementById('virtualAddressSize').value);
+            const pageSize = parseInt(document.getElementById('pageSize').value) * 1024; // Convert KB to bytes
+            const physicalMemorySize = parseInt(document.getElementById('physicalMemorySize').value) * 1024 * 1024; // Convert MB to bytes
+            
+            if (virtualAddressSize && pageSize && physicalMemorySize) {
+                const virtualSpace = Math.pow(2, virtualAddressSize);
+                const pageOffsetBits = Math.log2(pageSize);
+                const pageTableEntries = virtualSpace / pageSize;
+                const physicalPages = Math.floor(physicalMemorySize / pageSize);
+                
+                const result = `
+                    <strong>Virtual Memory Configuration:</strong><br>
+                    • Virtual address space: ${(virtualSpace / (1024*1024*1024)).toFixed(2)} GB<br>
+                    • Page offset bits: ${pageOffsetBits}<br>
+                    • Page number bits: ${virtualAddressSize - pageOffsetBits}<br>
+                    • Total page table entries: ${pageTableEntries.toLocaleString()}<br><br>
+                    <strong>Physical Memory Details:</strong><br>
+                    • Number of physical pages: ${physicalPages.toLocaleString()}<br>
+                    • Page table size: ${((pageTableEntries * 4) / (1024*1024)).toFixed(2)} MB<br>
+                    • Maximum memory utilization: ${((physicalMemorySize / virtualSpace) * 100).toFixed(2)}%
+                `;
+                document.getElementById('virtualMemoryResult').innerHTML = result;
+                visualizeVirtualMemory(pageSize, physicalMemorySize);
+            }
+        }
+        function calculatePerformance() {
+            const clockRate = parseFloat(document.getElementById('clockRate').value);
+            const cpi = parseFloat(document.getElementById('cpi').value);
+            const instructionCount = parseInt(document.getElementById('instructionCount').value);
+            
+            if (clockRate && cpi && instructionCount) {
+                const clockPeriod = 1 / (clockRate * 1e6); // Convert MHz to seconds
+                const cpuTime = (instructionCount * cpi * clockPeriod);
+                const mips = (instructionCount / (cpuTime * 1e6));
+                const ipc = 1 / cpi;
+                
+                const result = `
+                    <strong>Performance Metrics:</strong><br>
+                    • CPU Time: ${cpuTime.toFixed(6)} seconds<br>
+                    • MIPS: ${mips.toFixed(2)} Million Instructions/Second<br>
+                    • IPC (Instructions per Cycle): ${ipc.toFixed(2)}<br>
+                    • Total CPU Cycles: ${formatNumber(instructionCount * cpi)}<br><br>
+                    <strong>Additional Metrics:</strong><br>
+                    • Clock Period: ${(clockPeriod * 1e9).toFixed(2)} nanoseconds<br>
+                    • Average Instruction Time: ${(cpuTime/instructionCount * 1e9).toFixed(2)} nanoseconds
+                `;
+                
+                document.getElementById('performanceResult').innerHTML = result;
+                visualizePerformance(clockRate, cpi, instructionCount);
+            }
+        }
+
+        // Performance Visualization
+        function visualizePerformance(clockRate, cpi, instructions) {
+            const container = document.getElementById('performanceVisualization');
+            container.innerHTML = `
+                <svg width="100%" height="150" viewBox="0 0 400 150">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                            refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#1a73e8"/>
+                        </marker>
+                    </defs>
+                    <!-- Timeline -->
+                    <line x1="50" y1="100" x2="350" y2="100" 
+                        stroke="#1a73e8" stroke-width="2" 
+                        marker-end="url(#arrowhead)"/>
+                    <!-- Cycles -->
+                    ${Array.from({length: 5}, (_, i) => `
+                        <rect x="${50 + i*60}" y="80" width="50" height="40" 
+                            fill="#e8f0fe" stroke="#1a73e8"/>
+                        <text x="${75 + i*60}" y="100" text-anchor="middle" 
+                            dominant-baseline="middle" fill="#1a73e8">
+                            Cycle ${i+1}
+                        </text>
+                    `).join('')}
+                </svg>
+            `;
+        }
+
+        // Cache Calculator
+        function calculateCache() {
+            const cacheSize = parseInt(document.getElementById('cacheSize').value) * 1024; // Convert to bytes
+            const blockSize = parseInt(document.getElementById('blockSize').value);
+            const associativity = parseInt(document.getElementById('associativity').value);
+            const hitTime = parseFloat(document.getElementById('hitTime').value);
+            const missPenalty = parseFloat(document.getElementById('missPenalty').value);
+            const missRate = parseFloat(document.getElementById('missRate').value) / 100;
+            
+            if (cacheSize && blockSize && associativity !== undefined && hitTime && missPenalty && missRate !== undefined) {
+                const totalBlocks = cacheSize / blockSize;
+                const numberOfSets = associativity === 0 ? 1 : totalBlocks / associativity;
+                const offsetBits = Math.log2(blockSize);
+                const indexBits = associativity === 0 ? 0 : Math.log2(numberOfSets);
+                const tagBits = 32 - indexBits - offsetBits;
+                const amat = hitTime + (missRate * missPenalty);
+                
+                const result = `
+                    <strong>Cache Organization:</strong><br>
+                    • Number of Sets: ${formatNumber(numberOfSets)}<br>
+                    • Blocks per Set: ${associativity === 0 ? 'All' : associativity}<br>
+                    • Total Cache Blocks: ${formatNumber(totalBlocks)}<br><br>
+                    <strong>Address Breakdown:</strong><br>
+                    • Tag Bits: ${tagBits}<br>
+                    • Index Bits: ${indexBits}<br>
+                    • Offset Bits: ${offsetBits}<br><br>
+                    <strong>Performance:</strong><br>
+                    • AMAT (Average Memory Access Time): ${amat.toFixed(2)} ns<br>
+                    • Hit Time: ${hitTime} ns<br>
+                    • Miss Penalty: ${missPenalty} ns<br>
+                    • Miss Rate: ${(missRate * 100).toFixed(2)}%
+                `;
+                
+                document.getElementById('cacheResult').innerHTML = result;
+                visualizeCache(numberOfSets, associativity === 0 ? totalBlocks : associativity, blockSize);
+            }
+        }
+
+        // Helper function for number formatting
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', function() {
+            showCalculator('performance');
+        });
+
+        // Previous tab switching function remains the same
+        function showCalculator(type) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.toLowerCase().includes(type)) {
+                    tab.classList.add('active');
+                }
+            });
+
+            const calculators = document.querySelectorAll('.calculator-card');
+            calculators.forEach(calc => {
+                if (calc.id.toLowerCase().includes(type)) {
+                    calc.style.display = 'block';
+                } else {
+                    calc.style.display = 'none';
+                }
+            });
+        }
+        // Cache Calculator (Enhanced)
+        function calculateCache() {
+            const cacheSize = parseInt(document.getElementById('cacheSize').value) * 1024; // Convert KB to bytes
+            const blockSize = parseInt(document.getElementById('blockSize').value);
+            const associativity = parseInt(document.getElementById('associativity').value);
+            
+            if (cacheSize && blockSize && associativity) {
+                const totalBlocks = cacheSize / blockSize;
+                const numberOfSets = totalBlocks / associativity;
+                const offsetBits = Math.log2(blockSize);
+                const indexBits = Math.log2(numberOfSets);
+                const tagBits = 32 - indexBits - offsetBits; // Assuming 32-bit address
+                
+                // Calculate additional metrics
+                const overheadBits = (tagBits * totalBlocks) + totalBlocks; // Including valid bit
+                const overheadBytes = Math.ceil(overheadBits / 8);
+                const efficiency = ((cacheSize - overheadBytes) / cacheSize) * 100;
+                
+                const result = `
+                    <strong>Cache Structure:</strong><br>
+                    • Number of sets: ${numberOfSets}<br>
+                    • Blocks per set: ${associativity}<br>
+                    • Total blocks: ${totalBlocks}<br><br>
+                    <strong>Address Breakdown:</strong><br>
+                    • Tag bits: ${tagBits}<br>
+                    • Index bits: ${indexBits}<br>
+                    • Offset bits: ${offsetBits}<br><br>
+                    <strong>Cache Efficiency:</strong><br>
+                    • Overhead: ${overheadBytes.toLocaleString()} bytes<br>
+                    • Storage efficiency: ${efficiency.toFixed(2)}%
+                `;
+                document.getElementById('cacheResult').innerHTML = result;
+                visualizeCache(numberOfSets, associativity, blockSize);
+            }
+        }
+
+        // Cache Visualization
+        function visualizeCache(sets, associativity, blockSize) {
+            const container = document.getElementById('cacheVisualization');
+            container.innerHTML = '';
+            
+            // Create SVG for cache visualization
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("width", "100%");
+            svg.setAttribute("height", "200");
+            svg.setAttribute("viewBox", "0 0 400 200");
+            
+            // Draw cache structure
+            const setHeight = 180 / Math.min(sets, 8);
+            const blockWidth = 380 / associativity;
+            
+            for (let i = 0; i < Math.min(sets, 8); i++) {
+                for (let j = 0; j < associativity; j++) {
+                    const block = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    block.setAttribute("x", 10 + (j * blockWidth));
+                    block.setAttribute("y", 10 + (i * setHeight));
+                    block.setAttribute("width", blockWidth - 2);
+                    block.setAttribute("height", setHeight - 2);
+                    block.setAttribute("fill", "#e8f0fe");
+                    block.setAttribute("stroke", "#1a73e8");
+                    svg.appendChild(block);
+                }
+            }
+            
+            container.appendChild(svg);
+        }
+
+        // Tab switching functionality with animations
+        function showCalculator(type) {
+            const tabs = document.querySelectorAll('.tab');
+            const calculators = document.querySelectorAll('.calculator-card');
+            
+            // Update tab styling
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.textContent.toLowerCase().includes(type)) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Show/hide calculators with animation
+            calculators.forEach(calc => {
+                if (calc.id.toLowerCase().includes(type)) {
+                    gsap.to(calc, {
+                        duration: 0.3,
+                        opacity: 1,
+                        display: 'block',
+                        ease: 'power2.out'
+                    });
+                } else {
+                    gsap.to(calc, {
+                        duration: 0.3,
+                        opacity: 0,
+                        display: 'none',
+                        ease: 'power2.in'
+                    });
+                }
+            });
+        }
+
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show default calculator
+            showCalculator('memory');
+            
+            // Add smooth animations for calculator interactions
+            const buttons = document.querySelectorAll('.calculate-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    gsap.from(this.nextElementSibling, {
+                        duration: 0.5,
+                        y: 20,
+                        opacity: 0,
+                        ease: 'power2.out'
+                    });
+                });
+            });
+        });
+
+        // Helper function to format large numbers
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+</body>
+</html>

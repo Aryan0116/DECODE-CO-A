@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cache Replacement Algorithm Simulator</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.5;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    
+    h1, h2 {
+      color: #2563eb;
+    }
+    
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-end;
+    }
+    
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      color: #4b5563;
+    }
+    
+    input, select, button {
+      padding: 8px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    button {
+      background-color: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      border: none;
+      transition: background-color 0.2s;
+    }
+    
+    button:hover {
+      background-color: #1d4ed8;
+    }
+    
+    button:disabled {
+      background-color: #93c5fd;
+      cursor: not-allowed;
+    }
+    
+    .cache-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .cache-blocks {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    
+    .cache-block {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: bold;
+      position: relative;
+    }
+    
+    .cache-block.empty {
+      background-color: #f3f4f6;
+      color: #9ca3af;
+    }
+    
+    .cache-block.hit {
+      background-color: #dcfce7;
+      border-color: #22c55e;
+    }
+    
+    .cache-block.miss {
+      background-color: #fee2e2;
+      border-color: #ef4444;
+    }
+    
+    .cache-block.replacing {
+      background-color: #fef3c7;
+      border-color: #f59e0b;
+    }
+    
+    .indicators {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .indicator {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .indicator-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    
+    .hit-color {
+      background-color: #dcfce7;
+      border: 1px solid #22c55e;
+    }
+    
+    .miss-color {
+      background-color: #fee2e2;
+      border: 1px solid #ef4444;
+    }
+    
+    .replace-color {
+      background-color: #fef3c7;
+      border: 1px solid #f59e0b;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    
+    .stat {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .stat-value {
+      font-weight: bold;
+      color: #2563eb;
+    }
+    
+    .access-sequence {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    
+    .access {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    
+    .access.current {
+      background-color: #2563eb;
+      color: white;
+      border-color: #1d4ed8;
+    }
+    
+    .access.processed {
+      background-color: #f3f4f6;
+      color: #9ca3af;
+    }
+    
+    .block-counter {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      background-color: #2563eb;
+      color: white;
+      font-size: 12px;
+      width: 18px;
+      height: 18px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .info-section {
+      background-color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 24px;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .speed-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .table-container {
+      overflow-x: auto;
+      margin-top: 16px;
+    }
+    
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 8px;
+      text-align: center;
+    }
+    
+    th {
+      background-color: #f3f4f6;
+      font-weight: 600;
+    }
+    
+    .highlight {
+      background-color: #dbeafe;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cache Replacement Algorithm Simulator</h1>
+  
+  <div class="info-section">
+    <h2>How to use</h2>
+    <p>This simulator demonstrates how different cache replacement algorithms work. You can:</p>
+    <ul>
+      <li>Set the cache size (number of blocks)</li>
+      <li>Choose a replacement algorithm</li>
+      <li>Enter a sequence of page/block references</li>
+      <li>Step through the simulation or run it automatically</li>
+    </ul>
+    <p>The visualization shows each access, whether it results in a hit or miss, and which block is replaced if needed.</p>
+  </div>
+  
+  <div class="controls">
+    <div class="control-group">
+      <label for="algorithm">Algorithm</label>
+      <select id="algorithm">
+        <option value="fifo">FIFO (First In First Out)</option>
+        <option value="lru">LRU (Least Recently Used)</option>
+        <option value="lfu">LFU (Least Frequently Used)</option>
+        <option value="random">Random</option>
+        <option value="optimal">Optimal (Clairvoyant)</option>
+      </select>
+    </div>
+    
+    <div class="control-group">
+      <label for="cacheSize">Cache Size</label>
+      <input type="number" id="cacheSize" min="1" max="10" value="3">
+    </div>
+    
+    <div class="control-group">
+      <label for="accessSequence">Access Sequence (space-separated)</label>
+      <input type="text" id="accessSequence" value="1 2 3 4 1 2 5 1 2 3 4 5" style="width: 300px;">
+    </div>
+    
+    <button id="reset">Reset</button>
+    <button id="step">Step</button>
+    <button id="run">Run</button>
+    <div class="control-group speed-controls">
+      <label for="speed">Speed</label>
+      <input type="range" id="speed" min="100" max="2000" value="500">
+    </div>
+  </div>
+  
+  <div class="indicators">
+    <div class="indicator">
+      <div class="indicator-color hit-color"></div>
+      <span>Hit</span>
+    </div>
+    <div class="indicator">
+      <div class="indicator-color miss-color"></div>
+      <span>Miss</span>
+    </div>
+    <div class="indicator">
+      <div class="indicator-color replace-color"></div>
+      <span>Replacing</span>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat">
+        <span>Hits:</span>
+        <span class="stat-value" id="hits">0</span>
+    </div>
+    <div class="stat">
+        <span>Misses:</span>
+        <span class="stat-value" id="misses">0</span>
+    </div>
+    <div class="stat">
+        <span>Hit Ratio:</span>
+        <span class="stat-value" id="hitRatio">0%</span>
+    </div>
+    <div class="stat">
+        <span>Miss Ratio:</span>
+        <span class="stat-value" id="missRatio">0%</span>
+    </div>
+    <div class="stat">
+        <span>Number of Hits:</span>
+        <span class="stat-value" id="hitsNumber">0</span>
+    </div>
+    <div class="stat">
+        <span>Number of Misses:</span>
+        <span class="stat-value" id="missesNumber">0</span>
+    </div>
+</div>
+  
+  <h2>Access Sequence</h2>
+  <div class="access-sequence" id="accessSequenceDisplay"></div>
+  
+  <h2>Cache State</h2>
+  <div class="cache-container">
+    <div class="cache-blocks" id="cacheBlocks"></div>
+  </div>
+  
+  <div class="info-section">
+    <h2>Algorithm Details</h2>
+    <div id="algorithmDetails">
+      <p><strong>FIFO (First In First Out):</strong> Replaces the block that has been in the cache the longest.</p>
+    </div>
+  </div>
+  
+  <div class="table-container">
+    <h2>Simulation Trace</h2>
+    <table id="traceTable">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Access</th>
+          <th>Hit/Miss</th>
+          <th>Replaced</th>
+          <th>Cache State</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  
+  <script>
+    // DOM elements
+    const algorithmSelect = document.getElementById('algorithm');
+    const cacheSizeInput = document.getElementById('cacheSize');
+    const accessSequenceInput = document.getElementById('accessSequence');
+    const resetButton = document.getElementById('reset');
+    const stepButton = document.getElementById('step');
+    const runButton = document.getElementById('run');
+    const speedInput = document.getElementById('speed');
+    const hitsElement = document.getElementById('hits');
+    const missesElement = document.getElementById('misses');
+    const hitRatioElement = document.getElementById('hitRatio');
+    const accessSequenceDisplay = document.getElementById('accessSequenceDisplay');
+    const cacheBlocksElement = document.getElementById('cacheBlocks');
+    const algorithmDetailsElement = document.getElementById('algorithmDetails');
+    const traceTableBody = document.querySelector('#traceTable tbody');
+    const hitsNumberElement = document.getElementById('hitsNumber');
+const missesNumberElement = document.getElementById('missesNumber');
+const missRatioElement = document.getElementById('missRatio');
+    // Simulation state
+    let cache = [];
+    let accessSequence = [];
+    let currentStep = 0;
+    let hits = 0;
+    let misses = 0;
+    let cacheSize = 3;
+    let runIntervalId = null;
+    let extraInfo = {
+      fifo: { order: [] },
+      lru: { lastUsed: {} },
+      lfu: { frequency: {} },
+      optimal: { futureAccesses: {} }
+    };
+    
+    // Initialize
+    function initialize() {
+      const algorithm = algorithmSelect.value;
+      cacheSize = parseInt(cacheSizeInput.value);
+      
+      // Parse access sequence
+      accessSequence = accessSequenceInput.value
+        .trim()
+        .split(/\s+/)
+        .map(num => num.trim())
+        .filter(num => num !== '');
+      
+      // Reset state
+      cache = Array(cacheSize).fill(null);
+      currentStep = 0;
+      hits = 0;
+      misses = 0;
+      
+      // Reset extra info
+      extraInfo = {
+        fifo: { order: [] },
+        lru: { lastUsed: {} },
+        lfu: { frequency: {} },
+        optimal: { futureAccesses: {} }
+      };
+      
+      // If optimal algorithm, pre-compute future accesses
+      if (algorithm === 'optimal') {
+        for (let i = 0; i < accessSequence.length; i++) {
+          const page = accessSequence[i];
+          if (!extraInfo.optimal.futureAccesses[page]) {
+            extraInfo.optimal.futureAccesses[page] = [];
+          }
+          extraInfo.optimal.futureAccesses[page].push(i);
+        }
+      }
+      
+      // Update UI
+      updateAccessSequenceDisplay();
+      updateCacheDisplay();
+      updateAlgorithmDetails();
+      updateStats();
+      clearTraceTable();
+      
+      // Enable/disable buttons
+      stepButton.disabled = accessSequence.length === 0;
+      runButton.disabled = accessSequence.length === 0;
+      runButton.textContent = 'Run';
+    }
+    
+    // Update access sequence display
+    function updateAccessSequenceDisplay() {
+      accessSequenceDisplay.innerHTML = '';
+      
+      for (let i = 0; i < accessSequence.length; i++) {
+        const accessDiv = document.createElement('div');
+        accessDiv.classList.add('access');
+        
+        if (i < currentStep) {
+          accessDiv.classList.add('processed');
+        } else if (i === currentStep) {
+          accessDiv.classList.add('current');
+        }
+        
+        accessDiv.textContent = accessSequence[i];
+        accessSequenceDisplay.appendChild(accessDiv);
+      }
+    }
+    
+    // Update cache display
+    function updateCacheDisplay(hitBlock = -1, missBlock = -1, replacingBlock = -1) {
+      cacheBlocksElement.innerHTML = '';
+      
+      for (let i = 0; i < cacheSize; i++) {
+        const blockDiv = document.createElement('div');
+        blockDiv.classList.add('cache-block');
+        
+        if (cache[i] === null) {
+          blockDiv.classList.add('empty');
+          blockDiv.textContent = 'Empty';
+        } else {
+          blockDiv.textContent = cache[i];
+          
+          // Add hit/miss/replacing styling
+          if (i === hitBlock) {
+            blockDiv.classList.add('hit');
+          } else if (i === missBlock) {
+            blockDiv.classList.add('miss');
+          } else if (i === replacingBlock) {
+            blockDiv.classList.add('replacing');
+          }
+          
+          // Add counter information based on algorithm
+          const algorithm = algorithmSelect.value;
+          const counterDiv = document.createElement('div');
+          counterDiv.classList.add('block-counter');
+          
+          if (algorithm === 'fifo') {
+            const order = extraInfo.fifo.order.indexOf(i);
+            if (order !== -1) {
+              counterDiv.textContent = order + 1;
+              blockDiv.appendChild(counterDiv);
+            }
+          } else if (algorithm === 'lru') {
+            const page = cache[i];
+            if (extraInfo.lru.lastUsed[page] !== undefined) {
+              counterDiv.textContent = currentStep - extraInfo.lru.lastUsed[page];
+              blockDiv.appendChild(counterDiv);
+            }
+          } else if (algorithm === 'lfu') {
+            const page = cache[i];
+            if (extraInfo.lfu.frequency[page] !== undefined) {
+              counterDiv.textContent = extraInfo.lfu.frequency[page];
+              blockDiv.appendChild(counterDiv);
+            }
+          } else if (algorithm === 'optimal') {
+            const page = cache[i];
+            const futureAccesses = getNextAccess(page, currentStep);
+            if (futureAccesses !== Infinity) {
+              counterDiv.textContent = futureAccesses;
+              blockDiv.appendChild(counterDiv);
+            } else {
+              counterDiv.textContent = '∞';
+              blockDiv.appendChild(counterDiv);
+            }
+          }
+        }
+        
+        cacheBlocksElement.appendChild(blockDiv);
+      }
+    }
+    
+    // Update algorithm details
+    function updateAlgorithmDetails() {
+      const algorithm = algorithmSelect.value;
+      let detailsHTML = '';
+      
+      switch (algorithm) {
+        case 'fifo':
+          detailsHTML = `
+            <h3>FIFO (First In First Out)</h3>
+      <p>The FIFO algorithm replaces the block that has been in the cache the longest, regardless of how frequently or recently it has been used.</p>
+      
+      <h4>How it works:</h4>
+      <ul>
+        <li>When a new block needs to be loaded into a full cache, the block that was loaded first (has been in the cache longest) is replaced</li>
+        <li>FIFO maintains a queue of blocks in the order they entered the cache</li>
+        <li>The oldest block (front of the queue) is selected for replacement</li>
+        <li>New blocks are added to the back of the queue</li>
+      </ul>
+      
+      <h4>Advantages:</h4>
+      <ul>
+        <li>Simple to implement</li>
+        <li>Low overhead - only needs to track the order blocks entered the cache</li>
+        <li>Fair in the sense that all blocks have the same lifetime in the cache</li>
+      </ul>
+      
+      <h4>Disadvantages:</h4>
+      <ul>
+        <li>Doesn't consider frequency or recency of use</li>
+        <li>May replace frequently accessed blocks just because they're old</li>
+        <li>Vulnerable to "Belady's anomaly" - increasing cache size can sometimes increase miss rate</li>
+      </ul>
+      
+      <div class="algorithm-diagram">
+        <p>In this simulation, the number in each block indicates its position in the FIFO queue (1 = oldest, will be replaced first)</p>
+      </div>          `;
+          break;
+        case 'lru':
+          detailsHTML = `
+            <h3>LRU (Least Recently Used)</h3>
+      <p>The LRU algorithm replaces the block that hasn't been accessed for the longest time, based on the principle of temporal locality - recently used items are likely to be used again soon.</p>
+      
+      <h4>How it works:</h4>
+      <ul>
+        <li>Each time a block is accessed, its "last used" timestamp is updated</li>
+        <li>When a new block needs to be loaded into a full cache, the block with the oldest timestamp is replaced</li>
+        <li>LRU requires tracking the last access time for each block in the cache</li>
+      </ul>
+      
+      <h4>Advantages:</h4>
+      <ul>
+        <li>Performs well for many workloads due to temporal locality</li>
+        <li>Adapts to changing access patterns</li>
+        <li>Doesn't suffer from Belady's anomaly</li>
+      </ul>
+      
+      <h4>Disadvantages:</h4>
+      <ul>
+        <li>More complex to implement than FIFO</li>
+        <li>Requires tracking last access time for each block</li>
+        <li>Doesn't consider frequency of access</li>
+        <li>Doesn't work well with cyclic access patterns larger than the cache size</li>
+      </ul>
+      
+      <div class="algorithm-diagram">
+        <p>In this simulation, the number in each block shows how many steps since it was last accessed (higher = accessed longer ago)</p>
+      </div>
+    </div>
+          `;
+          break;
+        case 'lfu':
+          detailsHTML = `
+            <h3>LFU (Least Frequently Used)</h3>
+      <p>The LFU algorithm replaces the block that has been accessed the least number of times, based on the principle that frequently used blocks are more likely to be accessed again.</p>
+      
+      <h4>How it works:</h4>
+      <ul>
+        <li>Each block has a counter that increments on every access</li>
+        <li>When a new block needs to be loaded into a full cache, the block with the lowest counter value is replaced</li>
+        <li>If multiple blocks have the same lowest count, a secondary policy (like FIFO or LRU) may be used</li>
+      </ul>
+      
+      <h4>Advantages:</h4>
+      <ul>
+        <li>Works well for access patterns with stable popularity distributions</li>
+        <li>Keeps frequently used blocks in cache even if they haven't been used recently</li>
+        <li>Good for workloads where popularity is more important than recency</li>
+      </ul>
+      
+      <h4>Disadvantages:</h4>
+      <ul>
+        <li>Doesn't adapt quickly to changing access patterns</li>
+        <li>New blocks are at a disadvantage (low counter values)</li>
+        <li>Old but no longer used blocks may stay in cache due to high historical counts</li>
+        <li>Requires maintaining a counter for each block</li>
+      </ul>
+      
+      <div class="algorithm-diagram">
+        <p>In this simulation, the number in each block shows how many times it has been accessed (lower = accessed less frequently)</p>
+      </div>
+    </div>
+          `;
+          break;
+        case 'random':
+          detailsHTML = `
+            <h3>Random Replacement</h3>
+      <p>The Random algorithm simply selects a random block for replacement when the cache is full, without considering any access patterns or history.</p>
+      
+      <h4>How it works:</h4>
+      <ul>
+        <li>When a new block needs to be loaded into a full cache, a random block is selected for replacement</li>
+        <li>No state information is maintained about blocks</li>
+      </ul>
+      
+      <h4>Advantages:</h4>
+      <ul>
+        <li>Extremely simple to implement</li>
+        <li>No overhead for tracking block usage</li>
+        <li>Performs surprisingly well in practice for some workloads</li>
+        <li>Avoids pathological cases that affect deterministic algorithms</li>
+      </ul>
+      
+      <h4>Disadvantages:</h4>
+      <ul>
+        <li>Doesn't exploit locality in access patterns</li>
+        <li>Performance can be unpredictable</li>
+        <li>May replace recently or frequently used blocks by chance</li>
+      </ul>
+      
+      <div class="algorithm-diagram">
+        <p>In this simulation, there are no indicators for random replacement as the selection is arbitrary</p>
+      </div>
+    </div>
+          `;
+          break;
+        case 'optimal':
+          detailsHTML = `
+            <h3>Optimal (Clairvoyant) Algorithm</h3>
+      <p>The Optimal algorithm (also called MIN or OPT) replaces the block that will not be used for the longest time in the future. This is a theoretical algorithm that requires future knowledge.</p>
+      
+      <h4>How it works:</h4>
+      <ul>
+        <li>When a new block needs to be loaded into a full cache, the algorithm looks ahead in the access sequence</li>
+        <li>It identifies which cached block will not be referenced for the longest time</li>
+        <li>If a block will never be referenced again, it is chosen first</li>
+      </ul>
+      
+      <h4>Advantages:</h4>
+      <ul>
+        <li>Provides the best possible hit rate - a theoretical upper bound</li>
+        <li>Useful as a benchmark to evaluate other algorithms</li>
+        <li>Cannot suffer from Belady's anomaly</li>
+      </ul>
+      
+      <h4>Disadvantages:</h4>
+      <ul>
+        <li>Requires future knowledge, so it's not implementable in practice</li>
+        <li>Only used for theoretical analysis and simulation</li>
+      </ul>
+      
+      <div class="algorithm-diagram">
+        <p>In this simulation, the number shows how many steps until the next access (∞ means it won't be accessed again)</p>
+      </div>
+    </div>
+    </div>
+          `;
+          break;
+      }
+      
+      algorithmDetailsElement.innerHTML = detailsHTML;
+    }
+    
+    // Update statistics
+    function updateStats() {
+    hitsElement.textContent = hits;
+    missesElement.textContent = misses;
+
+    const total = hits + misses;
+    const ratio = total === 0 ? 0 : (hits / total * 100).toFixed(1);
+    hitRatioElement.textContent = `${ratio}%`;
+
+    // Add miss ratio
+    const missRatio = total === 0 ? 0 : (misses / total * 100).toFixed(1);
+    missRatioElement.textContent = `${missRatio}%`;
+
+    // Add number of hits and misses to the stats display.
+    hitsNumberElement.textContent = hits;
+    missesNumberElement.textContent = misses;
+}
+    // Clear trace table
+    function clearTraceTable() {
+      traceTableBody.innerHTML = '';
+    }
+    
+    // Add row to trace table
+    function addTraceRow(step, access, hitOrMiss, replaced, cacheState) {
+      const row = document.createElement('tr');
+      
+      const stepCell = document.createElement('td');
+      stepCell.textContent = step;
+      row.appendChild(stepCell);
+      
+      const accessCell = document.createElement('td');
+      accessCell.textContent = access;
+      row.appendChild(accessCell);
+      
+      const hitOrMissCell = document.createElement('td');
+      hitOrMissCell.textContent = hitOrMiss;
+      hitOrMissCell.style.color = hitOrMiss === 'Hit' ? '#22c55e' : '#ef4444';
+      row.appendChild(hitOrMissCell);
+      
+      const replacedCell = document.createElement('td');
+      replacedCell.textContent = replaced || '-';
+      row.appendChild(replacedCell);
+      
+      const cacheStateCell = document.createElement('td');
+      cacheStateCell.textContent = cacheState;
+      row.appendChild(cacheStateCell);
+      
+      row.classList.add('highlight');
+      
+      // Remove highlight from previous row
+      const previousHighlight = traceTableBody.querySelector('.highlight');
+      if (previousHighlight) {
+        previousHighlight.classList.remove('highlight');
+      }
+      
+      traceTableBody.appendChild(row);
+      row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    
+    // Step through simulation
+    function step() {
+      if (currentStep >= accessSequence.length) {
+        return false;
+      }
+      
+      const algorithm = algorithmSelect.value;
+      const page = accessSequence[currentStep];
+      
+      // Check if page is in cache (hit)
+      const cacheIndex = cache.indexOf(page);
+      let hitOrMiss, replacedBlock = null, replacedPage = null, hitBlock = -1, missBlock = -1, replacingBlock = -1;
+      
+      if (cacheIndex !== -1) {
+        // Hit
+        hitOrMiss = 'Hit';
+        hits++;
+        hitBlock = cacheIndex;
+        
+        // Update LRU/LFU info
+        if (algorithm === 'lru') {
+          extraInfo.lru.lastUsed[page] = currentStep;
+        } else if (algorithm === 'lfu') {
+          extraInfo.lfu.frequency[page]++;
+        }
+      } else {
+        // Miss
+        hitOrMiss = 'Miss';
+        misses++;
+        
+        // Find empty slot or apply replacement policy
+        const emptySlot = cache.indexOf(null);
+        
+        if (emptySlot !== -1) {
+          // Empty slot available
+          cache[emptySlot] = page;
+          missBlock = emptySlot;
+          
+          // Update FIFO order
+          if (algorithm === 'fifo') {
+            extraInfo.fifo.order.push(emptySlot);
+          }
+        } else {
+          // Need to replace a block
+          const blockToReplace = getBlockToReplace(page);
+          replacedPage = cache[blockToReplace];
+          replacedBlock = blockToReplace;
+          replacingBlock = blockToReplace;
+          
+          cache[blockToReplace] = page;
+          missBlock = blockToReplace;
+          
+          // Update FIFO order
+          if (algorithm === 'fifo') {
+            extraInfo.fifo.order = extraInfo.fifo.order.filter(idx => idx !== blockToReplace);
+            extraInfo.fifo.order.push(blockToReplace);
+          }
+        }
+        
+        // Initialize statistics for the new page
+        if (algorithm === 'lru') {
+          extraInfo.lru.lastUsed[page] = currentStep;
+        } else if (algorithm === 'lfu') {
+          extraInfo.lfu.frequency[page] = 1;
+        }
+      }
+      
+      // Update UI
+      updateCacheDisplay(hitBlock, missBlock, replacingBlock);
+      updateStats();
+      
+      // Add trace
+      const cacheStateStr = cache.map(b => b === null ? '-' : b).join(', ');
+      addTraceRow(currentStep + 1, page, hitOrMiss, replacedPage, cacheStateStr);
+      
+      // Move to next step
+      currentStep++;
+      updateAccessSequenceDisplay();
+      
+      // Return whether we can continue
+      return currentStep < accessSequence.length;
+    }
+    
+    // Get block to replace based on selected algorithm
+    function getBlockToReplace(newPage) {
+      const algorithm = algorithmSelect.value;
+      
+      switch (algorithm) {
+        case 'fifo':
+          // First in, first out
+          return extraInfo.fifo.order[0];
+          
+        case 'lru':
+          // Least recently used
+          let lruBlock = 0;
+          let lruTime = Infinity;
+          
+          for (let i = 0; i < cacheSize; i++) {
+            const page = cache[i];
+            const lastUsed = extraInfo.lru.lastUsed[page] || -1;
+            
+            if (lastUsed < lruTime) {
+              lruTime = lastUsed;
+              lruBlock = i;
+            }
+          }
+          
+          return lruBlock;
+          
+        case 'lfu':
+          // Least frequently used
+          let lfuBlock = 0;
+          let lfuCount = Infinity;
+          
+          for (let i = 0; i < cacheSize; i++) {
+            const page = cache[i];
+            const frequency = extraInfo.lfu.frequency[page] || 0;
+            
+            if (frequency < lfuCount) {
+              lfuCount = frequency;
+              lfuBlock = i;
+            }
+          }
+          
+          return lfuBlock;
+          
+        case 'random':
+          // Random
+          return Math.floor(Math.random() * cacheSize);
+          
+        case 'optimal':
+          // Optimal (furthest future use)
+          let optimalBlock = 0;
+          let furthestUse = -1;
+          
+          for (let i = 0; i < cacheSize; i++) {
+            const page = cache[i];
+            const nextUse = getNextAccess(page, currentStep);
+            
+            if (nextUse > furthestUse) {
+              furthestUse = nextUse;
+              optimalBlock = i;
+            }
+          }
+          
+          return optimalBlock;
+          
+        default:
+          return 0;
+      }
+    }
+    
+    // Get next access for a page (for optimal algorithm)
+    function getNextAccess(page, currentPos) {
+      const futureAccesses = extraInfo.optimal.futureAccesses[page] || [];
+      
+      // Find the next access after current position
+      for (let i = 0; i < futureAccesses.length; i++) {
+        if (futureAccesses[i] > currentPos) {
+          return futureAccesses[i] - currentPos;
+        }
+      }
+      
+      // No future accesses
+      return Infinity;
+    }
+    
+    // Run the simulation automatically
+    function run() {
+      if (runIntervalId) {
+        // Stop running
+        clearInterval(runIntervalId);
+        runIntervalId = null;
+        runButton.textContent = 'Run';
+      } else {
+        // Start running
+        runButton.textContent = 'Stop';
+        
+        runIntervalId = setInterval(() => {
+          const canContinue = step();
+          
+          if (!canContinue) {
+            clearInterval(runIntervalId);
+            runIntervalId = null;
+            runButton.textContent = 'Run';
+            runButton.disabled = true;
+            stepButton.disabled = true;
+          }
+        }, 2000 - speedInput.value);
+      }
+    }
+    
+    // Event listeners
+    resetButton.addEventListener('click', initialize);
+    stepButton.addEventListener('click', () => {
+      const canContinue = step();
+      if (!canContinue) {
+        stepButton.disabled = true;
+        runButton.disabled = true;
+      }
+    });
+    runButton.addEventListener('click', run);
+    algorithmSelect.addEventListener('change', () => {
+      initialize();
+    });
+    cacheSizeInput.addEventListener('change', () => {
+      initialize();
+    });
+    accessSequenceInput.addEventListener('change', () => {
+      initialize();
+    });
+    speedInput.addEventListener('input', () => {
+      if (runIntervalId) {
+        clearInterval(runIntervalId);
+        runIntervalId = setInterval(() => {
+          const canContinue = step();
+          
+          if (!canContinue) {
+            clearInterval(runIntervalId);
+            runIntervalId = null;
+            runButton.textContent = 'Run';
+            runButton.disabled = true;
+            stepButton.disabled = true;
+          }
+        }, 2000 - speedInput.value);
+      }
+    });
+    
+    // Initialize the simulation
+    initialize();
+  </script>
+</body>
+</html>
