@@ -551,8 +551,17 @@ const initialSyllabusData = [
           completed: false,
           co: "PCC-CS302.CO3",
           description: "Instruction formats, sets, and addressing modes.",
-          objectives: ["Understand instruction formats and addressing modes"],
-          keyPoints: ["Instruction formats", "Addressing modes"]
+          objectives: [
+              "Understand instruction structure and CPU decoding.",
+              "Optimize instruction length for better CPU design and performance.",
+              "Learn different ways to access memory/registers.",
+              "Learn bit distribution (opcode, operands).",
+              "Reduce instruction size with indirect access."
+          ],
+          keyPoints: [
+             "
+            
+          ],
         }
       ],
         relatedCO: "PCC-CS302.CO3"
