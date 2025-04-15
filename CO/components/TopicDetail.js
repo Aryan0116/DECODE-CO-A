@@ -14,7 +14,88 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
             // Then update parent state
             onToggleComplete();
         };
-        
+        const renderMedia = () => {
+        const mediaElements = [];
+        let mediaIndex = 0;
+
+        if (topic.image) {
+            if (Array.isArray(topic.image)) {
+                topic.image.forEach(img => {
+                    mediaElements.push(
+                        <div key={`image-${mediaIndex}`} className="mb-6">
+                            <img src={img.url} alt={img.alt} className="rounded-lg shadow-md" />
+                        </div>
+                    );
+                    mediaIndex++;
+                });
+            } else {
+                mediaElements.push(
+                    <div key={`image-${mediaIndex}`} className="mb-6">
+                        <img src={topic.image.url} alt={topic.image.alt} className="rounded-lg shadow-md" />
+                    </div>
+                );
+                mediaIndex++;
+            }
+        }
+
+        if (topic.video) {
+            const videos = Array.isArray(topic.video) ? topic.video : [topic.video]; // Ensure videos is always an array
+            videos.forEach(vid => {
+                mediaElements.push(
+                    <div key={`video-${mediaIndex}`} className="mt-6">
+                        <h3 className="text-lg font-semibold mb-2 text-theme-primary">Watch Video</h3>
+                        <video controls width="100%" className="rounded-lg shadow-md">
+                            <source src={vid.url} type={`video/${vid.type}`} />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                );
+                mediaIndex++;
+            });
+        }
+
+        if (topic.youtube) {
+            if(Array.isArray(topic.youtube)){
+                topic.youtube.forEach(yt => {
+                    mediaElements.push(
+                        <div key={`youtube-${mediaIndex}`} className="mt-6">
+                            <h3 className="text-lg font-semibold mb-2 text-theme-primary">Watch on YouTube</h3>
+                            <div className="relative w-full" style={{ paddingBottom: "56.25%", position: "relative", height: 0 }}>
+                                <iframe
+                                    src={`https://www.youtube.com/embed/$${new URL(yt.url).searchParams.get("v")}`}
+                                    title={yt.title}
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+                                ></iframe>
+                            </div>
+                        </div>
+                    )
+                    mediaIndex++;
+                })
+            } else {
+                mediaElements.push(
+                    <div key={`youtube-${mediaIndex}`} className="mt-6">
+                        <h3 className="text-lg font-semibold mb-2 text-theme-primary">Watch on YouTube</h3>
+                        <div className="relative w-full" style={{ paddingBottom: "56.25%", position: "relative", height: 0 }}>
+                            <iframe
+                                src={`https://www.youtube.com/embed/$${new URL(topic.youtube.url).searchParams.get("v")}`}
+                                title={topic.youtube.title}
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-md"
+                            ></iframe>
+                        </div>
+                    </div>
+                );
+                mediaIndex++;
+            }
+        }
+
+        return mediaElements;
+    };
         return (
             <div data-name="topic-detail" className="max-w-3xl mx-auto p-6">
                 <div className="bg-theme-secondary rounded-lg shadow-theme p-6">
