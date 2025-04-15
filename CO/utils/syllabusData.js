@@ -559,11 +559,22 @@ const initialSyllabusData = [
               "Reduce instruction size with indirect access."
           ],
           keyPoints: [
+             "Instruction Format defines the layout of bits in an instruction. It tells the CPU what to do and what operands to use.",
              "
             
           ],
         }
       ],
+      table: {
+            title: "Instruction Formats Table",
+            headers: ["Type", "Description", "Example", "No. of Addresses"],
+            rows: [
+                  ["Zero-address","Uses stack. Operands are implicitly on top of the stack.","ADD","0"],
+                  ["One-address","Uses accumulator. One operand is specified, other is implicit.","ADD A","1"],
+                  ["Two-address","Specifies two operands. One is usually the destination.","MOV A, B","2"],
+                  ["Three-address","Specifies all operands: source1, source2, and destination.","ADD A, B, C","3"]
+    ]
+};
         relatedCO: "PCC-CS302.CO3"
 },
 {
