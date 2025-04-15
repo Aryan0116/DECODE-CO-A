@@ -551,50 +551,10 @@ const initialSyllabusData = [
           completed: false,
           co: "PCC-CS302.CO3",
           description: "Instruction formats, sets, and addressing modes.",
-          objectives: [
-              "Understand instruction structure and CPU decoding.",
-              "Optimize instruction length for better CPU design and performance.",
-              "Learn different ways to access memory/registers.",
-              "Learn bit distribution (opcode, operands).",
-              "Reduce instruction size with indirect access."
-          ],
-          keyPoints: [
-             "Instruction Format defines the layout of bits in an instruction. It tells the CPU what to do and what operands to use.",
-             "Instruction formats specify the layout of bits within an instruction, including fields for the operation code (opcode), operands, and addressing modes.",
-             "Instruction sets are the complete collection of instructions a CPU can understand, while addressing modes determine how operands are accessed.",
-             "All CPUs have instruction sets that enable commands directing the CPU to switch the relevant transistors.The instructions tell the CPU to perform tasks.",
-             " Some instructions are simple read, write and move commands that direct data to different hardware elements.",
-             "There are two types of instruction set architectures- CISC (Complex Instruction Set Computing) and RISC (Reduced Instruction Set Computing).",
-             "Addressing modes determine how the CPU accesses the operands needed for an instruction."
-          ],
+          objectives: ["Understand instruction formats and addressing modes"],
+          keyPoints: ["Instruction formats", "Addressing modes"]
         }
       ],
-      youtube: {
-            title: "Instruction Sets and Addressing Modes",
-            url: " https://youtu.be/xfaxmrRr0Sc?si=4CZMl1PkI97N69td "
-        },
-      table: {
-            title: "Instruction Formats Table",
-            headers: ["Type", "Description", "Example", "No. of Addresses"],
-            rows: [
-                  ["Zero-address","Uses stack. Operands are implicitly on top of the stack.","ADD","0"],
-                  ["One-address","Uses accumulator. One operand is specified, other is implicit.","ADD A","1"],
-                  ["Two-address","Specifies two operands. One is usually the destination.","MOV A, B","2"],
-                  ["Three-address","Specifies all operands: source1, source2, and destination.","ADD A, B, C","3"]
-    ]
-};
-      additionalResources: [
-            {
-                title: "Addressing Modes Notes",
-                url: "https://byjus.com/gate/addressing-modes-notes/"
-            },
-            {
-                title: "Instruction Set Architectures",
-                url: "https://en.wikipedia.org/wiki/Instruction_set_architecture"
-            
-            }
-        ]
-      
         relatedCO: "PCC-CS302.CO3"
 },
 {
@@ -620,7 +580,6 @@ const initialSyllabusData = [
           keyPoints: ["Cache memory", "Virtual memory", "Data path design"]
         }
       ],
-      
         relatedCO: "PCC-CS302.CO4"
 },
 {
