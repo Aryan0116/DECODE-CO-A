@@ -186,31 +186,75 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
 
 
                         {/* Table (if available) */}
-                        {topic.table && (
-                            <div className="mt-6">
-                                <h3 className="text-lg font-semibold mb-2 text-theme-primary">Complexity Comparison</h3>
-                                <div className="overflow-x-auto">
-                                    <table className="w-full border-collapse border border-gray-300 dark:border-gray-700">
-                                        <thead>
-                                            <tr className="bg-gray-200 dark:bg-gray-700">
-                                                {topic.table.headers.map((header, index) => (
-                                                    <th key={index} className="border p-2 text-left">{header}</th>
-                                                ))}
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {topic.table.rows.map((row, rowIndex) => (
-                                                <tr key={rowIndex} className="border">
-                                                    {row.map((cell, cellIndex) => (
-                                                        <td key={cellIndex} className="border p-2">{cell}</td>
-                                                    ))}
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        )}
+                        {topic.table && typeof topic.table === "object" && (() => {
+  // Check if it's a single table (has headers and rows directly)
+  const isSingleTable = Array.isArray(topic.table.headers) && Array.isArray(topic.table.rows);
+
+  // Check if it's multiple tables
+  const multipleTables = !isSingleTable && Object.keys(topic.table).length > 1;
+
+  if (isSingleTable) {
+    return (
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold mb-2 text-theme-primary">
+          {topic.table.title || "Comparison Table"}
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-200 dark:bg-gray-700">
+                {topic.table.headers.map((header, index) => (
+                  <th key={index} className="border p-2 text-left">{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {topic.table.rows.map((row, rowIndex) => (
+                <tr key={rowIndex} className="border">
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} className="border p-2">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
+  if (multipleTables) {
+    return Object.entries(topic.table).map(([key, table], index) => (
+      <div key={key} className="mt-6">
+        <h3 className="text-lg font-semibold mb-2 text-theme-primary">
+          {table.title || `Table ${index + 1}`}
+        </h3>
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-200 dark:bg-gray-700">
+                {table.headers.map((header, headerIndex) => (
+                  <th key={headerIndex} className="border p-2 text-left">{header}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {table.rows.map((row, rowIndex) => (
+                <tr key={rowIndex} className="border">
+                  {row.map((cell, cellIndex) => (
+                    <td key={cellIndex} className="border p-2">{cell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ));
+  }
+
+  return null; // No valid table data
+})()}
 
                         {/* Additional Resources (if available) */}
                         {topic.additionalResources && (
