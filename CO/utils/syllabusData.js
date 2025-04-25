@@ -1513,16 +1513,29 @@ title: "Exception Types Table",
         url: " https://www.youtube.com/watch?v=fmDfKw7AEQU"
     },
     table: {
+      table1: {
         title: "Comparison Table",
         headers: ["Feature", "Distributed Shared-Memory Architecture", "Cluster Computers"],
         rows: [
-            ["Memory Access", "Shared logical memory across distributed nodes", "Independent memory for each node"],
-            ["Communication", "Message passing or remote memory access", "High-speed interconnect networks"],
-            ["Synchronization", "Complex due to distributed nature", "Simpler with shared files or databases"],
-            ["Consistency", "Maintained through coherence protocols", "Depends on distributed file systems"],
-            ["Scalability", "High, but requires efficient coordination", "Highly scalable with proper load balancing"],
-            ["Fault Tolerance", "Improved through data replication", "Redundant nodes ensure system reliability"]
+          ["Memory Access", "Shared logical memory across distributed nodes", "Independent memory for each node"],
+          ["Communication", "Message passing or remote memory access", "High-speed interconnect networks"],
+          ["Synchronization", "Complex due to distributed nature", "Simpler with shared files or databases"],
+          ["Consistency", "Maintained through coherence protocols", "Depends on distributed file systems"],
+          ["Scalability", "High, but requires efficient coordination", "Highly scalable with proper load balancing"],
+          ["Fault Tolerance", "Improved through data replication", "Redundant nodes ensure system reliability"]
         ]
+      },
+      table2: {
+        title: "Performance Table",
+        headers: ["Metric", "Distributed Shared-Memory", "Cluster Computers"],
+        rows: [
+          ["Latency", "Lower due to logical memory abstraction", "Higher due to message passing"],
+          ["Throughput", "Moderate to high", "Can be very high with optimized load balancing"],
+          ["Cost", "Higher setup and maintenance", "Cost-effective with commodity hardware"],
+          ["Energy Efficiency", "Moderate", "Can be optimized per node"],
+          ["Upgrade Complexity", "Challenging in a tightly coupled system", "Easier with modular node replacement"]
+        ]
+      }
     },
     additionalResources: [
         {
