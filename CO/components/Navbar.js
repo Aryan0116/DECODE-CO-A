@@ -33,11 +33,14 @@ function Navbar() {
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-between h-16">
                         <div className="flex items-center">
+                        <div className="ml-3 mr-3">
+                                <img src="/favicon.png" alt="Logo" className="h-8 w-8" />
+                            </div>
                             <a href="#/" data-name="nav-logo" className="flex items-center">
                                 <i className="fas fa-book-open text-blue-600 text-2xl mr-2"></i>
                                 <span className="font-bold text-xl text-theme-primary">COMPUTER ORGANIZATION</span>
                             </a>
-                            {/* Added Home Button */}
+                            {/* Added Home Button
                             <a 
                                 href="/COA/" 
                                 data-name="nav-home" 
@@ -45,7 +48,7 @@ function Navbar() {
                             >
                                 <i className="fas fa-home mr-1"></i>
                                 <span className="font-medium">Home</span>
-                            </a>
+                            </a> */}
                         </div>
                         <div className="flex items-center">
                             <div data-name="nav-progress" className="mr-4">
@@ -53,6 +56,10 @@ function Navbar() {
                                 <span className="ml-2 font-semibold text-blue-600">{overallProgress}%</span>
                             </div>
                             <ThemeToggle />
+                            
+                            {/* Added Favicon image */}
+                            
+                            
                             {user ? (
                                 <div className="relative ml-3">
                                     <button 
@@ -97,6 +104,18 @@ function Navbar() {
                                     </a>
                                 </div>
                             )}
+                            
+                            {/* Added Home button to rightmost position */}
+                            <a 
+                                href="https://www.coahub.in" 
+                                data-name="nav-coahub" 
+                                className="ml-4 flex items-center bg-green-500 text-white px-3 py-2 rounded-md hover:bg-pink-600"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <i className="fas fa-external-link-alt mr-1"></i>
+                                <span className="font-medium">COAHub</span>
+                            </a>
                         </div>
                     </div>
                 </div>
