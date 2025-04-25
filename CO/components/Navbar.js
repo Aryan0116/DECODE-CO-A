@@ -37,6 +37,15 @@ function Navbar() {
                                 <i className="fas fa-book-open text-blue-600 text-2xl mr-2"></i>
                                 <span className="font-bold text-xl text-theme-primary">COMPUTER ORGANIZATION</span>
                             </a>
+                            {/* Added Home Button */}
+                            <a 
+                                href="/COA/" 
+                                data-name="nav-home" 
+                                className="ml-6 flex items-center text-theme-primary hover:text-blue-600"
+                            >
+                                <i className="fas fa-home mr-1"></i>
+                                <span className="font-medium">Home</span>
+                            </a>
                         </div>
                         <div className="flex items-center">
                             <div data-name="nav-progress" className="mr-4">
