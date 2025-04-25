@@ -1,13 +1,13 @@
 const initialSyllabusData = [
   {
     id: "chapter1",
-    title: "Fundamentals of Computer Architecture and Performance Evaluation and Optimization",
+    title: "Fundamentals of Computer Organisation",
     topics: [
       {
         id: "topic1",
-        title: "Computer Architecture: An Overview (Revisited)",
+        title: "Basic organization of the stored program computer and operation sequence for execution of a program.",
         completed: false,
-        co: "PCC-CS402.CO1",
+        co: "PCC-CS302.CO1",
         description: "Computer architecture is the foundational framework that defines how computer systems operate. It covers the design and organization of a computer's core components and explains how hardware and software interact to execute tasks efficiently. This topic also explores the essential principles behind the performance and functionality of computer systems.",
         objectives: [
           "Understand the basic components of computer architecture",
@@ -26,24 +26,16 @@ const initialSyllabusData = [
           "Buses (Data Bus, Address Bus, Control Bus) facilitate communication between the CPU, memory, and I/O devices."
         ],
         image: {
-          url: "https://example.com/computer-architecture-diagram.png",
+          url: "https://bcisnotes.com/thirdsemester/wp-content/uploads/2020/02/stored-program-concept-5-638.jpg",
           alt: "Detailed diagram showing CPU, memory, and I/O device interactions"
         },
-        video: {
-          url: "media/topic1_ca1.mp4",
-          type: "mp4",
-          alt: "Comprehensive Computer Architecture Overview Video"
-        },
+        
         youtube: {
           title: "Deep Dive into Computer Architecture",
-          url: "https://www.youtube.com/watch?v=1I5ZMmrOfnA"
-        },
-        video: {
-          url: "media/topic1_ca1.mp4",
-          type: "mp4",
-          alt: "Comprehensive Computer Architecture Overview Video"
+          url: "https://www.youtube.com/watch?v=M-lO94AFbfM"
         },
         table: {
+          title: "Component table",
           headers: ["Component", "Description", "Importance"],
           rows: [
             ["CPU", "Performs calculations, makes decisions, and executes instructions", "Central to all processing tasks"],
@@ -75,9 +67,9 @@ const initialSyllabusData = [
       },
       {
         id: "topic2",
-        title: "Quantitative techniques in computer design",
+        title: "Role of operating systems and compiler/assembler.",
         completed: false,
-        co: "PCC-CS402.CO1",
+        co: "PCC-CS302.CO1",
         description: "Quantitative techniques in computer design focus on using mathematical and statistical methods to evaluate and optimize computer system performance. These techniques help in making informed design decisions, ensuring efficiency, cost-effectiveness, and high performance of computer systems. By applying these methods, designers can predict system behavior, identify potential bottlenecks, and determine the best configurations to meet performance goals.",
         objectives: [
           "Understand the role of quantitative analysis in computer design",
@@ -96,14 +88,10 @@ const initialSyllabusData = [
           "Cost-performance analysis ensures that system enhancements align with budget constraints and desired outcomes."
         ],
         image: {
-          url: "https://example.com/quantitative-techniques-diagram.png",
+          url: "https://www.baeldung.com/wp-content/uploads/sites/4/2022/12/Execution-Flow.jpg",
           alt: "Diagram illustrating quantitative techniques in computer design"
         },
-        // video: {
-        //   url: "quantitative-techniques.mp4",
-        //   type: "mp4",
-        //   alt: "Introduction to Quantitative Techniques Video"
-        // },
+       
         youtube: {
           title: "Quantitative Analysis in Computer Architecture",
           url: "https://www.youtube.com/watch?v=X7_k3bfEa54"
@@ -137,12 +125,19 @@ const initialSyllabusData = [
             url: "https://cs.cmu.edu/"
           }
         ]
-      },
+      }
+    ]
+  },
+
+{
+  id: "chapter2",
+    title: "Number Systems, Arithmetic Operations, and ALU Design",
+    topics: [
       {
         id: "topic3",
-        title: "Measuring and reporting performance",
+        title: "Commonly used number systems. Fixed and floating point representation of numbers.",
         completed: false,
-        co: "PCC-CS402.CO1",
+        co: "PCC-CS302.CO2",
         description: "Measuring and reporting performance is crucial in computer design and architecture, as it helps evaluate system efficiency and effectiveness. By understanding various performance metrics and measurement techniques, we can assess how well a system meets its objectives and identify areas for improvement.",
         objectives: [
           "Understand the importance of performance measurement in computer systems",
@@ -161,798 +156,492 @@ const initialSyllabusData = [
           "Performance bottlenecks can be identified and addressed through proper measurement."
         ],
         image: {
-          url: "https://example.com/performance-measurement-diagram.png",
-          alt: "Diagram illustrating performance measurement and reporting"
+          url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtYG6qCP3LZh-4WR-1IRD1YrFKBkENy1MO2g&s",
+          alt: "Diagram illustrating fixed and floating point representation"
         },
-        video: {
-          url: "performance-measurement.mp4",
-          type: "mp4",
-          alt: "Introduction to Performance Measurement Video"
-        },
+        // video: {
+        //   url: "performance-measurement.mp4",
+        //   type: "mp4",
+        //   alt: "Introduction to Performance Measurement Video" 
+        // },
         youtube: {
           title: "Measuring and Reporting Performance in Computer Systems",
           url: " https://www.youtube.com/watch?v=5ayaVunXFUY "
         },
         table: {
           title: "Performance Metrics Table",
-        headers: ["Metric", "Description", "Measurement Technique", "Importance"],
-        rows: [
-          ["Throughput", "Amount of work a system can handle in a given time", "Benchmarking and load testing", "Evaluates system capacity"],
-          ["Response Time", "Time taken to respond to a user request", "Latency measurement tools", "Measures user experience"],
-          ["Latency", "Delay between input and output", "Ping tests and network analysis", "Critical for real-time systems"],
-          ["Scalability", "Ability to handle increased load", "Stress testing and capacity planning", "Ensures future growth"],
-          ["Cost-Performance Ratio", "Balance between cost and performance", "Cost analysis and performance metrics", "Optimizes budget allocation"]
+          headers: ["Metric", "Description", "Measurement Technique", "Importance"],
+          rows: [
+            ["Throughput", "Amount of work a system can handle in a given time", "Benchmarking and load testing", "Evaluates system capacity"],
+            ["Response Time", "Time taken to respond to a user request", "Latency measurement tools", "Measures user experience"],
+            ["Latency", "Delay between input and output", "Ping tests and network analysis", "Critical for real-time systems"],
+            ["Scalability", "Ability to handle increased load", "Stress testing and capacity planning", "Ensures future growth"],
+            ["Cost-Performance Ratio", "Balance between cost and performance", "Cost analysis and performance metrics", "Optimizes budget allocation"]
+          ]
+        },
+        additionalResources: [
+          {
+            title: "Performance Measurement Techniques",
+            url: "https://www.performancemeasurement.com/"
+          },
+          {
+            title: "MIT OpenCourseWare - System Performance",
+            url: "https://ocw.mit.edu/courses/system-performance/"
+          },
+          {
+            title: "Stanford CS - Performance Analysis",
+            url: "https://cs.stanford.edu/performance-analysis/"
+          },
+          {
+            title: "Carnegie Mellon University - Performance Engineering",
+            url: "https://cs.cmu.edu/performance-engineering/"
+          }
         ]
       },
+
+      {
+        id: "topic4",
+        title: "Overflow and underflow. Design of adders - ripple carry and carry look ahead principles.",
+        completed: false,
+        co: "PCC-CS302.CO2",
+        description: "In computing, underflow refers to a situation where the result of an arithmetic operation is smaller than the smallest value that can be represented within the given data type or format. Overflow happens when a calculation produces a number larger than the maximum value a data type can hold. Adders are digital circuits used to perform addition of binary numbers. There are mainly two types: Half Adders and Full Adders.",
+        objectives: [
+          "Understand the limitations of data representation to prevent incorrect results in calculations.",
+          "Learn to identify when overflow or underflow occurs and implement mechanisms to handle them.",
+          "Help in designing systems that behave predictably even under extreme numerical operations.",
+          "Develop the ability to implement or use built-in exceptions related to overflow/underflow.",
+          "Understand how bits are added sequentially.",
+          "Understand how to speed up addition by predicting carry bits in advance.",
+          "Analyze how generate (G) and propagate (P) signals help in parallel computation of carry."
+        ],
+        keyPoints: [
+          "Overflow and underflow are errors that occur when a program tries to store a value outside the valid range of a data type. ",
+          "Overflow happens when the value is too large, and underflow happens when the value is too small. These errors can lead to incorrect calculations or unexpected behavior. ",
+          "Underflow occurs when a number is smaller than the minimum value that a data type can hold.",
+          "A Binary Adder is a digital circuit that performs the arithmetic binary addition of two numbers for the logic operations and laws of Boolean Algebra.",
+          "The adders are used in combinational circuit design and the microprocessors arithmetic logic unit (ALU) for calculating addresses.",
+          "Half Adder is a digital circuit to calculate the arithmetic binary addition of two single-bit numbers. It is a circuit with two inputs and two outputs.",
+          "For two single-bit binary numbers A and B, half adder produces two single-bit binary outputs S and C, where S is the Sum and C is the carry. ",
+          "Full Adder is a digital circuit that adds three single-digit binary numbers. This is a three-input and two-output digital circuit.",
+          "For three single-bit binary numbers A, B, and D; the full adder circuit generates two single-bit binary outputs S (Sum), and C (Carry)."
+        ],
+        image: {
+          url: "https://www.researchgate.net/publication/349727409/figure/fig2/AS:997143909249028@1614749042716/Full-adder-circuit-diagram-and-truth-table-where-A-B-and-C-in-are-binary-inputs.png",
+          alt: "Full Adder Truth Table"
+        },
+       
+        youtube: {
+          title: "Overflow and Underflow in Signed and Unsigned Numbers",
+          url: "https://www.youtube.com/watch?v=7towQUO9aZI"
+        },
+        
       additionalResources: [
         {
-          title: "Performance Measurement Techniques",
-          url: "https://www.performancemeasurement.com/"
+          title: "Overflow and Underflow",
+          url: "https://www.educative.io/answers/what-are-overflow-and-underflow"
         },
+        
         {
-          title: "MIT OpenCourseWare - System Performance",
-          url: "https://ocw.mit.edu/courses/system-performance/"
-        },
-        {
-          title: "Stanford CS - Performance Analysis",
-          url: "https://cs.stanford.edu/performance-analysis/"
-        },
-        {
-          title: "Carnegie Mellon University - Performance Engineering",
-          url: "https://cs.cmu.edu/performance-engineering/"
+          title: "Adders in digital Electronics",
+          url: "https://testbook.com/digital-electronics/adders"
         }
       ]
-  },
-  {
-    id: "topic4",
-    title: "Compiler Techniques for Improving Performance",
-    completed: false,
-    CO: "1",
-    description: "Compiler techniques play a vital role in enhancing the performance of computer programs by optimizing code execution, minimizing resource usage, and improving overall efficiency. These techniques ensure that the software runs faster, consumes fewer resources, and delivers a better user experience. Understanding these techniques is essential for writing high-performance software, especially in fields requiring intensive computations and real-time performance.",
-    objectives: [
-      "Understand the role of compilers in performance optimization",
-      "Learn different compiler optimization techniques and their applications",
-      "Explore how code transformation improves execution speed and efficiency",
-      "Familiarize with loop optimization, inlining, and instruction scheduling",
-      "Analyze the impact of compiler optimizations on memory, CPU usage, and power consumption",
-      "Develop efficient code by leveraging advanced compiler capabilities",
-      "Understand trade-offs between compilation time and runtime performance"
-    ],
-    keyPoints: [
-      "Compiler optimization reduces runtime and resource consumption, improving application responsiveness.",
-      "Techniques like loop unrolling and inlining minimize overhead by reducing the number of instructions executed.",
-      "Instruction scheduling improves CPU pipeline efficiency by reordering instructions for parallel execution.",
-      "Dead code elimination and constant folding enhance code clarity, reduce memory footprint, and speed up execution.",
-      "Register allocation minimizes memory access latency by keeping frequently accessed variables in CPU registers.",
-      "Profile-guided optimization tailors performance to real-world usage scenarios based on actual execution data.",
-      "Interprocedural optimization allows performance improvements across multiple functions, enhancing overall program efficiency.",
-      "Vectorization enables parallel processing of data, utilizing modern CPU capabilities for faster computations."
-    ],
-    image: {
-      url: "https://example.com/compiler-optimization-diagram.png",
-      alt: "Diagram illustrating compiler optimization techniques"
-    },
-    video: {
-      url: "compiler-optimization.mp4",
-      type: "mp4",
-      alt: "Introduction to Compiler Techniques Video"
-    },
-    youtube: {
-      title: "Compiler Optimization Techniques Explained",
-      url: "https://www.youtube.com/watch?v=ljrEMCbjaeE"
-    },
-    table: {
-      title: "Compiler Optimization Techniques Table",
-      headers: ["Technique", "Description", "Impact on Performance"],
-      rows: [
-        ["Loop Unrolling", "Reduces loop overhead by expanding iterations, decreasing control instructions", "Faster execution due to fewer control statements and increased parallelism"],
-        ["Inlining", "Replaces function calls with actual code, eliminating call overhead", "Eliminates function call overhead, reducing runtime cost"],
-        ["Instruction Scheduling", "Reorders instructions to improve CPU pipeline efficiency", "Minimizes CPU stalls and improves instruction throughput"],
-        ["Register Allocation", "Uses CPU registers for frequently accessed variables", "Reduces memory access latency, enhancing speed"],
-        ["Dead Code Elimination", "Removes code that has no effect on program output", "Reduces program size, memory footprint, and execution time"],
-        ["Constant Folding", "Evaluates constant expressions at compile time", "Speeds up runtime computation by pre-computing values"],
-        ["Vectorization", "Converts scalar operations to vector operations", "Improves execution speed through parallel data processing"],
-        ["Interprocedural Optimization", "Optimizes across function boundaries", "Enhances efficiency by reducing redundancy and improving data flow"]
-      ]
-    },
-    additionalResources: [
-      {
-        title: "Compiler Optimization Techniques",
-        url: "https://www.compileroptimization.com/"
-      },
-      {
-        title: "MIT OpenCourseWare - Advanced Compiler Design",
-        url: "https://ocw.mit.edu/courses/compiler-design/"
-      },
-      {
-        title: "Stanford CS - Compiler Construction",
-        url: "https://cs.stanford.edu/compiler-construction/"
-      },
-      {
-        title: "Carnegie Mellon University - Compiler Engineering",
-        url: "https://cs.cmu.edu/compiler-engineering/"
-      },
-      {
-        title: "LLVM Project - Compiler Infrastructure",
-        url: "https://llvm.org/"
-      },
-      {
-        title: "GCC Compiler Optimization Options",
-        url: "https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html"
-      }
-    ]
-  }
-],
-  },
-{
-  id: "chapter2",
-    title: "Pipelining",
-      topics: [
-        {
-          id: "topic5",
-          title: "Pipelining: Basic concepts",
-          completed: false,
-          co: "PCC-CS402.CO2",
-          description: "Pipelining is a fundamental technique in computer architecture that increases the throughput of instruction execution by overlapping the execution of multiple instructions. This approach breaks down the instruction cycle into distinct stages, allowing different instructions to be processed simultaneously. It plays a crucial role in enhancing the performance of modern processors by efficiently using the CPU’s resources.",
-    objectives: [
-        "Understand the concept of pipelining and its importance in computer architecture",
-        "Learn the stages of the instruction pipeline",
-        "Analyze pipeline performance and efficiency",
-        "Identify hazards and how they affect pipelining",
-        "Explore techniques to handle pipeline hazards",
-        "Compare pipelining with non-pipelined architectures",
-        "Understand real-world applications of pipelining in processors"
-    ],
-    keyPoints: [
-        "Pipelining improves CPU performance by allowing concurrent execution of instruction stages.",
-        "The instruction cycle is divided into stages like Fetch, Decode, Execute, Memory Access, and Write Back.",
-        "Pipeline performance is measured by throughput and pipeline depth.",
-        "Hazards such as data hazards, control hazards, and structural hazards can impact efficiency.",
-        "Techniques like forwarding, stalling, and branch prediction mitigate pipeline hazards.",
-        "Deeper pipelines can lead to higher throughput but may also increase the risk of hazards.",
-        "Superscalar and parallel processing often rely on advanced pipelining techniques.",
-        "Modern CPUs implement techniques like out-of-order execution and speculative execution to optimize pipelining."
-    ],
-    image: {
-        url: "https://example.com/pipelining-diagram.png",
-        alt: "Diagram illustrating the stages of instruction pipelining"
-    },
-    video: {
-        url: "pipelining-concepts.mp4",
-        type: "mp4",
-        alt: "Video on Pipelining Basics"
-    },
-    youtube: {
-        title: "Pipelining in Computer Architecture",
-        url: " https://www.youtube.com/watch?v=nv0yAm5gc-E"
-    },
-    table: {
-        title: "Pipelining Stages Table",
-        headers: ["Stage", "Description", "Purpose", "Potential Hazards"],
-        rows: [
-            ["Fetch", "Retrieves the next instruction from memory", "Instruction loading", "Structural hazards"],
-            ["Decode", "Interprets the instruction and prepares operands", "Instruction understanding", "Data hazards"],
-            ["Execute", "Performs the operation specified by the instruction", "Processing", "Data hazards"],
-            ["Memory Access", "Reads or writes data from/to memory", "Data handling", "Structural hazards"],
-            ["Write Back", "Stores the result in the appropriate register", "Result saving", "None"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "Pipelining in Computer Architecture - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/pipelining-in-computer-architecture/"
-        },
-        {
-            title: "Understanding Pipeline Hazards",
-            url: "https://www.example.com/pipeline-hazards"
-        },
-        {
-            title: "Advanced Pipelining Techniques",
-            url: "https://www.example.com/advanced-pipelining"
-        }
-    ]
-        },
-        {
-          id: "topic6",
-          title: "Instruction and arithmetic pipeline",
-          completed: false,
-          co: "PCC-CS402.CO2",
-          description: "Instruction and arithmetic pipelines are fundamental aspects of computer architecture that significantly enhance processing speed and efficiency through parallelism. Instruction pipelines facilitate the streamlined execution of multiple instructions by dividing the process into distinct stages, while arithmetic pipelines focus on breaking down complex mathematical computations into simpler steps. These techniques improve CPU throughput and minimize latency, making modern processors highly efficient.",
-    objectives: [
-        "Understand the structure, working, and significance of instruction and arithmetic pipelines",
-        "Learn how instruction pipelining increases CPU throughput and reduces instruction cycle time",
-        "Explore the detailed stages of the instruction pipeline and their specific functions",
-        "Analyze the role and working of arithmetic pipelines in handling complex mathematical operations",
-        "Compare various pipeline architectures and their real-world applications",
-        "Examine the role of superscalar and parallel processing architectures in modern computing"
-    ],
-    keyPoints: [
-        "Instruction pipelines break down instruction execution into key stages: Fetch, Decode, Execute, Memory Access, and Write Back.",
-        "Arithmetic pipelines optimize computational efficiency by splitting complex arithmetic operations into simpler sub-tasks, allowing parallel execution.",
-        "Pipeline efficiency is determined by throughput (number of instructions executed per unit time) and latency (time taken to execute an instruction).",
-        "Superscalar architectures improve performance by using multiple pipelines to execute several instructions simultaneously.",
-        "Modern processors often combine pipelining with advanced techniques like out-of-order execution and speculative execution to further optimize efficiency."
-    ],
-    image: {
-        url: "https://example.com/instruction-arithmetic-pipeline-diagram.png",
-        alt: "Diagram illustrating instruction and arithmetic pipelines"
-    },
-    video: {
-        url: "instruction-arithmetic-pipeline.mp4",
-        type: "mp4",
-        alt: "Detailed video on Instruction and Arithmetic Pipelines"
-    },
-    youtube: {
-        title: "Comprehensive Guide to Instruction and Arithmetic Pipelines",
-        url: "https://www.youtube.com/watch?v=QU7wib_jyEM"
-    },
-    table: {
-       title: "Pipeline Types Table",
-        headers: ["Pipeline Type", "Stages", "Purpose"],
-        rows: [
-            ["Instruction Pipeline", "Fetch, Decode, Execute, Memory Access, Write Back", "Streamlines and accelerates instruction execution"],
-            ["Arithmetic Pipeline", "Operand Fetch, Operation Execution, Result Storage", "Optimizes and speeds up complex mathematical computations"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "In-depth Study on Instruction and Arithmetic Pipelines - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/instruction-and-arithmetic-pipelines/"
-        },
-        {
-            title: "Pipeline Architecture in Modern Computer Systems",
-            url: "https://www.example.com/pipeline-architecture"
-        },
-        {
-            title: "Advanced Pipeline Techniques and Optimization",
-            url: "https://www.example.com/advanced-pipeline-techniques"
-        },
-        {
-            title: "Computer Organization and Design - Instruction Pipelining",
-            url: "https://www.example.com/instruction-pipelining"
-        }
-    ]
-        },
-        {
-          id: "topic7",
-          title: "Data hazards, control hazards and structural hazards",
-          completed: false,
-          co: "PCC-CS402.CO2",
-          description: "In pipelined processor architecture, hazards are situations that prevent the next instruction from executing in its designated clock cycle. This reduces the efficiency of the pipeline and leads to performance issues. The three primary types of hazards are data hazards, control hazards, and structural hazards. Understanding these hazards and their resolution techniques is crucial for efficient CPU design and operation.",
-    objectives: [
-        "Understand the concept and types of hazards in pipelining",
-        "Explore the causes and impacts of data hazards, control hazards, and structural hazards",
-        "Learn techniques for hazard detection and resolution",
-        "Analyze real-world examples of pipeline hazards and their solutions",
-        "Examine how modern processors mitigate pipeline hazards through advanced techniques"
-    ],
-    keyPoints: [
-        "Data Hazards occur when instructions depend on the results of previous instructions still in the pipeline.",
-        "Control Hazards arise from branch instructions that alter the flow of execution, causing delays in instruction fetching.",
-        "Structural Hazards happen when different instructions require the same hardware resource simultaneously.",
-        "Techniques like forwarding, stalling, and branch prediction help mitigate the effects of hazards.",
-        "Efficient hazard resolution increases pipeline throughput and overall CPU performance."
-    ],
-    image: {
-        url: "https://example.com/hazards-diagram.png",
-        alt: "Diagram illustrating different types of pipeline hazards"
-    },
-    video: {
-        url: "pipeline-hazards.mp4",
-        type: "mp4",
-        alt: "Detailed video on Data, Control, and Structural Hazards"
-    },
-    youtube: {
-        title: "Pipeline Hazards Explained",
-        url: " https://www.youtube.com/watch?v=8yxrT1isnpE "
-    },
-    table: {
-        title: "Types of Hazards Table",
-        headers: ["Hazard Type", "Cause", "Effect", "Resolution Techniques"],
-        rows: [
-            ["Data Hazard", "Instruction depends on the result of a previous instruction still in the pipeline", "Pipeline stalls or incorrect results", "Forwarding, Stalling, Pipeline Interleaving"],
-            ["Control Hazard", "Branch instructions altering program flow", "Delay in fetching the next instruction", "Branch Prediction, Delayed Branching"],
-            ["Structural Hazard", "Multiple instructions requiring the same hardware resource", "Resource conflicts and pipeline stalls", "Duplicating Resources, Scheduling Instructions"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "Comprehensive Guide to Pipeline Hazards - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/pipeline-hazards-in-computer-architecture/"
-        },
-        {
-            title: "Hazard Detection and Resolution Techniques",
-            url: "https://www.example.com/hazard-detection"
-        },
-        {
-            title: "Advanced Methods for Minimizing Pipeline Stalls",
-            url: "https://www.example.com/pipeline-optimization"
-        },
-        {
-            title: "Computer Architecture: Pipeline Hazards and Solutions",
-            url: "https://www.example.com/pipeline-hazards-solutions"
-        }
-    ]
-        },
-        {
-          id: "topic8",
-          title: "Techniques for handling hazards",
-          completed: false,
-          co: "PCC-CS402.CO2",
-          description: "Hazards in pipelining affect the smooth execution of instructions and can degrade the performance of a processor. Various techniques have been developed to minimize or eliminate these hazards, ensuring efficient pipeline operation. This module explores techniques like forwarding, stalling, branch prediction, and others used to handle data, control, and structural hazards.",
-    objectives: [
-        "Understand the importance of hazard resolution in pipelining",
-        "Learn different techniques to handle data, control, and structural hazards",
-        "Analyze the effectiveness of each technique in various scenarios",
-        "Examine real-world examples where these techniques are applied",
-        "Evaluate the trade-offs between complexity and performance in hazard resolution"
-    ],
-    keyPoints: [
-        "Forwarding reduces data hazards by using intermediate results without waiting for them to be written to registers.",
-        "Stalling temporarily halts the pipeline until the required data becomes available, avoiding incorrect execution.",
-        "Branch Prediction minimizes control hazards by guessing the outcome of conditional branches.",
-        "Delayed Branching rearranges instructions to keep the pipeline busy during branch decision-making.",
-        "Resource Duplication mitigates structural hazards by providing additional hardware resources.",
-        "Pipeline Interleaving allows multiple instruction streams to share pipeline stages, increasing throughput.",
-        "Speculative Execution predicts and executes instructions ahead of time, reducing control hazards.",
-        "Out-of-Order Execution reorders instructions to avoid stalls without changing program results.",
-        "Instruction Reordering shifts non-dependent instructions to avoid pipeline delays.",
-        "Hazard Detection Units identify and manage potential hazards in real-time, maintaining efficient operation."
-    ],
-    image: {
-        url: "https://example.com/hazard-handling-diagram.png",
-        alt: "Diagram showing techniques for handling pipeline hazards"
-    },
-    video: {
-        url: "hazard-handling.mp4",
-        type: "mp4",
-        alt: "In-depth video on techniques for handling hazards"
-    },
-    youtube: {
-        title: "Handling Pipeline Hazards Effectively",
-        url: " https://www.youtube.com/watch?v=Gp2cwH740O0 "
-    },
-    table: {
-        title: "Hazard Handling Techniques Table",
-        headers: ["Technique", "Hazard Type Addressed", "How It Works", "Advantages", "Disadvantages"],
-        rows: [
-            ["Forwarding", "Data Hazard", "Uses results before they are written back to registers", "Reduces stalls", "Requires additional hardware"],
-            ["Stalling", "Data Hazard", "Pauses the pipeline until data is ready", "Simple to implement", "Reduces performance"],
-            ["Branch Prediction", "Control Hazard", "Predicts the outcome of branch instructions", "Minimizes control stalls", "Mispredictions cause performance loss"],
-            ["Delayed Branching", "Control Hazard", "Rearranges instructions to fill delay slots", "Maintains pipeline efficiency", "Complex instruction scheduling"],
-            ["Resource Duplication", "Structural Hazard", "Provides additional functional units", "Reduces resource conflicts", "Increases hardware cost"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "Techniques for Pipeline Hazard Resolution - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/techniques-for-pipeline-hazard-resolution/"
-        },
-        {
-            title: "Effective Methods for Handling Pipeline Hazards",
-            url: "https://www.example.com/hazard-handling-methods"
-        },
-        {
-            title: "Advanced Pipeline Optimization Techniques",
-            url: "https://www.example.com/pipeline-optimization"
-        },
-        {
-            title: "Computer Architecture: Hazard Handling Strategies",
-            url: "https://www.example.com/hazard-strategies"
-        }
-    ]
-        },
-        {
-          id: "topic9",
-          title: "Exception handling",
-          completed: false,
-          co: "PCC-CS402.CO2",
-          description: "Exception handling is a crucial aspect of computer architecture that ensures proper response and recovery from unexpected conditions during program execution. This module explores the types of exceptions, their causes, and techniques for handling them efficiently.",
-    objectives: [
-        "Understand the role and importance of exception handling",
-        "Learn different types of exceptions and their causes",
-        "Explore mechanisms used to detect and manage exceptions",
-        "Examine real-world examples of exception handling in modern processors",
-        "Evaluate trade-offs between performance and reliability in exception management",
-        "Gain insight into how exceptions affect program control flow",
-        "Understand the distinction between hardware and software exceptions",
-        "Study practical approaches for minimizing exception overhead"
-    ],
-    keyPoints: [
-        "Exceptions signal abnormal conditions requiring special processing.",
-        "Types of exceptions include interrupts, traps, faults, and aborts.",
-        "Interrupts are asynchronous and usually triggered by external devices.",
-        "Traps are intentional exceptions used for system calls and debugging.",
-        "Faults indicate recoverable errors and often allow instruction re-execution.",
-        "Aborts signal severe, non-recoverable hardware errors.",
-        "Exception handling improves system reliability and stability.",
-        "Modern architectures use vectored interrupts for efficient exception processing.",
-        "Precise exceptions maintain the consistency of program execution.",
-        "Hardware and software collaboration ensures timely exception resolution.",
-        "Efficient exception handling reduces performance degradation.",
-        "Properly managed exceptions ensure data integrity and program consistency.",
-        "Advanced techniques like speculative execution handle exceptions gracefully.",
-        "Understanding exception priority helps manage multiple concurrent issues.",
-        "Mechanisms to detect and manage exceptions include polling, interrupts, and exception vectors.",
-        "Real-world examples show how exceptions manage I/O operations, memory access, and hardware failures.",
-        "Performance and reliability trade-offs depend on how quickly and accurately exceptions are handled.",
-        "Program control flow can be disrupted by exceptions, requiring robust recovery techniques.",
-        "Hardware exceptions often involve immediate responses, while software exceptions may use error-handling routines.",
-        "Minimizing exception overhead requires optimizing detection and resolution mechanisms."
-    ],
-    image: {
-        url: "https://example.com/exception-handling-diagram.png",
-        alt: "Diagram showing exception handling flow"
-    },
-    video: {
-        url: "exception-handling.mp4",
-        type: "mp4",
-        alt: "In-depth video on exception handling mechanisms"
-    },
-    youtube: {
-        title: "Exception Handling in Computer Systems",
-url: "https://www.youtube.com/watch?v=mfFEKcKUpUE&t=434s"
-    },
-    table: {
-title: "Exception Types Table",       
- headers: ["Exception Type", "Cause", "Handling Mechanism", "Impact", "Recovery"],
-        rows: [
-            ["Interrupt", "External event (e.g., I/O request)", "Asynchronous handling", "Minimal", "Immediate"],
-            ["Trap", "Intentional event (e.g., system call)", "Synchronous handling", "Low", "Immediate"],
-            ["Fault", "Recoverable error (e.g., page fault)", "Instruction re-execution", "Moderate", "Possible"],
-            ["Abort", "Non-recoverable error (e.g., hardware failure)", "Immediate stop", "High", "Not possible"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "Exception Handling in Modern Processors - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/exception-handling-in-computer-architecture/"
-        },
-        {
-            title: "Understanding Interrupts and Exceptions",
-            url: "https://www.example.com/interrupts-exceptions"
-        },
-        {
-            title: "Advanced Exception Management Techniques",
-            url: "https://www.example.com/advanced-exceptions"
-        },
-        {
-            title: "Computer Architecture: Exception Handling Strategies",
-            url: "https://www.example.com/exception-strategies"
-        }
-    ]
-        },
-        {
-          id: "topic10",
-          title: "Pipeline optimization techniques",
-          completed: false,
-          co: "PCC-CS402.CO2",
-          description: "Pipeline optimization techniques enhance the efficiency and performance of instruction execution in computer architecture. This module covers various methods to minimize pipeline stalls, handle dependencies, and improve throughput.",
-    objectives: [
-        "Understand the need for pipeline optimization",
-        "Learn techniques for reducing pipeline stalls",
-        "Explore methods for dependency resolution",
-        "Study strategies to enhance instruction throughput",
-        "Evaluate real-world implementations of optimized pipelines",
-        "Examine the impact of optimization on system performance",
-        "Understand hardware and software approaches to optimization",
-        "Analyze trade-offs between complexity and efficiency in optimization"
-    ],
-    keyPoints: [
-        "Pipeline optimization reduces instruction latency and increases throughput.",
-        "Techniques include instruction reordering, branch prediction, and speculative execution.",
-        "Forwarding (bypassing) resolves data hazards by directly passing results.",
-        "Stall reduction techniques prevent pipeline bubbles and improve efficiency.",
-        "Out-of-order execution enables parallelism and better resource utilization.",
-        "Branch prediction minimizes control hazards by guessing the next instruction flow.",
-        "Speculative execution executes instructions ahead of time, rolling back if predictions fail.",
-        "Pipeline interleaving balances load and prevents resource conflicts.",
-        "Efficient pipeline flushing ensures quick recovery from mispredictions.",
-        "Dynamic scheduling enhances instruction parallelism and reduces idle time.",
-        "Real-world processors implement multiple optimization techniques for high performance.",
-        "Hardware support for optimization includes advanced control and data paths.",
-        "Software-level optimization involves compiler techniques like instruction scheduling.",
-        "Balancing complexity and efficiency ensures cost-effective optimization.",
-        "Case studies of modern CPUs showcase successful pipeline optimization strategies."
-    ],
-    image: {
-        url: "https://example.com/pipeline-optimization-diagram.png",
-        alt: "Diagram illustrating various pipeline optimization techniques"
-    },
-    video: {
-        url: "pipeline-optimization.mp4",
-        type: "mp4",
-        alt: "Detailed video on pipeline optimization methods"
-    },
-    youtube: {
-        title: "Pipeline Optimization Techniques Explained",
-        url: " https://www.youtube.com/watch?v=mUBkoy0hRWc"
-    },
-    table: {
-        title: "Optimization Techniques Table",
-        headers: ["Technique", "Purpose", "Implementation", "Impact", "Complexity"],
-        rows: [
-            ["Forwarding", "Resolve data hazards", "Bypass data paths", "High", "Moderate"],
-            ["Branch Prediction", "Minimize control hazards", "Predict next instruction", "High", "Complex"],
-            ["Speculative Execution", "Improve throughput", "Execute ahead of time", "High", "Complex"],
-            ["Out-of-Order Execution", "Enhance parallelism", "Reorder instructions", "Very High", "Very Complex"],
-            ["Pipeline Interleaving", "Balance load", "Overlap multiple pipelines", "Moderate", "High"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "Pipeline Optimization Techniques - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/pipeline-optimization/"
-        },
-        {
-            title: "Advanced CPU Pipeline Strategies",
-            url: "https://www.example.com/cpu-pipeline-strategies"
-        },
-        {
-            title: "Modern Processor Design and Optimization",
-            url: "https://www.example.com/processor-optimization"
-        },
-        {
-            title: "Pipeline Efficiency and Performance Analysis",
-            url: "https://www.example.com/pipeline-performance"
-        }
-    ]
-        }
-      ],
-        relatedCO: "PCC-CS402.CO2"
 },
+
+{
+  id: "topic5",
+    title: "Design of ALU.",
+      completed: false,
+        co: "PCC-CS302.CO2",
+        description: "ALU derives its name because it performs arithmetic and logical operations. A simple ALU design is constructed with Combinational circuits. ALUs that perform multiplication and division are designed around the circuits developed for these operations while implementing the desired algorithm. More complex ALUs are designed for executing Floating point, Decimal operations and other complex numerical operations. These are called Coprocessors and work in tandem with the main processor.",
+        objectives: [
+            "Learn how the ALU performs arithmetic and logical operations which are central to processor functionality.",
+            "Gain insight into how binary data is manipulated within a computer system.",
+            "Understand how ALU design influences the type and complexity of instructions a processor can execute.",
+            "Understand how ALU design affects processing speed, area, and power consumption in a CPU.",
+            "Learn how ALUs contribute to overflow detection, sign bit handling, and status flag setting in CPUs."
+        ],
+        keyPoints: [
+            "ALU stands for Arithmetic Logic Unit, a core component of a computer's CPU responsible for performing arithmetic and logical operations.",
+            "The ALU executes a wide range of arithmetic and logical operations, including addition, subtraction, multiplication, division, and various logic operations like AND, OR, XOR.",
+            "ALU is a basic building block for more advanced components like Floating Point Units (FPU) and Vector Processing Units.",
+            "It can perform bitwise operations on binary numbers, as well as mathematical operations like addition and subtraction. ",
+            "The design specifications of ALU are derived from the Instruction Set Architecture. The ALU must have the capability to execute the instructions of ISA.",
+            "The ALU contains a variety of electrical input and output connections, which result in the digital signals being cast between the ALU and the external electronics.",
+            "It has the ability to carry out instructions on a large number of items and has a high level of precision.",
+            "The inconsistencies in latencies are a known drawback of ALU."
+        ],
+        image: {
+            url: "https://res.cloudinary.com/witspry/image/upload/witscad/public/content/courses/computer-architecture/primitive-alu-supporting-and-or-add-function.png",
+            alt: "Diagram illustrating the architecture of ALU"
+        },
+        
+        youtube: {
+            title: "Arithmetic Logic Unit",
+            url: " https://www.youtube.com/watch?v=M3Xc8VtheXw"
+
+        },
+        table: {
+            title: "ALU Operation Table",
+            headers: ["Opcode", "Operation", "Description"],
+            rows: [
+                ["0000", "AND", "Logical AND between A and B"],
+                ["0001", "OR", "Logical OR between A and B"],
+                ["0010", "ADD", "A + B"],
+                ["0110", "SUBTRACT", "A - B"],
+                ["0111", "SET ON LESS THAN (SLT)", "If A < B, output = 1 else 0"],
+                ["1100", "NOR",  "Logical NOR between A and B"]
+            ]
+        },
+        additionalResources: [
+            {
+                title: "Arithmetic Logic Unit Design",
+                url: "https://witscad.com/course/computer-architecture/chapter/arithmetic-logic-unit-design"
+            },
+            {
+                title: "Design of ALU",
+                url: "http://vlabs.iitkgp.ac.in/coa/exp8/index.html"
+            },
+            {
+                title: "Combinational Logic Circuits",
+                url: "https://testbook.com/electrical-engineering/combinational-logic-circuits"
+            }
+        ]
+},
+
+{
+  id: "topic6",
+    title: "Fixed point multiplication - Booth's algorithm.",
+      completed: false,
+        co: "PCC-CS302.CO2",
+        description: "Booth's algorithm is an efficient method for multiplying signed binary numbers in computer architecture, reducing the number of additions and subtractions required compared to traditional multiplication techniques. It leverages the two's complement representation of numbers and examines consecutive bits of the multiplier to determine whether to add, subtract, or shift the multiplicand. ",
+        objectives: [
+            "Learn how Booth's algorithm simplifies multiplication involving both positive and negative numbers using 2s complement.",
+            "Learn how multiplication can be implemented at the hardware level using shift and add/subtract operations, bit by bit.",
+            "Build the base to understand more complex multiplication techniques like Wallace Tree, Array Multipliers, and Floating-Point Multiplication.",
+            "Gain knowledge of multiplying numbers with a fixed number of fractional bits, commonly used in embedded systems and digital signal processing."
+        ],
+        keyPoints: [
+            "Booth's algorithm is an efficient method for multiplying signed binary numbers in computer architecture.",
+            "Booth's algorithm is designed to handle both positive and negative numbers represented in two's complement.",
+            "It reduces the number of arithmetic operations, especially for multipliers with long strings of consecutive 1s. ",
+            "Superscalar architectures improve performance by using multiple pipelines to execute several instructions simultaneously.",
+            "Modern processors often combine pipelining with advanced techniques like out-of-order execution and speculative execution to further optimize efficiency."
+        ],
+        image: {
+            url: "https://d14qv6cm1t62pm.cloudfront.net/ccbp-website/Blogs/home/booth-algorithm-in-computer-organization-image2.png",
+            alt: "Diagram illustrating instruction and arithmetic pipelines"
+        },
+        
+        youtube: {
+            title: "Booth Multiplication Algorithm",
+            url: "https://www.youtube.com/watch?v=QFXaddi-Ag8"
+        },
+        table: 
+        {
+          table1:{
+          
+            
+            title: "Booths Algorithm Initial Setup for an example of 3X(-4)",
+            headers: ["Term", "Binary (4-bit)"],
+            rows: [
+                ["Multiplicand (M)", "0011"],
+                ["Multiplier (Q)", "1100"],
+                ["Accumulator (A)", "0000"],
+                ["Q-1", "0"],
+                ["Bit size", "4"]
+            ]
+         
+      },
+      table2:
+          {
+            title: "Booths Algorithm Execution Table",
+          headers: ["Cycle", "Q₀ Q₋₁", "Operation", "A", "Q", "Q-1", "Action Summary"],
+          rows: [
+              ["0 (Init)", "0 0", "—", "0000", "1100", "0", "Initial values"],
+              ["1", "0 0", "No Operation", "0000", "1100", "0", "No action → ARS next"],
+              ["→ Shift", "—", "Arithmetic Right Shift", "0000", "0110", "0", "Shift all right"],
+              ["2", "0 0", "No Operation", "0000", "0110", "0", "No action → ARS next"],
+              ["→ Shift", "—", "Arithmetic Right Shift", "0000", "0011", "0", "Shift all right"],
+              ["3", "1 0", "A = A - M", "1101", "0011", "0", "Subtract 0011 → ARS next"],
+              ["→ Shift", "—", "Arithmetic Right Shift", "1110", "1001", "1", "Shift with sign extension"],
+              ["4", "1 1", "No Operation", "1110", "1001", "1", "No action → ARS next"],
+              ["→ Shift", "—", "Arithmetic Right Shift", "1111", "0100", "1", "Final Shift"]
+          ]
+        },
+      table3:
+        {
+          title: "Booth's Algorithm Final Result",
+    headers: ["Final A", "Final Q", "Combined (A + Q)", "Decimal Value"],
+    rows: [
+        ["1111", "0100", "11110100", "-12 (in 8-bit 2s complement)"]
+    ]
+        }
+      },
+      
+      
+        additionalResources: [
+            {
+                title: "Booth's Multiplication Algorithm",
+                url: "https://www.ccbp.in/blog/articles/booth-multiplication-algorithm-in-computer-organization#:~:text=The%20Booth%20Algorithm%20is%20a,number%20of%20additions%20and%20subtractions."
+            
+            }
+        ]
+      },
+{
+  id: "topic7",
+    title: "Fixed point division - Restoring and non-restoring algorithms.",
+      completed: false,
+        co: "PCC-CS302.CO2",
+        ddescription: "Fixed-point division uses binary arithmetic to divide numbers at the hardware level. Restoring algorithm performs division by repeated subtraction and restores the remainder if negative. Non-restoring avoids restoration by using conditional addition or subtraction. Both methods are essential for efficient arithmetic operations in digital systems, especially within the CPU's ALU.",
+        objectives: [
+            "To learn how division operations are actually performed by digital circuits, without using high-level programming constructs like / operator.",
+            "To study the two major algorithms for fixed-point division: Restoring Division Algorithm and Non-Restoring Division Algorithm.",
+            "To compare the efficiency and complexity of restoring vs. non-restoring methods",
+            "Helps in developing logical thinking and algorithmic problem-solving skills"
+        ],
+        keyPoints: [
+            "The Division of two fixed-point binary numbers in the signed-magnitude representation is done by the cycle of successive compare, shift, and subtract operations.",
+            "Two types of algorithms are used for division of unsigned numbers:Restoring and non-restoring algorithms.",
+            "The Restoring Division Algorithm is an integral procedure employed when calculating division on unsigned numbers.",
+            " In this algorithm, one uses the register to store the dividend, then shifting and subtraction, and if the quotient is negative, the register value is restored with the dividend, and this process continues to refine the quotient and remainder.",
+            "The non-restoring division is a division technique for unsigned binary values that simplifies the procedure by eliminating the restoring phase.",
+            "The non-restoring division is simpler and more effective than restoring division since it just employs addition and subtraction operations instead of restoring division."
+        ],
+        image: {
+            url: "https://res.cloudinary.com/witspry/image/upload/witscad/public/content/courses/computer-architecture/flowchart-for-the-non-restoring-division.png",
+            alt: "Non-Restoring Algorithm"
+        },
+        youtube: {
+            title: "Restoring Algorithm",
+            url: " https://www.youtube.com/watch?v=PzV6gYpVLuc"
+        },
+        table: {
+          table1:{
+            title: " Divide 7 (0111) by 3 (0011) using 4-bit registers using Non-Restoring Algorithm",
+    headers: ["Register", "Value", "Description"],
+    rows: [
+      ["Dividend", "0111", "Binary representation of 7"],
+      ["Divisor", "0011", "Binary representation of 3"],
+      ["A", "0000", "Accumulator (initially 0)"],
+      ["Q", "0111", "Quotient (initially dividend)"],
+      ["M", "0011", "Divisor"],
+      ["Steps", "4", "Number of bits in Q"]
+    ]
+        },
+        table2: {
+          title: "Division Algorithm Steps Table",
+          headers: ["Step", "Operation", "A (Accumulator)", "Q (Quotient)", "Action & Remarks"],
+          rows: [
+            ["0", "Initial Setup", "0000", "0111", "A = 0000, Q = 0111, M = 0011"],
+            ["1", "Left Shift (A-Q)", "0000 0111 → 0000 1110", "", "Shift left A and Q together"],
+            ["", "A = A - M (0000 - 0011)", "1101", "1110", "A becomes negative, Q₀ = 0"],
+            ["2", "Left Shift (A-Q)", "1101 1110 → 1011 1100", "", "Shift left"],
+            ["", "A = A + M (1011 + 0011)", "1110", "1100", "A still negative, Q₀ = 0"],
+            ["3", "Left Shift (A-Q)", "1110 1100 → 1101 1000", "", "Shift left"],
+            ["", "A = A + M (1101 + 0011)", "0000", "1000", "A becomes zero, Q₀ = 1"],
+            ["4", "Left Shift (A-Q)", "0000 1000 → 0001 0000", "", "Shift left"],
+            ["", "A = A - M (0001 - 0011)", "1110", "0000", "A becomes negative, Q₀ = 0"],
+            ["End", "A is negative → A = A + M", "1110 + 0011 = 0001", "0000", "Restore A"]
+          ]
+        },
+        table3: {
+          title: "Final Result Table",
+          headers: ["Output", "Value", "Decimal Value", "Description"],
+          rows: [
+            ["Q (Quotient)", "0010", "2", "Final Quotient"],
+            ["A (Remainder)", "0001", "1", "Final Remainder"]
+          ]
+        }
+
+      },
+        additionalResources: [
+            {
+                title: "Restoring Division Algorithm for Unsigned Integer",
+                url: "https://www.tpointtech.com/restoring-division-algorithm-for-unsigned-integer"
+            },
+           
+            {
+                title: "Non-Restoring Division For Unsigned Integer",
+                url: "https://www.geeksforgeeks.org/non-restoring-division-unsigned-integer/"
+            }
+        ]
+},
+
+{
+  id: "topic8",
+    title: "Floating point - IEEE 754 standard.",
+      completed: false,
+        co: "PCC-CS302.CO2",
+        description: "The IEEE Standard for Floating-Point Arithmetic (IEEE 754) is a technical standard for floating-point computation which was established in 1985 by the Institute of Electrical and Electronics Engineers (IEEE). The standard addressed many problems found in the diverse floating point implementations that made them difficult to use reliably and reduced their portability.",
+        objectives: [
+            "Learn how real numbers (decimals) are represented in binary using the floating-point format.",
+            "Explore the two common formats: Single Precision (32-bit) and Double Precision (64-bit).",
+            "Recognize how finite precision leads to rounding errors and learn about different rounding modes.",
+            "Understand the concepts of normalized, denormalized, zero, infinity, and NaN (Not a Number) representations."
+        ],
+        keyPoints: [
+            "Given a fixed number of digits, the floating-point representation covers a wider range of values compared to a fixed-point representation.",
+            "IEEE 754 numbers are divided into two based on the above three components: single precision and double precision.",
+            "Supports normalized and denormalized numbers for a wider range of values.",
+            "Single Precesion: Let the sign bit (31) be s, the exponent (30-23) be e and the mantissa (significand or fraction) (22-0) be m. The valid range of the exponents is 1 to 254",
+            "In single-precision and double-precision formats, there's an assumed leading 1 in the fractional part. The fractional part is called the significand (sometimes known as the mantissa). This leading 1 isn't stored in memory, so the significands are actually 24 or 53 bits, even though one less bit gets stored. The double-extended-precision format actually stores this bit.",
+            "Speculative Execution predicts and executes instructions ahead of time, reducing control hazards.",
+            "The exponents are biased by half of their possible value. It means you subtract this bias from the stored exponent to get the actual exponent. If the stored exponent is less than the bias, it's actually a negative exponent."
+            
+        ],
+        image: {
+            url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlxX2wNE6ujBs622CUfbtZctssHfF9fM2o13pmyd974JpjOlno5jNaXLztErTrMhTmWw4&usqp=CAU",
+            alt: "IEEE 754 Floating Point Standard"
+        },
+        
+        youtube: {
+            title: "Floating Point Numbers: IEEE 754 Standard",
+            url: " https://www.youtube.com/watch?v=e_J9lXnU_vs"
+        },
+        table: {
+          title: "Floating Point Representation Table",
+          headers: ["TYPES", "SIGN", "BIASED EXPONENT", "NORMALISED MANTISA", "BIAS"],
+          rows: [
+            ["Single precision", "1 (31st bit)", "8 (30-23)", "23 (22-0)", "127"],
+            ["Double precision", "1 (63rd bit)", "11 (62-52)", "52 (51-0)", "1023"]
+          ]
+        },
+      
+        additionalResources: [
+            {
+                title: "IEEE Standard 754 Floating Point Numbers",
+                url: "https://www.geeksforgeeks.org/ieee-standard-754-floating-point-numbers/"
+            },
+            {
+                title: "IEEE 754 Floating-Point Format",
+                url: "https://people.iith.ac.in/rogers/pds_theory/lect15_truncated.pdf"
+            }
+        ]
+}
+      ],
+},
+
 {
   id: "chapter3",
-    title: "Hierarchical Memory Architecture and Management",
+    title: "Instruction Formats, Sets, and Addressing Modes",
       topics: [
         {
-          id: "topic11",
-          title: "Hierarchical memory technology: Inclusion, Coherence and locality properties",
+          id: "topic9",
+          title: "Instruction Formats and Instruction Sets",
           completed: false,
-          co: "PCC-CS402.CO3",
-          description: "This module explores hierarchical memory technology, focusing on the principles of inclusion, coherence, and locality properties that optimize memory usage and system performance.",
+          co: "PCC-CS302.CO3",
+          description: "Instruction formats define the structure of machine language instructions, specifying how fields like opcode, operands, and addressing modes are arranged. Instruction sets refer to the collection of instructions a processor can execute, including arithmetic, control, and data transfer operations. Both are essential for determining CPU functionality and efficiency.",
           objectives: [
-              "Understand the concept of hierarchical memory systems",
-              "Learn about the inclusion property in memory hierarchy",
-              "Explore the coherence property and its importance",
-              "Study locality properties and their role in memory performance",
-              "Analyze real-world implementations of memory hierarchy",
-              "Understand the trade-offs between speed, cost, and capacity",
-              "Examine techniques to maintain memory consistency",
-              "Evaluate the impact of memory hierarchy on system performance"
+              "Learn how processors interpret and execute machine-level instructions.",
+              "Comprehend the structure of instructions (opcode, operands, etc.) and how they are formatted.",
+              "To grasp how instruction sets impact system performance and design.",
+              "To optimize assembly language programming and understand the trade-offs in instruction set design.",
+              "To gain insight into how software interacts with hardware at a fundamental level"
           ],
           keyPoints: [
-              "Hierarchical memory optimizes speed and cost by structuring memory in layers.",
-              "Inclusion ensures that data present in a higher-level cache is also in lower levels.",
-              "Coherence maintains consistency of shared data across multiple caches.",
-              "Locality properties include spatial and temporal locality, improving cache efficiency.",
-              "Cache memory significantly reduces access time compared to primary memory.",
-              "Memory hierarchy balances trade-offs between speed, capacity, and cost.",
-              "Techniques like write-through and write-back ensure data consistency.",
-              "Real-world CPUs implement advanced caching strategies for performance.",
-              "Locality of reference helps predict future memory accesses.",
-              "Efficient memory management reduces latency and increases throughput.",
-              "Multi-level caching improves data access rates and system responsiveness.",
-              "Memory inclusion and coherence protocols prevent data duplication errors.",
-              "Hardware and software techniques work together to optimize memory performance.",
-              "Case studies show the effectiveness of hierarchical memory designs.",
-              "Understanding memory properties helps in designing efficient computer systems."
+              "Instruction formats refer to the way instructions are encoded and represented in machine language.",
+              "There are several types of instruction formats, including zero, one, two, and three-address instructions.",
+              "Zero Address Instructions: These instructions do not specify any operands or addresses. Instead, they operate on data stored in registers or memory locations implicitly defined by the instruction.",
+              "One Address Instructions: These instructions specify one operand or address, which typically refers to a memory location or register.",
+              "Two Address Instructions: These instructions specify two operands or addresses, which may be memory locations or registers.",
+              "Overall, the choice of instruction format depends on the specific requirements of the computer architecture and the trade-offs between code size, execution time, and flexibility.",
+              "An instruction set is a group of commands for a central processing unit (CPU) in machine language.",
+              "The term can refer to all possible instructions for a CPU or a subset of instructions to enhance its performance in certain situations.",
+              "The instructions are made up of a specific number of bits. For instance, The CPU's instructions might be 8 bits",
+              "Complex instruction set computer. CISC processors have an additional microcode or microprogramming layer where instructions act as small programs.",
+              "Reduced instruction set computer. RISC architecture has hard-wired control. It does not require microcode, but has a greater base instruction set.",
+              "Instruction sets work with other important parts of a computer, such as compilers and interpreters. "
           ],
           image: {
-              url: "https://example.com/memory-hierarchy-diagram.png",
-              alt: "Diagram illustrating memory hierarchy and its properties"
+              url: "https://www.learncomputerscienceonline.com/wp-content/uploads/2021/04/Instruction-Addressing-Modes.jpg",
+              alt: "Instruction Format"
           },
-          video: {
-              url: "memory-hierarchy.mp4",
-              type: "mp4",
-              alt: "Detailed video on hierarchical memory technology"
-          },
+          
           youtube: {
-              title: "Hierarchical Memory Explained",
-              url: " https://www.youtube.com/watch?v=DH_VcjjTOq0 "
+              title: "What is Instruction Format?",
+              url: "https://www.youtube.com/watch?v=WAO_W6Hpzyk "
           },
           table: {
-                title: "Memory Properties Table",
-              headers: ["Property", "Definition", "Importance", "Real-World Example"],
-              rows: [
-                  ["Inclusion", "Ensures data in higher-level memory exists in lower levels", "Prevents data inconsistency", "Multi-level caching in CPUs"],
-                  ["Coherence", "Maintains consistency of shared data across caches", "Avoids conflicting data states", "Cache coherence protocols"],
-                  ["Locality", "Predicts future data access based on current usage", "Reduces memory access time", "Spatial and temporal locality in caching"]
+            title: "Instruction Formats Table",
+            headers: ["Type", "Description", "Example", "No. of Addresses"],
+            rows: [
+              [
+                "Zero-address",
+                "Uses stack. Operands are implicitly on top of the stack.",
+                "ADD",
+                "0"
+              ],
+              [
+                "One-address",
+                "Uses accumulator. One operand is specified, other is implicit.",
+                "ADD A",
+                "1"
+              ],
+              [
+                "Two-address",
+                "Specifies two operands. One is usually the destination.",
+                "MOV A, B",
+                "2"
+              ],
+              [
+                "Three-address",
+                "Specifies all operands: source1, source2, and destination.",
+                "ADD A, B, C",
+                "3"
+              ],
+              [
+                "Register format",
+                "Operands are registers only. Fastest operation.",
+                "ADD R1, R2, R3",
+                "Typically 3"
+              ],
+              [
+                "Immediate format",
+                "One operand is a constant (immediate value) given in instruction.",
+                "MOV A, #5",
+                "Varies (1–2)"
+              ],
+              [
+                "Hybrid/Variable",
+                "Format varies based on instruction type (e.g., R-type, I-type, etc.)",
+                "Used in MIPS, ARM",
+                "Varies"
               ]
+            ]
           },
           additionalResources: [
               {
-                  title: "Memory Hierarchy Design - GeeksforGeeks",
-                  url: "https://www.geeksforgeeks.org/memory-hierarchy-design/"
+                  title: "Instruction Formats",
+                  url: "https://www.geeksforgeeks.org/computer-organization-instruction-formats-zero-one-two-three-address-instruction/"
               },
               {
-                  title: "Advanced Cache Coherence Strategies",
-                  url: "https://www.example.com/cache-coherence"
-              },
-              {
-                  title: "Locality Properties in Memory Systems",
-                  url: "https://www.example.com/locality-properties"
-              },
-              {
-                  title: "Efficient Memory Management Techniques",
-                  url: "https://www.example.com/memory-management"
+                  title: "Instruction Set",
+                  url: "https://www.techtarget.com/whatis/definition/instruction-set"
               }
           ]
         },
-          {
-            "id": "topic12",
-            "title": "Cache Memory Organizations",
-            "completed": false,
-            "co": "PCC-CS402.CO3",
-            "description": "This module provides an in-depth exploration of fundamental cache memory organizations, including direct-mapped, fully associative, and set-associative caches. It focuses on the structural differences, operational principles, and performance characteristics of these organizations.",
-            "objectives": [
-              "Comprehend the fundamental principles of cache memory and its role in improving memory access speeds.",
-              "Differentiate between direct-mapped, fully associative, and set-associative cache organizations.",
-              "Analyze the address mapping techniques used in each cache organization.",
-              "Evaluate the trade-offs between simplicity, flexibility, and performance in different cache designs.",
-              "Understand the impact of cache organization on hit rate and miss rate.",
-              "Describe the basic operation of each cache organization during read and write operations."
-            ],
-            "keyPoints": [
-              "Cache memory acts as a high-speed buffer between the CPU and main memory, reducing average memory access time.",
-              "Direct-mapped cache uses a simple modulo-based address mapping, where each main memory block maps to a unique cache line.",
-              "Fully associative cache allows any main memory block to reside in any cache line, offering maximum flexibility but requiring complex search mechanisms.",
-              "Set-associative cache combines the advantages of direct-mapped and fully associative caches by dividing the cache into sets, where each set contains multiple cache lines.",
-              "Address decomposition into tag, set index (for set-associative), and block offset is crucial for cache operations.",
-              "The choice of cache organization significantly influences the cache's hit rate, miss rate, and overall system performance.",
-              "Understanding the structure and operation of different cache organizations is essential for optimizing memory system performance."
-            ],
-            "image": {
-              "url": "https://example.com/cache-memory-diagram.png",
-              "alt": "Diagram illustrating the structural differences between direct-mapped, fully associative, and set-associative cache organizations."
-            },
-            "video": {
-              "url": "cache-memory.mp4",
-              "type": "mp4",
-              "alt": "A detailed video explaining the internal workings of direct-mapped, fully associative, and set-associative caches, along with examples of address mapping."
-            },
-            "youtube": {
-              "title": "Cache Memory Explained: Organizations",
-              "url": "https://www.youtube.com/watch?v=OfqzoQ9Kw9k"
-            },
-            "table": {
-              "title": "Comparison of Cache Memory Organizations",
-              "headers": ["Cache Type", "Structure", "Address Mapping", "Advantages", "Disadvantages", "Typical Use Cases"],
-              "rows": [
-                [
-                  "Direct-Mapped Cache",
-                  "Each memory block maps to a single, specific cache line.",
-                  "Modulo-based mapping: cache line index = (memory block address) mod (number of cache lines).",
-                  "Simple hardware implementation, fast access time.",
-                  "High conflict misses, limited flexibility.",
-                  "Small, low-cost caches where simplicity is paramount."
-                ],
-                [
-                  "Fully Associative Cache",
-                  "Any memory block can be placed in any cache line.",
-                  "Requires associative search (comparing tags with all cache lines simultaneously).",
-                  "Lowest conflict misses, maximum flexibility.",
-                  "Complex hardware, high cost, slow search time for large caches.",
-                  "Small, specialized caches, TLBs (Translation Lookaside Buffers)."
-                ],
-                [
-                  "Set-Associative Cache",
-                  "Cache is divided into sets, each set contains multiple cache lines. Memory blocks map to a specific set but can reside in any line within that set.",
-                  "Combines direct-mapped and fully associative: set index = (memory block address) mod (number of sets), then associative search within the set.",
-                  "Balances simplicity and flexibility, reduces conflict misses compared to direct-mapped.",
-                  "More complex than direct-mapped, requires set selection and tag comparison.",
-                  "Most common cache organization in modern processors."
-                ]
-              ]
-            },
-            "additionalResources": [
-              {
-                "title": "Cache Memory Design - GeeksforGeeks",
-                "url": "https://www.geeksforgeeks.org/cache-memory-design/"
-              },
-              {
-                "title": "Cache Organization Strategies: A Detailed Analysis",
-                "url": "https://www.example.com/cache-organization-detailed"
-              },
-              {
-                "title": "Understanding Address Mapping in Cache Memory",
-                "url": "https://www.example.com/cache-address-mapping"
-              }
-            ]
-          },
+          
         {
-          "id": "topic13",
-  "title": "Techniques for Reducing Cache Misses",
-  "completed": false,
-  "co": "PCC-CS402.CO3",
-  "description": "This module explores various techniques aimed at minimizing cache misses, thus improving memory access speeds and overall system performance. It delves into strategies that address different types of cache misses: compulsory, capacity, and conflict.",
-  "objectives": [
-    "Identify and understand the different types of cache misses (compulsory, capacity, conflict).",
-    "Learn and apply techniques to reduce compulsory misses.",
-    "Explore methods for mitigating capacity misses through cache size and organization adjustments.",
-    "Analyze and implement strategies to minimize conflict misses using associativity and replacement policies.",
-    "Understand the impact of prefetching and loop transformations on cache performance.",
-    "Evaluate the effectiveness of different techniques in reducing overall miss rates."
-  ],
-  "keyPoints": [
-    "Cache misses degrade system performance by increasing memory access latency.",
-    "Compulsory misses occur on the first access to a memory block; prefetching can help mitigate these.",
-    "Capacity misses happen when the cache cannot hold all the working set; increasing cache size reduces them.",
-    "Conflict misses arise when multiple memory blocks map to the same cache line; increasing associativity and using better replacement policies helps.",
-    "Prefetching anticipates data needs, loading data into the cache before it is requested.",
-    "Loop transformations (e.g., loop tiling, loop interchange) optimize data access patterns.",
-    "Replacement policies (LRU, FIFO, etc.) determine which cache line to evict on a miss.",
-    "Cache blocking and tiling improve temporal locality by working on smaller data subsets.",
-    "Victim caches can reduce conflict misses by holding recently evicted blocks.",
-    "Software and hardware prefetching approaches exist, each with its own trade-offs."
-  ],
-  "image": {
-    "url": "https://example.com/cache-miss-reduction.png",
-    "alt": "Diagram illustrating various techniques for reducing cache misses."
-  },
-  "video": {
-    "url": "cache-miss-reduction.mp4",
-    "type": "mp4",
-    "alt": "Detailed video explaining techniques to reduce compulsory, capacity, and conflict misses."
-  },
-  "youtube": {
-    "title": "Cache Miss Reduction Techniques",
-    "url": "https://www.youtube.com/watch?v=OfqzoQ9Kw9k&t=119"
-  },
-  "table": {
-    "title": "Techniques for Reducing Cache Misses",
-    "headers": ["Miss Type", "Technique", "Description", "Impact"],
-    "rows": [
-      ["Compulsory", "Prefetching", "Load data into the cache before it's needed.", "Reduces initial access latency."],
-      ["Capacity", "Increasing Cache Size", "Expand the cache capacity to hold more data.", "Decreases misses when the working set exceeds cache size."],
-      ["Conflict", "Increasing Associativity", "Allow memory blocks to map to more than one cache line.", "Reduces misses due to multiple blocks mapping to the same line."],
-      ["Conflict", "Better Replacement Policies (LRU, etc.)", "Use algorithms that evict less frequently used data.", "Optimizes cache usage and reduces conflict misses."],
-      ["All", "Loop Transformations (Tiling, Interchange)", "Rearrange loops to improve data locality.", "Enhances spatial and temporal locality, reducing all types of misses."],
-      ["Conflict", "Victim Caches", "Use a small, fully associative buffer to hold evicted blocks.", "Reduces conflict misses by providing a second chance for recently evicted data."]
-    ]
-  },
-  "additionalResources": [
-    {
-      "title": "Techniques to Reduce Cache Misses - Example Source",
-      "url": "https://www.example.com/cache-miss-reduction"
-    },
-    {
-      "title": "Cache Prefetching Strategies - Advanced Concepts",
-      "url": "https://www.example.com/cache-prefetching"
-    },
-    {
-      "title": "Loop Transformations and Cache Performance",
-      "url": "https://www.example.com/loop-transformations"
-    },
-    {
-        "title": "Replacement Policies and Cache Efficiency",
-        "url": "https://www.example.com/cache-replacement-policies"
-    }
-  ]
-},
-        {
-          id: "topic14",
-          title: "Virtual memory organization, mapping and management techniques, memory replacement policies",
+          id: "topic10",
+          title: "Addressing Modes",
           completed: false,
-          co: "PCC-CS402.CO3",
-          description: "This module provides an in-depth exploration of virtual memory systems, their organization, mapping techniques, management strategies, and memory replacement policies.",
+          co: "PCC-CS302.CO3",
+          description: "Addressing modes define how the operands of an instruction are specified or accessed in memory. They determine the method of operand retrieval, such as direct, indirect, immediate, register, or indexed modes. Addressing modes impact the flexibility and efficiency of a CPU by allowing various ways to access data during instruction execution.",
     objectives: [
-        "Understand the concept and importance of virtual memory",
-        "Learn virtual memory mapping techniques",
-        "Explore page tables and translation lookaside buffers (TLB)",
-        "Study memory management strategies like paging and segmentation",
-        "Analyze memory replacement policies and their efficiency",
-        "Examine demand paging and pre-paging techniques",
-        "Understand the impact of virtual memory on system performance"
+        "Learn different ways operands can be accessed or specified by instructions.",
+        "To understand how addressing modes affect memory access and system efficiency.",
+        "To explore various addressing techniques, enabling flexible and powerful programming.",
+        "Optimize the performance of programs by selecting appropriate addressing modes for different operations."
     ],
     keyPoints: [
-        "Virtual memory allows programs to use more memory than physically available by using disk space as an extension of RAM.",
-        "Paging divides virtual memory into fixed-size pages mapped to physical memory frames.",
-        "Segmentation offers a more flexible approach by dividing memory into variable-sized segments.",
-        "Translation Lookaside Buffers (TLB) speed up virtual address translation.",
-        "Efficient memory replacement policies like LRU, FIFO, and Optimal minimize page faults.",
-        "Demand paging loads pages into memory only when needed, conserving resources.",
-        "Pre-paging anticipates future page requests, reducing page faults.",
+        "Addressing modes are techniques used in computer architecture to specify the location of operands (data) required by an instruction. They define how the processor should interpret or locate the data to be operated upon.",
+        "Immediate Addressing: Operand is directly specified in the instruction.",
+        "Register Addressing: Operand is in a register.",
+        "Direct Addressing: Instruction specifies the memory address of the operand.",
+        "Indirect Addressing: Instruction refers to a memory location that contains the address of the operand.",
+        "Indexed Addressing: Effective address is generated by adding a constant value to a register.",
+        "These modes provide flexibility and efficiency in data access, allowing for various ways to specify operands.",
         "Thrashing occurs when excessive paging reduces CPU efficiency.",
         "Virtual memory enhances multitasking and process isolation.",
         "Page tables maintain the mapping between virtual and physical addresses.",
@@ -960,47 +649,35 @@ title: "Exception Types Table",
         "Proper memory management prevents fragmentation and optimizes resource use."
     ],
     image: {
-        url: "https://example.com/virtual-memory-diagram.png",
-        alt: "Diagram illustrating virtual memory organization and management"
+        url: "https://cdn.slidesharecdn.com/ss_thumbnails/addressingmodesof8086-180114170155-thumbnail.jpg?width=640&height=640&fit=bounds",
+        alt: "Addressing Modes of 8086"
     },
-    video: {
-        url: "virtual-memory.mp4",
-        type: "mp4",
-        alt: "Detailed video on virtual memory systems and replacement policies"
-    },
+    
     youtube: {
-        title: "Virtual Memory Explained",
-        url: "https://www.youtube.com/watch?v=o2_iCzS9-ZQ"
+        title: "Addressing Modes",
+        url: "https://www.youtube.com/watch?v=xfaxmrRr0Sc"
     },
     table: {
-        title: "Virtual Memory Table",
-        headers: ["Technique", "Description", "Advantages", "Disadvantages"],
-        rows: [
-            ["Paging", "Fixed-size memory blocks", "Simple and efficient", "Internal fragmentation"],
-            ["Segmentation", "Variable-size memory blocks", "Logical grouping of data", "External fragmentation"],
-            ["Demand Paging", "Loads pages on demand", "Conserves memory", "Increased page faults"],
-            ["Pre-paging", "Loads pages in advance", "Reduces page faults", "Wasted memory if unused"],
-            ["LRU Replacement", "Replaces least recently used page", "Minimizes page faults", "High overhead"],
-            ["FIFO Replacement", "Replaces oldest page", "Simple implementation", "High page fault rate"],
-            ["Optimal Replacement", "Replaces page not needed for longest time", "Lowest page fault rate", "Difficult to implement"]
-        ]
+      title: "Addressing Modes Table",
+      headers: ["Addressing Mode", "Description", "Example (Assembly)", "Effective Address (EA)", "Usage"],
+      rows: [
+        ["Immediate", "Operand is given directly in the instruction", "MOV R1, #5", "No address — operand is 5 itself", "Quick constants or fixed values"],
+        ["Register", "Operand is in a CPU register", "MOV R1, R2", "No memory access — value in register R2", "Fast operations using CPU registers"],
+        ["Direct", "Address of operand is explicitly mentioned in the instruction", "MOV R1, [500]", "EA = 500", "Access known memory locations"],
+        ["Indirect", "Address field points to a memory location which holds the actual address", "MOV R1, [R2]", "EA = content of R2", "Dynamic data access"],
+        ["Indexed", "EA is calculated by adding a constant (index) to a register", "MOV R1, [R2 + 5]", "EA = R2 + 5", "Array and table access"],
+        ["Base Register", "Similar to indexed, but base address is held in a base register", "MOV R1, [Base + Offset]", "EA = Base + Offset", "Useful in segmented memory"],
+        ["Relative", "EA is determined by adding offset to the program counter (PC)", "JMP LABEL", "EA = PC + offset", "Control flow, branching instructions"]
+      ]
     },
     additionalResources: [
         {
-            title: "Virtual Memory - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/virtual-memory/"
+            title: "Addressing Modes",
+            url: "https://byjus.com/gate/addressing-modes-notes/"
         },
         {
-            title: "Memory Management Techniques",
-            url: "https://www.example.com/memory-management"
-        },
-        {
-            title: "Page Replacement Algorithms",
-            url: "https://www.example.com/page-replacement"
-        },
-        {
-            title: "Virtual Memory and Performance",
-            url: "https://www.example.com/virtual-memory-performance"
+            title: "Types of Addressing Modes",
+            url: "https://www.tutorialspoint.com/what-are-the-types-of-addressing-modes"
         }
     ]
         }
@@ -1008,339 +685,368 @@ title: "Exception Types Table",
   },
 {
   id: "chapter4",
-    title: "Instruction-Level Parallelism and Advanced Processor Architectures",
+    title: "Memory Organization and CPU-Memory Intefacing",
       topics: [
         {
-          id: "topic15",
-          title: "Instruction-level parallelism: basic concepts",
+          id: "topic11",
+          title: "Memory unit design with special emphasis on implementation of CPU-memory interfacing.",
           completed: false,
-          co: "PCC-CS402.CO4",
-          description: "This module provides a detailed understanding of instruction-level parallelism (ILP), its concepts, challenges, and techniques to improve processor performance.",
+          co: "PCC-CS302.CO4",
+          description: "Memory unit design focuses on organizing and managing memory components for efficient data storage and access. CPU-memory interfacing involves communication between the CPU and memory through buses, addressing schemes, and synchronization. Key concepts include memory-mapped I/O, data transfer mechanisms, and optimizing memory access using techniques like buffering and cache memory.",
     objectives: [
-        "Understand the concept and significance of instruction-level parallelism",
-        "Learn about instruction pipelining and its role in ILP",
-        "Explore techniques to achieve parallel execution of instructions",
-        "Identify challenges like data, control, and structural hazards",
-        "Study solutions like out-of-order execution and speculative execution",
-        "Analyze the impact of ILP on processor performance and efficiency"
+        "Understand the structure and organization of memory units in a computer system.",
+        "Study the data flow within memory units and how memory is addressed and accessed.",
+        "Analyze timing and synchronization issues, including memory access cycles and latency.",
+        "Study memory-mapped I/O and how I/O devices are integrated into the CPU-memory system.",
+        "Study the implementation of memory addressing schemes and how they ensure correct data retrieval.",
+        "Understand how CPU and memory are physically connected"
     ],
     keyPoints: [
-        "Instruction-level parallelism allows multiple instructions to be executed simultaneously, improving CPU efficiency.",
-        "Pipelining is a fundamental technique for ILP, breaking instruction execution into stages.",
-        "ILP techniques include superscalar execution, VLIW (Very Long Instruction Word), and out-of-order execution.",
-        "Data hazards, control hazards, and structural hazards limit ILP and must be managed efficiently.",
-        "Branch prediction and speculative execution help mitigate control hazards.",
-        "Scoreboarding and Tomasulo’s algorithm resolve data dependencies.",
-        "Superscalar processors issue multiple instructions per clock cycle.",
-        "VLIW architecture packages multiple operations into a single instruction word.",
-        "Dynamic scheduling allows reordering instructions to avoid stalls.",
-        "ILP significantly boosts performance in high-speed computing systems."
+        "Memory organization in computer architecture refers to how memory is structured and accessed, encompassing its hierarchy and various types.",
+        "A memory unit consists of data lines, address selection lines, and control lines that specify the direction of transfer.",
+        "A memory unit is a collection of storage cells together with associated circuits needed to transform insformation in and out of the device.",
+        "CPU-memory interfacing enables the CPU to read and write data and instructions from and to memory.",
+        "This is accomplished through a system of buses, address decoding, and control signals, ensuring that the CPU and memory communicate effectively.",
+        "The primary purpose of memory interfacing is to facilitate the transfer of data between the CPU and memory modules effectively.",
+        "Address Bus: The address bus is a set of wires that carry memory addresses from the CPU to the memory module.",
+        "Data Bus: The data bus is a set of wires that enable the bidirectional transfer of data between the CPU and memory module.",
+        "Control Signals: These signals manage the flow of data between the CPU and memory, indicating whether it is a read operation, write operation or other control actions like enabling memory access.",
+        "Memory Decoding: Memory decoding is the process of interpreting the address lines to select a specific memory location.",
+        "Memory Types: Different memory technologies, such as SRAM (Static RAM) and DRAM (Dynamic RAM)",
+        "Interfacing with I/O Devices: Memory interfacing also extends to communication between the CPU and input/output (I/O) devices, such as hard drives, solid-state drives, and peripherals."
     ],
     image: {
-        url: "https://example.com/ilp-diagram.png",
-        alt: "Diagram illustrating instruction-level parallelism"
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHarBOB6HJFWAH8FGeA-rKXD6SSEd2YNbw2A&s",
+        alt: "CPU Memory Interfacing"
     },
-    video: {
-        url: "ilp-video.mp4",
-        type: "mp4",
-        alt: "Detailed video on instruction-level parallelism"
+   
+    youtube: {
+        title: "CPU Memory Interfacing",
+        url: "https://www.youtube.com/watch?v=9ZSw0AAIp_g"
     },
+    table: {
+      title: "System Components and Their Functions Table",
+      headers: ["Component", "Description", "Function"],
+      rows: [
+        ["Address Bus", "A set of lines used to carry the address to/from memory", "Carries the memory address for read/write operations"],
+        ["Data Bus", "A set of lines used to carry data between the CPU and memory", "Transfers data to/from memory during read/write operations"],
+        ["Control Bus", "A set of lines used to carry control signals", "Controls the timing, read/write operations, and memory access"],
+        ["Memory Controller", "A hardware component that manages data transfer between CPU and memory", "Manages memory access, addressing, and timing synchronization"],
+        ["Memory-Mapped I/O", "I/O devices mapped into the memory space", "Allows CPU to communicate with peripheral devices using memory addressing"],
+        ["Memory Access Time", "Time taken to retrieve data from memory", "Impacts overall system performance and latency"],
+        ["Cache Memory", "A small, fast memory located between the CPU and main memory", "Speeds up data access by storing frequently used data"]
+      ]
+    },
+    additionalResources: [
+        {
+            title: "Computer - Memory Units",
+            url: "https://www.tutorialspoint.com/computer_fundamentals/computer_memory_units.htm"
+        },
+        
+        {
+            title: "Memory and I/O Interfacing",
+            url: "https://www.tpointtech.com/memory-and-io-interfacing"
+        },
+        {
+            title: "Memory Interfacing",
+            url: "https://www.prepbytes.com/blog/operating-system/memory-interfacing/"
+        }
+    ]
+        },
+        {
+          id: "topic12",
+          title: "Memory organization, static and dynamic memory, memory hierarchy, associative memory.",
+          completed: false,
+          co: "PCC-CS302.CO4",
+          description: "Memory organization refers to the structured arrangement of memory for efficient data storage and access. Static and dynamic memory are primary types, with SRAM being faster and DRAM more compact. Memory hierarchy optimizes speed and cost using layered storage. Associative memory allows data retrieval based on content rather than address.",
+    objectives: [
+        "Understand how memory is structured and addressed in a computer system.",
+        "Learn the distinction between primary, secondary, and cache memory.",
+        "Analyze the trade-offs in terms of speed, cost, and capacity.",
+        "Compare SRAM and DRAM in terms of speed, power consumption, density, and usage.",
+        "Understand the concept of organizing memory in levels ",
+        "Study locality of reference and how it affects memory performance.",
+        "Understand how associative memory works by searching data by content rather than address.",
+        "Learn its application in Translation Lookaside Buffers (TLB) and network routers."
+    ],
+    keyPoints: [
+        "Memory organization in computer architecture refers to how memory is structured and accessed, encompassing its hierarchy and various types.",
+        "This includes how data and instructions are stored, retrieved, and managed by the CPU, ranging from fast, small cache memory to slower but larger storage devices.",
+        "Static and dynamic memory allocation are two approaches to managing memory in computer programs.",
+        "Static memory allocation reserves memory at compile time, while dynamic memory allocation allows for memory allocation and deallocation during runtime.",
+        "Memory hierarchy is arranging different kinds of storage present on a computing device based on speed of access.",
+        "At the very top, the highest performing storage is CPU registers which are the fastest to read and write to.",
+        "Next is cache memory followed by conventional DRAM memory, followed by disk storage with different levels of performance including SSD, optical and magnetic disk drives.",
+        "An associative memory can be treated as a memory unit whose saved information can be recognized for approach by the content of the information itself instead of by an address or memory location.",
+        "Associative memory is also known as Content Addressable Memory (CAM)."
+    ],
+    image: {
+        url: "https://media.geeksforgeeks.org/wp-content/uploads/20250111112435920586/Memory-Hierarchy-Design.webp",
+        alt: "Memory Hierarchy Design"
+    },
+   
     youtube: {
         title: "Instruction-Level Parallelism Explained",
-        url: " https://www.youtube.com/watch?v=pLWRAVUr4uI"
+        url: "https://www.youtube.com/watch?v=PujjqfUhtNo"
     },
     table: {
-        title: "ILP Techniques Table",
-        headers: ["Technique", "Description", "Advantages", "Disadvantages"],
-        rows: [
-            ["Pipelining", "Divides instruction execution into stages", "Improves throughput", "Increases latency for individual instructions"],
-            ["Superscalar Execution", "Executes multiple instructions per clock cycle", "High performance", "Complex hardware design"],
-            ["VLIW", "Encodes multiple operations in a single instruction", "Simpler hardware", "Compiler complexity"],
-            ["Out-of-Order Execution", "Executes instructions based on data readiness", "Reduces stalls", "Complex scheduling logic"],
-            ["Speculative Execution", "Executes instructions before branch outcomes are known", "Improves pipeline efficiency", "Risk of wasted computation"],
-            ["Branch Prediction", "Predicts branch outcomes to prevent pipeline stalls", "Reduces control hazards", "Mispredictions cause performance penalties"]
-        ]
+      title: "SRAM vs DRAM Comparison Table",
+      headers: ["Feature", "SRAM", "DRAM"],
+      rows: [
+        ["Cell Design", "Flip-flop based", "Capacitor + transistor"],
+        ["Speed", "Faster", "Slower"],
+        ["Cost", "Expensive", "Cheaper"],
+        ["Density", "Lower", "Higher"],
+        ["Refresh Required", "No", "Yes"],
+        ["Usage", "Cache memory", "Main memory (RAM)"]
+      ]
     },
     additionalResources: [
         {
-            title: "Instruction-Level Parallelism - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/instruction-level-parallelism/"
+            title: "Memory Organisation",
+            url: "https://www.sathyabama.ac.in/sites/default/files/course-material/2020-10/Unit3_2.pdf"
         },
         {
-            title: "ILP Techniques and Challenges",
-            url: "https://www.example.com/ilp-techniques"
-        },
+          title: "Associative Memory",
+          url: "https://www.geeksforgeeks.org/associative-memory/"
+      },
         {
-            title: "Advanced Processor Design",
-            url: "https://www.example.com/processor-design"
-        },
-        {
-            title: "Out-of-Order Execution and ILP",
-            url: "https://www.example.com/o-o-o-execution"
+            title: "What is Memory Hierarchy?",
+            url: "https://www.tutorialspoint.com/what-is-memory-hierarchy"
         }
     ]
         },
         {
-          id: "topic16",
-          title: "Techniques for increasing ILP",
+          id: "topic13",
+          title: "Cache memory, Virtual memory. Data path design for read/write access.",
           completed: false,
-          co: "PCC-CS402.CO4",
-          description: "This module explores advanced techniques for increasing instruction-level parallelism, addressing challenges and maximizing processor efficiency.",
+          co: "PCC-CS302.CO4",
+          description: "Cache memory is a small, high-speed storage located close to the CPU that stores frequently accessed data to speed up processing. Virtual memory extends physical memory onto disk storage, allowing systems to run larger applications than RAM alone permits. In data path design for read/write access, the CPU sends addresses to memory through the address bus; for read, data is fetched from memory to CPU via the data bus; for write, data moves from CPU to memory. Control signals manage the timing and direction of data flow during these operations.",
     objectives: [
-        "Understand the need for increasing instruction-level parallelism",
-        "Learn various hardware and software techniques for ILP enhancement",
-        "Explore dynamic scheduling, speculative execution, and branch prediction",
-        "Study techniques like loop unrolling and instruction pipelining",
-        "Analyze the impact of ILP optimization on system performance"
+        "Understand the concept and purpose of cache memory and virtual memory in bridging the speed gap between CPU and main memory.",
+        "Understand multilevel caching (L1, L2, L3) and their impact on system performance.",
+        "Explore page replacement algorithms like LRU, FIFO, Optimal.",
+        "Analyze the timing and synchronization issues in memory access and data transfer.",
+        "Explore how control signals orchestrate data flow during instruction execution."
     ],
     keyPoints: [
-        "Increasing ILP minimizes execution time by running multiple instructions simultaneously.",
-        "Dynamic scheduling reorders instructions to avoid stalls and improve efficiency.",
-        "Speculative execution predicts future instructions, reducing delays.",
-        "Branch prediction minimizes control hazards by guessing the outcome of conditional operations.",
-        "Loop unrolling reduces overhead and increases instruction throughput.",
-        "Register renaming eliminates false data dependencies.",
-        "Tomasulo’s algorithm and scoreboarding handle out-of-order execution effectively.",
-        "VLIW architecture uses wide instructions to encode multiple operations.",
-        "Superscalar processors fetch and execute multiple instructions per cycle.",
-        "Software pipelining rearranges loops for parallel execution."
+        "Cache memory and virtual memory are crucial for improving system performance by leveraging the memory hierarchy",
+        "Cache memory acts as a high-speed buffer between the CPU and main memory, storing frequently accessed data for faster retrieval. ",
+        "Virtual memory provides a larger address space for each process, allowing programs to access memory beyond physical limitations. ",
+        "A data path design for read/write access in both scenarios involves a combination of hardware components, such as the ALU, registers, and buses, to facilitate efficient data movement.",
+        "Read Access: The process involves fetching data from either the cache or main memory based on cache hit or miss. ",
+        "Write Access: Involves updating data in either the cache (write-back) or both the cache and main memory (write-through). ",
+        "In both cache and virtual memory, the data path is designed to minimize latency and ensure data consistency between the different levels of memory.",
+        "Cache mapping refers to the method used to store data from main memory into the cache.",
+        "There are three different types of mapping used for the purpose of cache memory which is as follows:Direct Mapping, Fully Associative Mapping Set-Associative Mapping",
+        "Direct mapping is a simple and commonly used cache mapping technique where each block of main memory is mapped to exactly one location in the cache called cache line.",
+        "Fully associative mapping is a type of cache mapping where any block of main memory can be stored in any cache line. ",
+        "Set-associative mapping is a compromise between direct-mapped and fully-associative mapping in cache systems.",
+        "It combines the flexibility of fully associative mapping with the efficiency of direct mapping. In this scheme, multiple cache lines (typically 2, 4, or more) are grouped into sets.",
     ],
     image: {
-        url: "https://example.com/increasing-ilp-diagram.png",
-        alt: "Diagram showing techniques for increasing ILP"
+        url: "https://images.tpointtech.com/tutorial/coa/images/alu-and-data-path-in-computer-organization1.png",
+        alt: "Data path"
     },
-    video: {
-        url: "ilp-techniques-video.mp4",
-        type: "mp4",
-        alt: "Detailed video on techniques for increasing ILP"
-    },
+    
     youtube: {
-        title: "Techniques for Increasing ILP",
-        url: " https://www.youtube.com/watch?v=Ut8wY6qtie4 "
+        title: "Cache Memory VS Virtual Memory",
+        url: " https://www.youtube.com/watch?v=3Jf9Y8rmAQs "
     },
     table: {
-        title: "Techniques Table",
-        headers: ["Technique", "Description", "Advantages", "Disadvantages"],
-        rows: [
-            ["Dynamic Scheduling", "Reorders instructions based on data availability", "Minimizes stalls", "Complex hardware"],
-            ["Speculative Execution", "Executes instructions ahead of time", "Improves pipeline efficiency", "Risk of wasted work"],
-            ["Branch Prediction", "Predicts the outcome of branches", "Reduces control hazards", "Mispredictions cause penalties"],
-            ["Loop Unrolling", "Expands loop body to reduce iteration overhead", "Increases throughput", "Code size grows"],
-            ["Register Renaming", "Eliminates false dependencies", "Enhances parallelism", "Additional hardware complexity"],
-            ["Tomasulo’s Algorithm", "Enables out-of-order execution", "Reduces pipeline stalls", "Complex implementation"],
-            ["VLIW", "Encodes multiple operations in one instruction", "Simpler hardware", "Compiler complexity"],
-            ["Superscalar Execution", "Executes multiple instructions per cycle", "High performance", "Increased design complexity"],
-            ["Software Pipelining", "Reorders loop operations for parallelism", "Maximizes throughput", "Difficult optimization"]
-        ]
+      title: "Basic Computer Components Table",
+      headers: ["Component", "Function", "Used In"],
+      rows: [
+        ["ALU", "Performs arithmetic and logic operations", "All computations"],
+        ["Registers", "Temporarily hold data and instructions", "Intermediate results, address holding"],
+        ["Memory", "Stores data/instructions", "Source/Destination of Read/Write"],
+        ["Control Unit", "Sends control signals", "Directs flow of operations"],
+        ["Multiplexers (MUX)", "Selects input for operations", "Between multiple data sources"]
+      ]
     },
     additionalResources: [
         {
-            title: "Techniques for Increasing ILP - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/techniques-for-increasing-ilp/"
+            title: "Cache Memory in Computer Organization",
+            url: "https://www.geeksforgeeks.org/cache-memory-in-computer-organization/"
         },
+        
         {
-            title: "Advanced ILP Techniques",
-            url: "https://www.example.com/advanced-ilp"
-        },
-        {
-            title: "Dynamic Scheduling and ILP",
-            url: "https://www.example.com/dynamic-scheduling"
-        },
-        {
-            title: "Out-of-Order Execution in Modern Processors",
-            url: "https://www.example.com/o-o-o-execution"
+            title: "Data Path Design",
+            url: "https://www.jaroeducation.com/blog/data-path-design-in-computer-architecture/"
         }
     ]
-        },
-        {
-          id: "topic17",
-          title: "Superscalar and superpipelined architectures",
-          completed: false,
-          co: "PCC-CS402.CO4",
-          description: "This module dives into the advanced concepts of superscalar and superpipelined architectures, highlighting their role in enhancing instruction-level parallelism and processor efficiency.",
-    objectives: [
-        "Understand the principles of superscalar and superpipelined architectures",
-        "Learn how these architectures improve instruction throughput",
-        "Explore hardware and design challenges associated with each approach",
-        "Analyze the impact of superscalar and superpipelined designs on system performance",
-        "Differentiate between the two architectures in terms of execution efficiency"
-    ],
-    keyPoints: [
-        "Superscalar architecture executes multiple instructions per clock cycle by using multiple execution units.",
-        "Superpipelined architecture increases the number of pipeline stages to allow faster clock cycles.",
-        "Superscalar designs require sophisticated instruction dispatch and dependency checking mechanisms.",
-        "Superpipelined processors face challenges like increased pipeline hazards and higher branch penalties.",
-        "Both architectures aim to exploit instruction-level parallelism for better performance.",
-        "Hardware complexity and power consumption are key considerations in superscalar designs.",
-        "Superpipelining often requires advanced hazard resolution techniques to maintain efficiency.",
-        "Modern high-performance processors often combine both superscalar and superpipelined approaches."
-    ],
-    image: {
-        url: "https://example.com/superscalar-superpipelined-diagram.png",
-        alt: "Diagram illustrating superscalar and superpipelined architectures"
-    },
-    video: {
-        url: "superscalar-superpipelined-video.mp4",
-        type: "mp4",
-        alt: "Detailed video on superscalar and superpipelined techniques"
-    },
-    youtube: {
-        title: "Superscalar and Superpipelined Architectures Explained",
-        url: "https://www.youtube.com/watch?v=6PKi2kiEThk"
-    },
-    table: {
-        title: "Comparison Table",
-        headers: ["Feature", "Superscalar", "Superpipelined"],
-        rows: [
-            ["Instruction Execution", "Multiple per cycle", "One per cycle"],
-            ["Pipeline Stages", "Standard number", "Increased number"],
-            ["Parallelism", "Higher due to multiple execution units", "Limited by increased stages"],
-            ["Complexity", "High due to instruction dispatch and dependencies", "Moderate but increased hazard risk"],
-            ["Performance", "High with optimized instruction flow", "High with fast clock cycles"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "Superscalar and Superpipelined Architectures - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/superscalar-and-superpipelined-architectures/"
-        },
-        {
-            title: "Advanced Concepts in Processor Design",
-            url: "https://www.example.com/processor-design"
-        },
-        {
-            title: "Instruction-Level Parallelism in Modern CPUs",
-            url: "https://www.example.com/ilp-modern-cpus"
-        }
-    ]
-        },
-        {
-          id: "topic18",
-          title: "VLIW (Very Long Instruction Word) Processor Architectures",
-          completed: false,
-          co: "PCC-CS402.CO4",
-          description: "This module explores VLIW processor architectures, detailing their design philosophy, execution model, and efficiency in parallel processing.",
-    objectives: [
-        "Understand the core principles of VLIW architecture",
-        "Learn how VLIW processors handle instruction-level parallelism",
-        "Explore the role of compilers in VLIW design",
-        "Analyze the advantages and challenges of VLIW architectures",
-        "Compare VLIW with superscalar and other parallel architectures"
-    ],
-    keyPoints: [
-        "VLIW architecture packages multiple operations into a single long instruction word.",
-        "VLIW processors rely on the compiler to detect and exploit parallelism.",
-        "Simpler hardware design compared to superscalar architectures due to reduced runtime scheduling.",
-        "Efficient execution when parallelism is well-optimized, but suffers from performance issues with unpredictable branches.",
-        "VLIW design reduces hardware complexity but increases compiler complexity.",
-        "Code size can grow significantly due to the need for instruction bundling.",
-        "Stalls and no-ops can occur when the compiler fails to fill all operation slots.",
-        "VLIW processors often require advanced static scheduling techniques for optimal performance."
-    ],
-    image: {
-        url: "https://example.com/vliw-architecture-diagram.png",
-        alt: "Diagram illustrating VLIW processor architecture"
-    },
-    video: {
-        url: "vliw-architecture-video.mp4",
-        type: "mp4",
-        alt: "Detailed video on VLIW architecture"
-    },
-    youtube: {
-        title: "VLIW Architecture Explained",
-        url: " https://www.youtube.com/watch?v=3re04MxFtnU "
-    },
-    table: {
-        title: "Comparison Table",
-        headers: ["Feature", "VLIW Architecture", "Superscalar Architecture"],
-        rows: [
-            ["Instruction Execution", "Multiple operations per long instruction word", "Multiple instructions per cycle"],
-            ["Parallelism Management", "Handled by the compiler", "Handled by the processor"],
-            ["Hardware Complexity", "Simpler due to static scheduling", "Complex due to dynamic scheduling"],
-            ["Compiler Dependency", "High", "Moderate"],
-            ["Performance Efficiency", "High with well-optimized code", "High with efficient runtime scheduling"]
-        ]
-    },
-    additionalResources: [
-        {
-            title: "VLIW Architecture - GeeksforGeeks",
-            url: "https://www.geeksfor geeks.org/vliw-architecture/"
-        },
-        {
-            title: "Understanding VLIW Processors",
-            url: "https://www.example.com/vliw-processors"
-        },
-        {
-            title: "VLIW and Instruction-Level Parallelism",
-            url: "https://www.example.com/vliw-ilp"
-        }
-    ]
+        
         }
       ],
   },
 {
   id: "chapter5",
-    title: "Array and Vector Processors in Parallel Computing",
+    title: "Control Unit Design and Instruction Set Architectures",
       topics: [
         {
-          id: "topic19",
-          title: "Array and vector processors",
+          id: "topic14",
+          title: "Design of control unit - hardwired and microprogrammed control.",
           completed: false,
-          co: "PCC-CS402.CO5",
-          description: "This module explores array and vector processors, their architecture, working principles, and how they enhance parallel processing capabilities.",
+          co: "PCC-CS302.CO5",
+          description: "The Control Unit is the part of the computer’s central processing unit (CPU), which directs the operation of the processor.It is the responsibility of the control unit to tell the computer’s memory, arithmetic/logic unit, and input and output devices how to respond to the instructions that have been sent to the processor. It fetches internal instructions of the programs from the main memory to the processor instruction register, and based on this register contents, the control unit generates a control signal that supervises the execution of these instructions.",
     objectives: [
-        "Understand the concept of array and vector processors",
-        "Learn how these processors achieve data-level parallelism",
-        "Explore the differences between array and vector processing",
-        "Analyze the efficiency and applications of these processors",
-        "Understand the challenges and optimization techniques for array and vector processors"
+        "Learn how the control unit acts as the brain of the CPU by directing operations and coordinating all parts of the computer system.",
+        "Study how instructions are fetched, decoded, and executed with the help of control signals.",
+        "Understand how control signals are generated to initiate micro-operations during instruction execution.",
+        "Gain clarity on the two main types: Hardwired and Microprogrammed control units"
     ],
     keyPoints: [
-        "Array processors use multiple processing elements to execute operations on different data sets simultaneously.",
-        "Vector processors execute the same operation on multiple data elements in a single instruction.",
-        "Both architectures are designed to improve performance in tasks with high data parallelism.",
-        "Array processors are typically implemented in SIMD (Single Instruction, Multiple Data) architecture.",
-        "Vector processors rely on vector registers to handle large data sets efficiently.",
-        "These processors excel in scientific computing, graphics, and machine learning applications.",
-        "Performance heavily depends on data alignment and the ability to parallelize operations.",
-        "Challenges include handling memory bandwidth, synchronization, and load balancing."
+        "The Control Unit (CU) is a crucial component of the Central Processing Unit (CPU) in a computer system.",
+        "Its primary function is to direct the operation of the processor. It does this by generating control signals that coordinate how data moves within the CPU, memory, and I/O devices.",
+        "The control unit interprets instructions from the program and initiates the appropriate sequences of micro-operations required to execute them.",
+        "There are two main types of control unit design:Hardwired Control Unit and Microprogrammed Control Unit. ",
+        "A Hardwired Control Unit is a type of control unit in a computer’s CPU where the control signals required for instruction execution are generated using fixed electronic circuits, such as combinational logic",
+        "Hardwired control units are commonly used in embedded systems or processors where speed is critical and the instruction set is not expected to change frequently.",
+        "A Microprogrammed Control Unit is a type of control unit in a CPU where the control signals are generated using a sequence of microinstructions stored in a special memory called the Control Memory.",
+        "Microprogrammed control units are used in CPUs where flexibility is important, such as in systems with complex instruction sets that may need to be updated or extended."
     ],
     image: {
-        url: "https://example.com/array-vector-diagram.png",
-        alt: "Diagram illustrating array and vector processor architectures"
+        url: "https://www.geeksforgeeks.org/wp-content/uploads/1-9.jpg",
+        alt: "Control Unit Design"
     },
-    video: {
-        url: "array-vector-processors-video.mp4",
-        type: "mp4",
-        alt: "Detailed video on array and vector processors"
-    },
+    
     youtube: {
-        title: "Array and Vector Processors Explained",
-        url: " https://www.youtube.com/watch?v=DGc_HEuaJhk"
+        title: "Hardwired Control Unit vs Microprogrammed Control Unit",
+        url: "https://www.youtube.com/watch?v=l1vBkZWyELk"
     },
     table: {
-        title: "Comparison Table",
-        headers: ["Feature", "Array Processors", "Vector Processors"],
-        rows: [
-            ["Parallelism Type", "Multiple processing elements", "Single processing unit with vector registers"],
-            ["Instruction Execution", "One instruction for multiple data sets", "One instruction for vector operations"],
-            ["Architecture", "SIMD", "Vector-based"],
-            ["Efficiency", "High for structured data", "High for large data sets"],
-            ["Complexity", "Higher due to multiple processing units", "Simpler with specialized vector registers"]
-        ]
+      title: "Hardwired vs Microprogrammed Control Comparison Table",
+      headers: ["Feature", "Hardwired Control", "Microprogrammed Control"],
+      rows: [
+        ["Speed", "Faster", "Slower"],
+        ["Flexibility", "Low", "High"],
+        ["Implementation", "Hardware (logic gates)", "Software (firmware)"],
+        ["Modifiability", "Difficult", "Easy"],
+        ["Complexity Handling", "Less suitable for complex instructions", "Good for complex instructions"]
+      ]
     },
     additionalResources: [
         {
-            title: "Array Processors - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/array-processors/"
+            title: "Introduction of Control Unit and its Design",
+            url: "https://www.geeksforgeeks.org/introduction-of-control-unit-and-its-design/"
         },
         {
-            title: "Vector Processing - Tutorialspoint",
-            url: "https://www.tutorialspoint.com/vector-processing"
+            title: "Hardwired v/s Micro-programmed Control Unit",
+            url: "https://www.geeksforgeeks.org/computer-organization-hardwired-vs-micro-programmed-control-unit/"
+       
+        }
+    ]
         },
         {
-            title: "Understanding SIMD and Vector Architectures",
-            url: "https://www.example.com/simd-vector"
+          id: "topic15",
+          title: "Introduction to instruction pipelining.",
+          completed: false,
+          co: "PCC-CS302.CO5",
+          description: "An instruction pipeline receives sequential instructions from memory while prior instructions are implemented in other portions. Pipeline processing can be seen in both the data and instruction streams.",
+    objectives: [
+        "Learn how pipelining increases the number of instructions executed per unit time",
+        "Learn how pipelining enables instruction-level parallelism in CPUs.",
+        "Study how overlapping instruction stages reduces execution time.",
+        "Analyze stages like Fetch, Decode, Execute, etc., and their roles.",
+        "Calculate speedup and efficiency of pipelined vs non-pipelined systems."
+    ],
+    keyPoints: [
+        "An instruction pipeline reads instruction from the memory while previous instructions are being executed in other segments of the pipeline.",
+        "The pipeline will be more efficient if the instruction cycle is divided into segments of equal duration. ",
+        "Each step is carried out in its own segment, and various segments may take different amounts of time to process the incoming data.",
+        "A four-segment instruction pipeline unifies two or more distinct segments into a single unit.",
+        "For example, the decoding of the instruction and the calculation of the effective address can be merged into a single segment."
+        
+    ],
+    image: {
+        url: "https://cdn1.byjus.com/wp-content/uploads/2022/04/instruction-pipeline-in-computer-architecture.png",
+        alt: "Flowchart of Intruction Pipelining"
+    },
+    
+    youtube: {
+        title: "Instruction Pipelining Explaination",
+        url: "https://www.youtube.com/watch?v=_UsowVrjkxg"
+    },
+    table: {
+      title: "Pipeline Execution Table",
+      headers: ["Clock Cycle", "Stage 1", "Stage 2", "Stage 3", "Stage 4", "Stage 5"],
+      rows: [
+        ["1", "I1 - IF", "", "", "", ""],
+        ["2", "I2 - IF", "I1 - ID", "", "", ""],
+        ["3", "I3 - IF", "I2 - ID", "I1 - EX", "", ""],
+        ["4", "I4 - IF", "I3 - ID", "I2 - EX", "I1 - MEM", ""],
+        ["5", "", "I4 - ID", "I3 - EX", "I2 - MEM", "I1 - WB"],
+        ["6", "", "", "I4 - EX", "I3 - MEM", "I2 - WB"],
+        ["7", "", "", "", "I4 - MEM", "I3 - WB"],
+        ["8", "", "", "", "", "I4 - WB"]
+      ]
+    },
+    additionalResources: [
+        {
+            title: "Instruction Pipelining",
+            url: "https://en.wikipedia.org/wiki/Instruction_pipelining"
+        }
+    ]
+        },
+        {
+          id: "topic16",
+          title: "Introduction to RISC architectures. RISC vs CISC architectures.",
+          completed: false,
+          co: "PCC-CS302.CO5",
+          description: "RISC, or Reduced Instruction Set Computer, is a type of microprocessor architecture that utilizes a small, highly-optimized set of instructions for faster execution. It contrasts with CISC (Complex Instruction Set Computer), which has a larger and more diverse instruction set. The core principle of RISC is to simplify instructions, enabling them to be executed in a single clock cycle and facilitating pipeline execution.",
+    objectives: [
+        "To understand how RISC simplifies the processor design by using a smaller, more efficient instruction set. This leads to simpler control logic and efficient data path designs.",
+        "To explore how RISC architectures allow high execution speeds through the use of simple, uniform-length instructions that execute in a single clock cycle.",
+        "To study how RISC designs are optimized for instruction pipelining, allowing multiple instructions to be executed in parallel",
+        "To learn how RISC architectures reduce the time required to fetch and decode instructions"
+    ],
+    keyPoints: [
+        "RISC is the way to make hardware simpler whereas CISC is the single instruction that handles multiple work.",
+        "The main idea behind this is to simplify hardware by using an instruction set composed of a few basic steps for loading, evaluating, and storing operations just like a load command will load data, a store command will store the data.",
+        " RISC processors use a smaller set of simple instructions, which makes them easier to decode",
+        "RISC processors consume less power than CISC processors.",
+        "RISC has a small set of instructions, which generally include register-to-register operations.",
+        "The RISC processors can execute one instruction per clock cycle.",
+        "Performance heavily depends on data alignment and the ability to parallelize operations.",
+        "It is used for memory access limited to load and store instructions."
+    ],
+    image: {
+        url: "https://media.geeksforgeeks.org/wp-content/uploads/20240313171140/RISC-and-CISC.png",
+        alt: "RISC architecture"
+    },
+    
+    youtube: {
+        title: "RISC VS CISC",
+        url: "https://www.youtube.com/watch?v=g16wZWKcao4"
+    },
+    table: {
+      title: "RISC vs CISC Comparison Table",
+      headers: [
+        "Feature",
+        "RISC",
+        "CISC"
+      ],
+      rows: [
+        ["Instruction Set", "Simple, small set", "Complex, large set"],
+        ["Instruction Length", "Fixed, typically 32-bits", "Variable length"],
+        ["Number of Instructions", "Few", "Many"],
+        ["Execution Time", "Typically 1 clock cycle per instruction", "Varies (may take multiple cycles)"],
+        ["Memory Access", "Load/store for memory operations", "Direct memory access in instructions"],
+        ["Pipelining", "Designed for efficient pipelining", "Less efficient pipelining"],
+        ["Hardware Complexity", "Simpler hardware", "More complex hardware"],
+        ["Use Case", "Modern processors, embedded systems", "Older processors, legacy systems"],
+        ["Compiler Optimization", "Requires compiler optimization", "Some hardware optimization"]
+      ]
+    },
+    additionalResources: [
+        {
+            title: "RISC and CISC in Computer Organization",
+            url: "https://www.geeksforgeeks.org/computer-organization-risc-and-cisc/"
+        },
+        
+        {
+            title: "What is RISC Processor",
+            url: "https://www.tutorialspoint.com/what-is-risc-processor"
         }
     ]
         }
@@ -1351,275 +1057,78 @@ title: "Exception Types Table",
     title: "Multiprocessor and Non-von Neumann Architectures",
       topics: [
         {
-          id: "topic20",
-          title: "Multiprocessor architecture: taxonomy of parallel architectures",
+          id: "topic17",
+          title: "Input-Output Operations and Data Transfer Mechanisms",
           completed: false,
-          co: "PCC-CS402.CO6",
-          description: "This module provides an in-depth exploration of multiprocessor architecture and the various classifications of parallel architectures.",
+          co: "PCC-CS302.CO6",
+          description: "The input-output interface acts as a bridge between the computer's internal components (like the CPU) and the external devices. It handles functions such as data transfer, signal conversion, error detection, and buffering, ensuring that data is transmitted correctly and efficiently between the system and peripherals.",
           objectives: [
-              "Understand the concept and need for multiprocessor architectures",
-              "Explore different types of parallel architectures",
+              "To learn how external devices (like keyboard, mouse, printers, etc.) communicate with the CPU and memory.",
+              "Study various ways of transferring data between I/O devices and the processor",
               "Learn about the taxonomy of parallel computing systems",
-              "Analyze the efficiency and scalability of multiprocessor systems",
-              "Understand the challenges and optimization techniques for parallel architectures"
+              "Gaining skills required in embedded systems, OS-level I/O control, and hardware interfacing.",
+              "To explore how data is synchronized between slow I/O devices and fast CPU/memory."
           ],
           keyPoints: [
               "Multiprocessor systems use multiple CPUs to execute multiple instructions simultaneously.",
               "Parallel architectures enhance computing performance by dividing tasks across multiple processors.",
-              "Flynn's taxonomy classifies parallel systems into SISD, SIMD, MISD, and MIMD architectures.",
-              "Shared memory and distributed memory are two primary types of multiprocessor configurations.",
-              "Scalability and synchronization are critical for the efficiency of parallel architectures.",
-              "Load balancing and communication overhead impact the performance of multiprocessor systems.",
-              "Cache coherence and memory consistency models are vital in shared memory architectures.",
-              "Advanced techniques like hyper-threading and multicore processors enhance parallelism."
+              "Programmed I/O: It is due to the result of the I/O instructions that are written in the computer program. Each data item transfer is initiated by an instruction in the program.",
+              "Interrupt- initiated I/O: Since in the above case we saw the CPU is kept busy unnecessarily. This situation can very well be avoided by using an interrupt driven method for data transfer. ",
+              "Direct Memory Access : The data transfer between a fast storage media such as magnetic disk and memory unit is limited by the speed of the CPU.",
+              "I/O interfaces provide a standard way of communicating with external devices.",
+              "There are four primary ways to transfer data across the PCI bus: Direct Memory Access (DMA), Interrupt Request (IRQ), Programmed I/O, and USB Bulk.",
+              "Data transfer can occur within a local network, between different networks, or across the internet."
           ],
           image: {
-              url: "https://example.com/parallel-architecture-diagram.png",
-              alt: "Diagram illustrating different types of parallel architectures"
+              url: "https://d14qv6cm1t62pm.cloudfront.net/ccbp-website/Blogs/home/input-output-organization-in-computer-image.png",
+              alt: "Input Output Organization"
           },
-          video: {
-              url: "parallel-architecture-video.mp4",
-              type: "mp4",
-              alt: "Detailed video on multiprocessor architectures"
-          },
+          
           youtube: {
-              title: "Multiprocessor Architectures Explained",
-              url: " https://www.youtube.com/watch?v=qEx2fV9qrcI "
+              title: "Data Transfer Instructions",
+              url: " https://www.youtube.com/watch?v=bNkiChXPRhM "
           },
           table: {
-              title: "Comparison Table",
-              headers: ["Feature", "Shared Memory Architecture", "Distributed Memory Architecture"],
-              rows: [
-                  ["Memory Access", "All processors share a global memory", "Each processor has its own local memory"],
-                  ["Communication", "Through shared memory", "Through message passing"],
-                  ["Synchronization", "Easier with shared variables", "Requires explicit message synchronization"],
-                  ["Scalability", "Limited by memory contention", "Highly scalable"],
-                  ["Programming Complexity", "Simpler", "More complex due to message passing"]
+            title: "I/O Techniques Comparison Table",
+            headers: ["Method", "Who Controls Transfer?", "CPU Involvement", "Speed", "Use Case"],
+            rows: [
+              [
+                "Programmed I/O",
+                "CPU",
+                "High",
+                "Slow",
+                "Simple devices (e.g., keyboard)"
+              ],
+              [
+                "Interrupt-Driven I/O",
+                "CPU via Interrupts",
+                "Medium",
+                "Faster than Programmed I/O",
+                "Moderate I/O devices"
+              ],
+              [
+                "Direct Memory Access (DMA)",
+                "DMA Controller",
+                "Low",
+                "High",
+                "High-speed transfers (e.g., disk I/O)"
               ]
-          },
-          additionalResources: [
-              {
-                  title: "Introduction to Parallel Computing",
-                  url: "https://www.parallel-computing-tutorial.com/"
-              },
-              {
-                  title: "Flynn's Taxonomy Explained",
-                  url: "https://www.geeksforgeeks.org/flynns-taxonomy/"
-              },
-              {
-                  title: "Shared vs Distributed Memory Systems",
-                  url: "https://www.example.com/shared-distributed-memory"
-              }
-          ]
-        },
-        {
-          id: "topic21",
-          title: "Centralized shared-memory architecture: synchronization, memory consistency, interconnection networks",
-          completed: false,
-          co: "PCC-CS402.CO6",
-          description: "This module provides a detailed exploration of centralized shared-memory architecture, its synchronization mechanisms, memory consistency models, and the role of interconnection networks.",
-          objectives: [
-              "Understand the concept and design of centralized shared-memory architecture",
-              "Learn about synchronization techniques for multiprocessor systems",
-              "Explore different memory consistency models and their importance",
-              "Analyze the role of interconnection networks in shared-memory systems",
-              "Understand the challenges of maintaining coherence and consistency"
-          ],
-          keyPoints: [
-              "Centralized shared-memory architecture enables multiple processors to access a single global memory.",
-              "Synchronization ensures that concurrent processes operate correctly without conflicts.",
-              "Memory consistency models define the expected behavior of memory operations in a multiprocessor system.",
-              "Interconnection networks facilitate efficient communication between processors and memory.",
-              "Bus-based and switch-based interconnection networks are common in shared-memory systems.",
-              "Cache coherence protocols like MESI help maintain a consistent view of memory across caches.",
-              "Scalability of centralized shared-memory architecture is often limited by memory contention.",
-              "Barrier synchronization and spinlocks are common techniques for coordinating parallel processes."
-          ],
-          image: {
-              url: "https://example.com/shared-memory-architecture-diagram.png",
-              alt: "Diagram illustrating centralized shared-memory architecture"
-          },
-          video: {
-              url: "shared-memory-architecture-video.mp4",
-              type: "mp4",
-              alt: "Detailed video on centralized shared-memory architecture"
-          },
-          youtube: {
-              title: "Shared-Memory Architecture Explained",
-              url: " https://www.youtube.com/watch?v=BUFbnisqkAM "
-          },
-          table: {
-              title: "Comparison Table",
-              headers: ["Feature", "Centralized Shared-Memory Architecture", "Distributed Memory Architecture"],
-              rows: [
-                  ["Memory Access", "All processors share a single global memory", "Each processor has its own local memory"],
-                  ["Communication", "Through shared memory", "Through message passing"],
-                  ["Synchronization", "Easier with shared variables", "Requires explicit message synchronization"],
-                  ["Consistency", "Maintained through coherence protocols", "No global consistency requirement"],
-                  ["Scalability", "Limited by memory contention", "Highly scalable"],
-                  ["Programming Complexity", "Simpler", "More complex due to message passing"]
-              ]
-          },
-          additionalResources: [
-              {
-                  title: "Shared-Memory Multiprocessors",
-                  url: "https://www.shared-memory-tutorial.com/"
-              },
-              {
-                  title: "Memory Consistency Models Explained",
-                  url: "https://www.geeksforgeeks.org/memory-consistency-models/"
-              },
-              {
-                  title: "Interconnection Networks in Parallel Systems",
-                  url: "https://www.example.com/interconnection-networks"
-              }
-          ]
-        },
-        {
-          id: "topic22",
-          title: "Distributed shared-memory architecture. Cluster computers.",
-          completed: false,
-          co: "PCC-CS402.CO6",
-          description: "This module explores the concepts of distributed shared-memory architecture and cluster computing, highlighting their design principles, synchronization methods, and performance considerations.",
-    objectives: [
-        "Understand the concept and design of distributed shared-memory (DSM) architecture",
-        "Learn about cluster computing and its applications",
-        "Explore synchronization techniques in DSM systems",
-        "Analyze memory consistency models in distributed environments",
-        "Understand the challenges and solutions for data coherence in DSM systems",
-        "Examine interconnection networks used in distributed architectures"
-    ],
-    keyPoints: [
-        "Distributed shared-memory architecture allows multiple processors to access a shared logical memory that is physically distributed.",
-        "Cluster computers consist of interconnected independent systems working together as a single entity.",
-        "DSM systems use message passing or remote memory access for data sharing.",
-        "Consistency models like strict, sequential, and release consistency ensure proper memory behavior across distributed nodes.",
-        "Synchronization methods like barriers, locks, and semaphores manage concurrent processes.",
-        "Scalability and fault tolerance are key advantages of cluster computing.",
-        "Interconnection networks like crossbar, mesh, and hypercube topologies facilitate efficient communication.",
-        "Techniques like memory replication and caching optimize performance in DSM systems."
-    ],
-    image: {
-        url: "https://example.com/dsm-architecture-diagram.png",
-        alt: "Diagram illustrating distributed shared-memory architecture"
-    },
-    video: {
-        url: "dsm-architecture-video.mp4",
-        type: "mp4",
-        alt: "Detailed video on distributed shared-memory architecture"
-    },
-    youtube: {
-        title: "Distributed Shared-Memory Systems Explained",
-        url: " https://www.youtube.com/watch?v=fmDfKw7AEQU"
-    },
-    table: {
-      table1: {
-        title: "Comparison Table",
-        headers: ["Feature", "Distributed Shared-Memory Architecture", "Cluster Computers"],
-        rows: [
-          ["Memory Access", "Shared logical memory across distributed nodes", "Independent memory for each node"],
-          ["Communication", "Message passing or remote memory access", "High-speed interconnect networks"],
-          ["Synchronization", "Complex due to distributed nature", "Simpler with shared files or databases"],
-          ["Consistency", "Maintained through coherence protocols", "Depends on distributed file systems"],
-          ["Scalability", "High, but requires efficient coordination", "Highly scalable with proper load balancing"],
-          ["Fault Tolerance", "Improved through data replication", "Redundant nodes ensure system reliability"]
-        ]
-      },
-      table2: {
-        title: "Performance Table",
-        headers: ["Metric", "Distributed Shared-Memory", "Cluster Computers"],
-        rows: [
-          ["Latency", "Lower due to logical memory abstraction", "Higher due to message passing"],
-          ["Throughput", "Moderate to high", "Can be very high with optimized load balancing"],
-          ["Cost", "Higher setup and maintenance", "Cost-effective with commodity hardware"],
-          ["Energy Efficiency", "Moderate", "Can be optimized per node"],
-          ["Upgrade Complexity", "Challenging in a tightly coupled system", "Easier with modular node replacement"]
-        ]
-      }
-    },
-    additionalResources: [
-        {
-            title: "Distributed Shared Memory Tutorial",
-            url: "https://www.dsm-tutorial.com/"
-        },
-        {
-            title: "Cluster Computing Overview",
-            url: "https://www.example-cluster-computing.com/"
-        },
-        {
-            title: "Interconnection Networks in Distributed Systems",
-            url: "https://www.example.com/interconnection-networks"
-        }
-    ]
-        },
-        {
-            "id": "topic23",
-            "title": "Non-Von Neumann Architectures: Dataflow, Reduction, and Systolic",
-            "completed": false,
-            "co": "PCC-CS402.CO4",
-            "description": "This module explores non-Von Neumann computer architectures, including dataflow computers, reduction computer architectures, and systolic architectures. It focuses on their operational principles, advantages, and applications, contrasting them with the traditional Von Neumann model.",
-            "objectives": [
-              "Understand the limitations of the Von Neumann architecture.",
-              "Learn the principles of dataflow computing and its execution model.",
-              "Explore the concept of reduction computer architectures and their demand-driven execution.",
-              "Analyze the operational characteristics and applications of systolic architectures.",
-              "Compare and contrast these non-Von Neumann architectures with the traditional Von Neumann model.",
-              "Evaluate the potential benefits and challenges of these alternative architectures."
-            ],
-            "keyPoints": [
-              "Von Neumann architecture's sequential execution can lead to performance bottlenecks.",
-              "Dataflow computers execute instructions based on data availability, not program counter.",
-              "Dataflow architectures excel in parallel processing and avoid control dependencies.",
-              "Reduction architectures use demand-driven execution, evaluating expressions only when needed.",
-              "Reduction architectures are suitable for functional programming and parallel evaluation.",
-              "Systolic architectures use pipelined data flow for specialized computations, often in signal processing.",
-              "Systolic arrays achieve high throughput by reusing data within a network of processing elements.",
-              "Non-Von Neumann architectures address specific computational needs and offer parallelism.",
-              "These architectures often require specialized programming models and hardware."
-            ],
-            "image": {
-              "url": "https://example.com/non-von-neumann-architectures.png",
-              "alt": "Diagram illustrating dataflow, reduction, and systolic architectures."
-            },
-            "video": {
-              "url": "non-von-neumann-architectures.mp4",
-              "type": "mp4",
-              "alt": "Detailed video explaining dataflow, reduction, and systolic architectures and their differences from Von Neumann."
-            },
-            "youtube": {
-              "title": "Non-Von Neumann Architectures Explained",
-              "url": "https://www.youtube.com/watch?v=OfqzoQ9Kw9k&t=7"
-            },
-            "table": {
-              "title": "Comparison of Non-Von Neumann Architectures",
-              "headers": ["Architecture", "Execution Model", "Key Features", "Applications", "Challenges"],
-              "rows": [
-                ["Dataflow", "Data-driven", "Parallel execution based on data availability, absence of program counter.", "Signal processing, image processing, scientific computing.", "Complexity in handling control flow and memory management."],
-                ["Reduction", "Demand-driven", "Execution triggered by the need for results, recursive function evaluation.", "Functional programming, symbolic computation, AI.", "Overhead of demand propagation and memory management."],
-                ["Systolic", "Pipelined data flow", "Specialized arrays of processing elements for repetitive computations.", "Signal processing, matrix operations, pattern recognition.", "Limited flexibility, specialized hardware design."]
-              ]
-            },
-            "additionalResources": [
-              {
-                "title": "Dataflow Architectures - Principles and Design",
-                "url": "https://www.example.com/dataflow-architectures"
-              },
-              {
-                "title": "Reduction Machines - A Comprehensive Overview",
-                "url": "https://www.example.com/reduction-machines"
-              },
-              {
-                "title": "Systolic Arrays - Concepts and Applications",
-                "url": "https://www.example.com/systolic-arrays"
-              },
-              {
-                  "title": "Beyond Von Neumann: Alternative Computing Models",
-                  "url": "https://www.example.com/beyond-von-neumann"
-              }
             ]
+          },
+          additionalResources: [
+              {
+                  title: "Non-Von Neumann Architectures",
+                  url: "https://www.slideshare.net/slideshow/nonvon-neumann-architectures/260147895"
+              },
+              
+              {
+                  title: "I/O Interface (Interrupt and DMA Mode)",
+                  url: "https://www.geeksforgeeks.org/io-interface-interrupt-dma-mode/"
+              }
+          ]
+        
           }
         
       ],
   }
 ];
-
