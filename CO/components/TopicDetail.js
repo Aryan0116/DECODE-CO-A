@@ -185,12 +185,8 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
 
 
 
-<<<<<<< HEAD
-{topic.table && typeof topic.table === "object" && (() => {
-=======
                         {/* Table (if available) */}
                         {topic.table && typeof topic.table === "object" && (() => {
->>>>>>> 95ba04f89717d995e19ed240aa021c888298ce6f
   // Check if it's a single table (has headers and rows directly)
   const isSingleTable = Array.isArray(topic.table.headers) && Array.isArray(topic.table.rows);
 
@@ -259,11 +255,6 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
 
   return null; // No valid table data
 })()}
-<<<<<<< HEAD
-
-                        
-=======
->>>>>>> 95ba04f89717d995e19ed240aa021c888298ce6f
 
                         {/* Additional Resources (if available) */}
                         {topic.additionalResources && (
