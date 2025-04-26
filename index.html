@@ -4,35 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COAHUB</title>
+    <title>DECODE CO-A</title>
     <link rel="icon" type="image/png" href="favicon.png" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root[data-theme="dark"] {
-            --bg-color: #000000;
+            --bg-color: #0a0a0a;
             --text-color: #fff;
             --card-bg: #1a1a1a;
             --accent-color: #4CAF50;
             --particle-color: #4CAF50;
             --particle-line-color: rgba(76, 175, 80, 0.4);
+            --card-hover-shadow: 0 10px 30px rgba(76, 175, 80, 0.3);
         }
 
         :root[data-theme="light"] {
-            --bg-color: #97bef0;
+            --bg-color: #f0f7ff;
             --text-color: #0a0a0a;
             --card-bg: #ffffff;
             --accent-color: #2E7D32;
             --particle-color: #2E7D32;
             --particle-line-color: rgba(46, 125, 50, 0.4);
+            --card-hover-shadow: 0 10px 30px rgba(46, 125, 50, 0.2);
         }
 
         :root {
-            /* --primary: #ff3366;
-            --secondary: #00ff99; */
-            --dark: #0a0a0a;
-            --light: #ffffff;
             --primary: #7C3AED;
             --secondary: #10B981;
             --dark: #1E293B;
@@ -48,7 +47,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
@@ -274,7 +273,42 @@
                 visibility: visible;
             }
         }
+        @media (max-width: 768px) {
+    .hero {
+        padding-top: 100px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .nav-preview-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+}
 
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
         @media (max-width: 480px) {
             .navbar {
                 padding: 1rem;
@@ -308,43 +342,58 @@
         }
 
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 20px 0; /* Added top padding */
+    position: relative;
+    overflow: hidden;
+    min-height: 600px; /* Ensures minimum height on small screens */
+}
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(124, 58, 237, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: -1;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: 60px;
             margin-bottom: 20px;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+            animation: fadeIn 1s ease-out;
         }
 
         .hero p {
-            font-size: 20px;
-            max-width: 600px;
+            font-size: 22px;
+            max-width: 700px;
             margin-bottom: 40px;
-            color: #888;
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
+            animation: fadeIn 1.2s ease-out;
         }
 
-        .about h3 {
-            font-size: 38px;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .about p {
-            font-size: 20px;
-            max-width: 600px;
-            margin-bottom: 40px;
-            color: #888;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .cards-container {
@@ -352,12 +401,14 @@
             gap: 40px;
             padding: 20px;
             justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .card {
             width: 300px;
             height: 400px;
-            background: #111;
+            background: var(--card-bg);
             border-radius: 20px;
             display: flex;
             flex-direction: column;
@@ -365,12 +416,14 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .card:hover {
             transform: translateY(-10px);
+            box-shadow: var(--card-hover-shadow);
         }
 
         .card::before {
@@ -384,7 +437,7 @@
         }
 
         .card-content {
-            background: #111;
+            background: var(--card-bg);
             border-radius: 18px;
             width: 98%;
             height: 98%;
@@ -395,18 +448,148 @@
             position: relative;
             z-index: 1;
             padding: 20px;
-            color: var(--light);
+            color: var(--text-color);
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        /* Nav Preview Section */
+        .nav-preview {
+            padding: 100px 20px 50px;
+            /* background: linear-gradient(180deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.0) 100%); */
+            
+        }
+
+        .nav-preview h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-preview-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+        .nav-preview-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .nav-preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .preview-img {
+            width: 100%;
+            height: 180px;
+            background: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .preview-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .nav-preview-card:hover .preview-img img {
+            transform: scale(1.05);
+        }
+
+        .preview-content {
+            padding: 20px;
+        }
+
+        .preview-content h3 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .preview-content p {
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .preview-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .preview-link:hover {
+            transform: translateX(5px);
         }
 
         /* About Section */
         .about {
             padding: 100px 20px;
             text-align: center;
+            /* background: var(--bg-color); */
         }
 
         .about h2 {
             font-size: 36px;
             margin-bottom: 30px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about h3 {
+            font-size: 38px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.6;
         }
 
         .features {
@@ -420,21 +603,186 @@
 
         .feature {
             padding: 30px;
-            background: #111;
+            background: var(--card-bg);
             border-radius: 20px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .feature:hover {
             transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .feature h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 22px;
+        }
+
+        .feature p {
+            color: var(--text-color);
+            opacity: 0.8;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 20px;
+            /* background: linear-gradient(180deg, var(--bg-color) 0%, rgba(10, 10, 10, 0.95) 100%); */
+            text-align: center;
+        }
+
+        .team-section h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .team-mentor{
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .team-mentor:hover{
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        .member-img {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-img img {
+            transform: scale(1.05);
+        }
+        .team-mentor:hover .member-img img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 20px;
+            position: relative;
+        }
+
+        .member-name {
+            margin-bottom: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .member-role {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(124, 58, 237, 0.3);
+        }
+
+        .mentor-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #111;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 5px 10px rgba(255, 215, 0, 0.3);
         }
 
         /* Footer */
         .footer {
             background: #111;
-            padding: 40px 20px;
+            padding: 60px 20px 30px;
             text-align: center;
-            margin-top: 100px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% 100%;
+            animation: gradient 5s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .footer-content {
@@ -448,6 +796,7 @@
         .footer-section h3 {
             margin-bottom: 20px;
             color: var(--primary);
+            font-size: 20px;
         }
 
         .footer-section p,
@@ -455,6 +804,11 @@
             color: #888;
             text-decoration: none;
             line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
         }
 
         .footer-bottom {
@@ -475,8 +829,6 @@
         }
 
         @media (max-width: 768px) {
-            
-
             section {
                 padding: 3rem 5%;
             }
@@ -488,6 +840,33 @@
             .card {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .team-container {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
             }
         }
     </style>
@@ -501,9 +880,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <!-- <div class="logo-icon">CH</div> -->
                 <img src="favicon.png" alt="Logo" width="40" height="40" class="d-inline-block align-top">
-        COAHUB
+                DECODE CO-A
             </a>
 
             <button class="mobile-menu-btn">☰</button>
@@ -515,6 +893,7 @@
                 <a href="https://coa-discussion.vercel.app/" class="nav-link">Discussion</a>
                 <a href="books/indexbook.html" class="nav-link">NOTES</a>
                 <a href="simulation/simulation.html" class="nav-link">Simulation</a>
+                <a href="exams/index.html" class="nav-link">Exams</a>
                 <div class="nav-buttons">
                     <button class="nav-btn theme-toggle">🌓</button>
                 </div>
@@ -523,12 +902,11 @@
     </nav>
 
     <div class="menu-overlay"></div>
-    <!-- Scroll Progress Bar -->
 
     <section class="hero">
-        <h1>Welcome to COAHUB</h1>
+        <h1>Welcome to DECODE CO-A</h1>
         <p>Your comprehensive learning platform for Computer Organization and Architecture. Master the fundamentals of
-            computing systems through interactive lessons and practical examples.</p>
+            computing systems through interactive lessons, practical examples, and exam preparation resources.</p>
 
         <div class="cards-container">
             <a href="CO/index.html" class="card">
@@ -549,8 +927,70 @@
         </div>
     </section>
 
+    <section class="nav-preview">
+        <h2>Explore Our Resources</h2>
+        <div class="nav-preview-cards">
+            <div class="nav-preview-card">
+                <div class="preview-img">
+                    <img src="/api/placeholder/400/320" alt="Quiz Platform Preview">
+                </div>
+                <div class="preview-content">
+                    <h3>Interactive Quizzes</h3>
+                    <p>Test your knowledge with our comprehensive quiz platform designed to help you master CO-A concepts through practice.</p>
+                    <a href="http://127.0.0.1:5501/index.html" class="preview-link">Start Quiz →</a>
+                </div>
+            </div>
+
+            <div class="nav-preview-card">
+                <div class="preview-img">
+                    <img src="/api/placeholder/400/320" alt="Discussion Forum Preview">
+                </div>
+                <div class="preview-content">
+                    <h3>Discussion Forum</h3>
+                    <p>Join our community forum to discuss concepts, ask questions, and collaborate with fellow students and experts.</p>
+                    <a href="https://coa-discussion.vercel.app/" class="preview-link">Join Discussion →</a>
+                </div>
+            </div>
+
+            <div class="nav-preview-card">
+                <div class="preview-img">
+                    <img src="/api/placeholder/400/320" alt="Study Notes Preview">
+                </div>
+                <div class="preview-content">
+                    <h3>Study Notes</h3>
+                    <p>Access comprehensive study materials and notes covering all key topics in Computer Organization and Architecture.</p>
+                    <a href="books/indexbook.html" class="preview-link">View Notes →</a>
+                </div>
+            </div>
+
+            <div class="nav-preview-card">
+                <div class="preview-img">
+                    <img src="/api/placeholder/400/320" alt="Simulation Preview">
+                </div>
+                <div class="preview-content">
+                    <h3>Interactive Simulations</h3>
+                    <p>Visualize complex concepts through our interactive simulations that bring theoretical concepts to life.</p>
+                    <a href="simulation/simulation.html" class="preview-link">Try Simulations →</a>
+                </div>
+            </div>
+
+            <div class="nav-preview-card">
+                <!-- <div class="card-badge">NEW</div> -->
+                <div class="preview-img">
+                    <img src="/api/placeholder/400/320" alt="Exam Preparation Preview">
+                </div>
+                <div class="preview-content">
+                    <h3>Exam Preparation</h3>
+                    <p>Prepare for exams with our collection of past papers, practice tests, and exam-focused study materials.</p>
+                    <a href="exams/index.html" class="preview-link">Prepare for Exams →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="about">
-        <h2>Why Choose COAHUB?</h2>
+        <h2>Why Choose DECODE CO-A?</h2>
+        <p>Our platform is designed by experts in the field to make Computer Organization and Architecture accessible, engaging, and enjoyable for students at all levels.</p>
         <div class="features">
             <div class="feature">
                 <h3>Interactive Learning</h3>
@@ -571,10 +1011,90 @@
         </div>
     </section>
 
+    <section class="team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/400/320" alt="Team Member 1">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">ARYAN SINGH</h3>
+                    <p class="member-role">Developer</p>
+                    <div class="member-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/400/320" alt="Team Member 2">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">HIMANSHU SHARMA</h3>
+                    <p class="member-role">Developer</p>
+                    <div class="member-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/400/320" alt="Team Member 3">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">AHONA GHOSAL</h3>
+                    <p class="member-role">Developer</p>
+                    <div class="member-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/400/320" alt="Team Member 4">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Raushan Kumar</h3>
+                    <p class="member-role">Developer</p>
+                    <div class="member-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="team-mentor">
+                <div class="member-img">
+                    <img src="/api/placeholder/400/320" alt="Team Mentor">
+                </div>
+                <div class="member-info">
+                    <div class="mentor-badge">MENTOR</div>
+                    <h3 class="member-name">Swapan Shakari</h3>
+                    <p class="member-role">Computer Science Professor</p>
+                    <div class="member-social">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About COAHUB</h3>
+                <h3>About DECODE CO-A</h3>
                 <p>Dedicated to making computer organization and architecture learning accessible and engaging for
                     everyone.</p>
             </div>
@@ -586,26 +1106,31 @@
                 <p><a href="#">Contact</a></p>
             </div>
             <div class="footer-section">
+                <h3>Resources</h3>
+                <p><a href="http://127.0.0.1:5501/index.html">Quiz</a></p>
+                <p><a href="https://coa-discussion.vercel.app/">Discussion</a></p>
+                <p><a href="books/indexbook.html">Notes</a></p>
+                <p><a href="exams/index.html">Exams</a></p>
+            </div>
+            <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>Email: info@coahub.com</p>
-                <p>Support: support@coahub.com</p>
+                <p>Email: decodecoahelp@gmail.com</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 COAHUB. All rights reserved.</p>
+            <p>&copy; 2025 DECODE CO-A. All rights reserved.</p>
         </div>
     </footer>
     <script>
         // Particles.js configuration
-        // Particles.js configuration
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#FFD700' },  // Initial Gold Color
+                color: { value: '#4CAF50' },  // Initial Color
                 shape: { type: 'circle' },
                 opacity: { value: 0.5, random: false },
                 size: { value: 3, random: true },
-                line_linked: { enable: true, distance: 150, color: '#FFD700', opacity: 0.4, width: 1 },
+                line_linked: { enable: true, distance: 150, color: '#4CAF50', opacity: 0.4, width: 1 },
                 move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
             },
             interactivity: {
@@ -700,8 +1225,33 @@
             });
         }
 
-        // Run animation on page load
-        document.addEventListener('DOMContentLoaded', animateNavItems);
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature, .nav-preview-card, .team-member, .team-mentor');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        }
+
+        // Run animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            animateNavItems();
+            animateOnScroll();
+        });
     </script>
 </body>
 
