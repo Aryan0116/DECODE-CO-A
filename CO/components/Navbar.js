@@ -34,7 +34,7 @@ function Navbar() {
                     <div className="flex justify-between h-16">
                         <div className="flex items-center">
                         <div className="ml-3 mr-3">
-                                <img src="/favicon.png" alt="Logo" className="h-8 w-8" />
+                                <img src="https://github.com/Aryan0116/COA/blob/main/CO/favicon.png?raw=true" alt="Logo" className="h-8 w-8" />
                             </div>
                             <a href="#/" data-name="nav-logo" className="flex items-center">
                                 <i className="fas fa-book-open text-blue-600 text-2xl mr-2"></i>
