@@ -342,16 +342,15 @@
         }
 
         .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 80px 20px 0; /* Added top padding */
+    padding: 120px 20px 50px; /* Increased top padding to accommodate navbar */
     position: relative;
     overflow: hidden;
-    min-height: 600px; /* Ensures minimum height on small screens */
 }
 
         .hero::before {
@@ -473,14 +472,17 @@
         }
 
         .nav-preview-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: space-between;
-}
-
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .nav-preview-card {
+            flex: 1 1 280px; 
+            max-width: 300px; 
+        }
         .nav-preview-card {
             background: var(--card-bg);
             border-radius: 15px;
@@ -649,7 +651,10 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        .mentor-wrapper .team-mentor {
+    width: 100%;
+    max-width: 300px; 
+}
         .team-member {
             background: var(--card-bg);
             border-radius: 15px;
@@ -669,6 +674,18 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+        .mentor-wrapper {
+            grid-column: 1/-1 ; 
+            display: flex;
+            justify-content: center;
+        }
+        /* .team-mentor{
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        } */
         .team-mentor:hover{
             transform: translateY(-5px);
             box-shadow: var(--card-hover-shadow);
@@ -760,7 +777,42 @@
             margin-top: 50px;
             position: relative;
         }
+        @media (max-width: 768px) {
+    .hero {
+        padding-top: 100px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .nav-preview-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+    }
+}
 
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+}
         .footer::before {
             content: '';
             position: absolute;
@@ -889,11 +941,11 @@
             <div class="nav-links">
                 <button class="close-menu">✕</button>
                 <a href="#" class="nav-link">Home</a>
-                <a href="http://127.0.0.1:5501/index.html" class="nav-link">QUIZ</a>
+                <a href="https://decodecoa-quizee.vercel.app/" class="nav-link">Quiz</a>
                 <a href="https://coa-discussion.vercel.app/" class="nav-link">Discussion</a>
-                <a href="books/indexbook.html" class="nav-link">NOTES</a>
+                <a href="books/indexbook.html" class="nav-link">Notes</a>
                 <a href="simulation/simulation.html" class="nav-link">Simulation</a>
-                <a href="exams/index.html" class="nav-link">Exams</a>
+                <a href="https://decodecoa-exam.vercel.app/" class="nav-link">Exams</a>
                 <div class="nav-buttons">
                     <button class="nav-btn theme-toggle">🌓</button>
                 </div>
@@ -932,18 +984,18 @@
         <div class="nav-preview-cards">
             <div class="nav-preview-card">
                 <div class="preview-img">
-                    <img src="/api/placeholder/400/320" alt="Quiz Platform Preview">
+                    <img src="quiz.png" alt="Quiz Platform Preview">
                 </div>
                 <div class="preview-content">
                     <h3>Interactive Quizzes</h3>
                     <p>Test your knowledge with our comprehensive quiz platform designed to help you master CO-A concepts through practice.</p>
-                    <a href="http://127.0.0.1:5501/index.html" class="preview-link">Start Quiz →</a>
+                    <a href="https://decodecoa-quizee.vercel.app/" class="preview-link">Start Quiz →</a>
                 </div>
             </div>
 
             <div class="nav-preview-card">
                 <div class="preview-img">
-                    <img src="/api/placeholder/400/320" alt="Discussion Forum Preview">
+                    <img src="discussion.png" alt="Discussion Forum Preview">
                 </div>
                 <div class="preview-content">
                     <h3>Discussion Forum</h3>
@@ -954,7 +1006,7 @@
 
             <div class="nav-preview-card">
                 <div class="preview-img">
-                    <img src="/api/placeholder/400/320" alt="Study Notes Preview">
+                    <img src="notes.png" alt="Study Notes Preview">
                 </div>
                 <div class="preview-content">
                     <h3>Study Notes</h3>
@@ -965,7 +1017,7 @@
 
             <div class="nav-preview-card">
                 <div class="preview-img">
-                    <img src="/api/placeholder/400/320" alt="Simulation Preview">
+                    <img src="simulation.png" alt="Simulation Preview">
                 </div>
                 <div class="preview-content">
                     <h3>Interactive Simulations</h3>
@@ -977,12 +1029,12 @@
             <div class="nav-preview-card">
                 <!-- <div class="card-badge">NEW</div> -->
                 <div class="preview-img">
-                    <img src="/api/placeholder/400/320" alt="Exam Preparation Preview">
+                    <img src="exam.png" alt="Exam Preparation Preview">
                 </div>
                 <div class="preview-content">
                     <h3>Exam Preparation</h3>
                     <p>Prepare for exams with our collection of past papers, practice tests, and exam-focused study materials.</p>
-                    <a href="exams/index.html" class="preview-link">Prepare for Exams →</a>
+                    <a href="https://decodecoa-exam.vercel.app/" class="preview-link">Prepare for Exams →</a>
                 </div>
             </div>
         </div>
@@ -1072,7 +1124,7 @@
                     </div>
                 </div>
             </div>
-
+            <div class="mentor-wrapper">
             <div class="team-mentor">
                 <div class="member-img">
                     <img src="/api/placeholder/400/320" alt="Team Mentor">
@@ -1087,7 +1139,7 @@
                         <a href="#" class="social-link"><i class="fas fa-globe"></i></a>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
     </section>
 

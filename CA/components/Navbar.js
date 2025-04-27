@@ -3,6 +3,7 @@ function Navbar() {
         const { user, logout, guestProgress } = React.useContext(AuthContext);
         const { theme, toggleTheme } = React.useContext(ThemeContext);
         const [dropdownOpen, setDropdownOpen] = React.useState(false);
+        const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
         
         const calculateOverallProgress = () => {
             if (user) {
@@ -28,37 +29,55 @@ function Navbar() {
             };
         }, [dropdownOpen]);
 
+        // Close mobile menu when clicking outside
+        React.useEffect(() => {
+            const handleClickOutside = (event) => {
+                if (mobileMenuOpen && !event.target.closest('[data-name="mobile-menu-button"]') && !event.target.closest('[data-name="mobile-menu"]')) {
+                    setMobileMenuOpen(false);
+                }
+            };
+            
+            document.addEventListener('click', handleClickOutside);
+            return () => {
+                document.removeEventListener('click', handleClickOutside);
+            };
+        }, [mobileMenuOpen]);
+
         return (
             <nav data-name="navbar" className="bg-theme-secondary shadow-theme">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="flex justify-between h-16">
+                        {/* Logo and Title */}
                         <div className="flex items-center">
-                        <div className="ml-3 mr-3">
+                            <div className="ml-3 mr-3">
                                 <img src="https://github.com/Aryan0116/COA/blob/main/CO/favicon.png?raw=true" alt="Logo" className="h-8 w-8" />
                             </div>
                             <a href="#/" data-name="nav-logo" className="flex items-center">
                                 <i className="fas fa-book-open text-blue-600 text-2xl mr-2"></i>
-                                <span className="font-bold text-xl text-theme-primary">COMPUTER ORGANIZATION</span>
+                                <span className="font-bold text-xl text-theme-primary hidden sm:inline">COMPUTER ARCHITECTURE</span>
+                                <span className="font-bold text-xl text-theme-primary sm:hidden">CA</span>
                             </a>
-                            {/* Added Home Button
-                            <a 
-                                href="/COA/" 
-                                data-name="nav-home" 
-                                className="ml-6 flex items-center text-theme-primary hover:text-blue-600"
-                            >
-                                <i className="fas fa-home mr-1"></i>
-                                <span className="font-medium">Home</span>
-                            </a> */}
                         </div>
-                        <div className="flex items-center">
+
+                        {/* Mobile Menu Button */}
+                        <div className="flex items-center md:hidden">
+                            <button 
+                                data-name="mobile-menu-button"
+                                className="text-theme-primary hover:text-blue-600 p-2"
+                                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                                aria-label="Toggle mobile menu"
+                            >
+                                <i className={`fas ${mobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+                            </button>
+                        </div>
+
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex items-center">
                             <div data-name="nav-progress" className="mr-4">
                                 <span className="text-theme-secondary">Overall Progress:</span>
                                 <span className="ml-2 font-semibold text-blue-600">{overallProgress}%</span>
                             </div>
                             <ThemeToggle />
-                            
-                            {/* Added Favicon image */}
-                            
                             
                             {user ? (
                                 <div className="relative ml-3">
@@ -75,7 +94,7 @@ function Navbar() {
                                                     user.name.charAt(0).toUpperCase()
                                                 )}
                                             </div>
-                                            <span className="ml-2 text-theme-primary hidden md:block">{user.name}</span>
+                                            <span className="ml-2 text-theme-primary">{user.name}</span>
                                             <i className="fas fa-chevron-down ml-1 text-xs text-theme-secondary"></i>
                                         </div>
                                     </button>
@@ -105,19 +124,75 @@ function Navbar() {
                                 </div>
                             )}
                             
-                            {/* Added Home button to rightmost position */}
+                            {/* DECODE CO-A button */}
                             <a 
-                                href="https://www.coahub.in" 
+                                href="https://aryan0116.github.io/DECODE-CO-A/" 
                                 data-name="nav-coahub" 
                                 className="ml-4 flex items-center bg-green-500 text-white px-3 py-2 rounded-md hover:bg-pink-600"
-                                target="_blank"
-                                rel="noopener noreferrer"
                             >
                                 <i className="fas fa-external-link-alt mr-1"></i>
-                                <span className="font-medium">COAHub</span>
+                                <span className="font-medium">DECODE CO-A</span>
                             </a>
                         </div>
                     </div>
+                    
+                    {/* Mobile Menu */}
+                    {mobileMenuOpen && (
+                        <div data-name="mobile-menu" className="md:hidden pb-3 pt-2 border-t border-gray-200 dark:border-gray-700">
+                            <div className="px-4 py-2 flex justify-between items-center">
+                                <div data-name="nav-progress">
+                                    <span className="text-theme-secondary">Progress:</span>
+                                    <span className="ml-2 font-semibold text-blue-600">{overallProgress}%</span>
+                                </div>
+                                <ThemeToggle />
+                            </div>
+                            
+                            {user ? (
+                                <div className="px-4 py-2">
+                                    <div className="flex items-center mb-3">
+                                        <div className="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white overflow-hidden">
+                                            {user.avatar ? (
+                                                <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                                            ) : (
+                                                user.name.charAt(0).toUpperCase()
+                                            )}
+                                        </div>
+                                        <span className="ml-2 text-theme-primary font-medium">{user.name}</span>
+                                    </div>
+                                    <a href="#/profile" className="block w-full text-left mb-2 px-4 py-2 text-sm text-theme-primary bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600">
+                                        <i className="fas fa-user mr-2"></i>Profile
+                                    </a>
+                                    <button 
+                                        onClick={logout}
+                                        className="block w-full text-left px-4 py-2 text-sm text-theme-primary bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600"
+                                    >
+                                        <i className="fas fa-sign-out-alt mr-2"></i>Logout
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="px-4 py-2 flex flex-col space-y-2">
+                                    <a href="#/login" className="block w-full text-center px-4 py-2 text-theme-primary bg-gray-100 dark:bg-gray-700 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600">
+                                        <i className="fas fa-sign-in-alt mr-2"></i>Login
+                                    </a>
+                                    <a href="#/register" className="block w-full text-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                                        <i className="fas fa-user-plus mr-2"></i>Register
+                                    </a>
+                                </div>
+                            )}
+                            
+                            {/* Mobile DECODE CO-A button */}
+                            <div className="px-4 py-2 mt-2">
+                                <a 
+                                    href="https://aryan0116.github.io/DECODE-CO-A/" 
+                                    data-name="nav-coahub" 
+                                    className="flex items-center justify-center bg-green-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 w-full"
+                                >
+                                    <i className="fas fa-external-link-alt mr-2"></i>
+                                    <span className="font-medium">DECODE CO-A</span>
+                                </a>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </nav>
         );
