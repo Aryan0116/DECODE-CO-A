@@ -4,7 +4,7 @@ function Chatbot() {
     const [messages, setMessages] = React.useState([
       {
         type: 'bot',
-        content: 'Hey there! How can I help with your Computer Organization questions today?',
+        content: 'Hey there! How can I help with your Computer Architecture questions today?',
         thinking: false
       }
     ]);

@@ -14,6 +14,26 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
             // Then update parent state
             onToggleComplete();
         };
+
+        // Scroll to top with animation function
+        const scrollToTop = (e) => {
+            e.preventDefault();
+            
+            // Get the target href from the anchor
+            const targetHref = e.currentTarget.getAttribute('href');
+            
+            // Scroll to top with smooth animation
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Wait for animation to complete before changing route
+            setTimeout(() => {
+                window.location.hash = targetHref.substring(1); // Remove the # from the href
+            }, 500); // 500ms delay to allow smooth scrolling to finish
+        };
+        
         const renderMedia = () => {
         const mediaElements = [];
         let mediaIndex = 0;
@@ -62,7 +82,7 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
                             <h3 className="text-lg font-semibold mb-2 text-theme-primary">Watch on YouTube</h3>
                             <div className="relative w-full" style={{ paddingBottom: "56.25%", position: "relative", height: 0 }}>
                                 <iframe
-                                    src={`https://www.youtube.com/embed/$${new URL(yt.url).searchParams.get("v")}`}
+                                    src={`https://www.youtube.com/embed/${new URL(yt.url).searchParams.get("v")}`}
                                     title={yt.title}
                                     frameBorder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -71,16 +91,16 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
                                 ></iframe>
                             </div>
                         </div>
-                    )
+                    );
                     mediaIndex++;
-                })
+                });
             } else {
                 mediaElements.push(
                     <div key={`youtube-${mediaIndex}`} className="mt-6">
                         <h3 className="text-lg font-semibold mb-2 text-theme-primary">Watch on YouTube</h3>
                         <div className="relative w-full" style={{ paddingBottom: "56.25%", position: "relative", height: 0 }}>
                             <iframe
-                                src={`https://www.youtube.com/embed/$${new URL(topic.youtube.url).searchParams.get("v")}`}
+                                src={`https://www.youtube.com/embed/${new URL(topic.youtube.url).searchParams.get("v")}`}
                                 title={topic.youtube.title}
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -183,8 +203,6 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
     </div>
 )}
 
-
-
                         {/* Table (if available) */}
                         {topic.table && typeof topic.table === "object" && (() => {
   // Check if it's a single table (has headers and rows directly)
@@ -275,12 +293,13 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
                         )}
                     </div>
                     
-                    {/* Navigation buttons */}
+                    {/* Navigation buttons with scroll to top functionality */}
                     <div className="mt-8 flex justify-between">
                         {prevTopic ? (
                             <a 
                                 href={`#/topic/${prevTopic.id}`}
                                 className="flex items-center px-4 py-2 bg-gray-200 dark:bg-gray-700 text-theme-primary rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                                onClick={scrollToTop}
                             >
                                 <i className="fas fa-arrow-left mr-2"></i>
                                 Previous: {prevTopic.title.length > 20 ? prevTopic.title.substring(0, 20) + '...' : prevTopic.title}
@@ -293,6 +312,7 @@ function TopicDetail({ topic, isCompleted, onToggleComplete, nextTopic, prevTopi
                             <a 
                                 href={`#/topic/${nextTopic.id}`}
                                 className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors ml-auto"
+                                onClick={scrollToTop}
                             >
                                 Next: {nextTopic.title.length > 20 ? nextTopic.title.substring(0, 20) + '...' : nextTopic.title}
                                 <i className="fas fa-arrow-right ml-2"></i>

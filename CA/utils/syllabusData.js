@@ -377,11 +377,11 @@ const initialSyllabusData = [
         url: "https://example.com/instruction-arithmetic-pipeline-diagram.png",
         alt: "Diagram illustrating instruction and arithmetic pipelines"
     },
-    video: {
-        url: "instruction-arithmetic-pipeline.mp4",
-        type: "mp4",
-        alt: "Detailed video on Instruction and Arithmetic Pipelines"
-    },
+    // video: {
+    //     url: "instruction-arithmetic-pipeline.mp4",
+    //     type: "mp4",
+    //     alt: "Detailed video on Instruction and Arithmetic Pipelines"
+    // },
     youtube: {
         title: "Comprehensive Guide to Instruction and Arithmetic Pipelines",
         url: "https://www.youtube.com/watch?v=QU7wib_jyEM"
