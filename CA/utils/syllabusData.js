@@ -17,16 +17,18 @@ const initialSyllabusData = [
           "Explore the bus system and its crucial role in data transfer"
         ],
         keyPoints: [
-          "Computer architecture defines how hardware and software interact to execute tasks efficiently.",
-          "The CPU consists of the ALU, Control Unit, and Registers, which together manage data processing and control flow.",
-          "Primary memory (RAM) is volatile, providing fast access to active data, while secondary memory like SSDs and hard drives offer long-term storage.",
-          "Cache memory enhances performance by storing frequently accessed data closer to the CPU, reducing latency.",
-          "Von Neumann architecture uses a single memory space for instructions and data, enabling flexible program execution.",
-          "The instruction cycle includes fetching, decoding, and executing instructions, forming the backbone of CPU operations.",
-          "Buses (Data Bus, Address Bus, Control Bus) facilitate communication between the CPU, memory, and I/O devices."
+          "The CPU performs computations and controls the operations of other components.",
+      "Memory hierarchy (registers, cache, main memory) optimizes performance by reducing access time.",
+      "Pipelining allows multiple instruction stages to operate concurrently, improving throughput.",
+      "RISC simplifies the instruction set for faster execution and efficiency.",
+      "CISC includes more complex instructions to do more per command.",
+      "Instruction Set Architecture (ISA) acts as the interface between software and hardware.",
+      "Performance can be improved through parallelism and better memory management.",
+      "Cache coherence and synchronization are vital in multiprocessor systems."
+          
         ],
         image: {
-          url: "https://example.com/computer-architecture-diagram.png",
+          url: "https://images.edrawsoft.com/articles/block-diagram-of-computer/block-diagram-of-a-computer.png",
           alt: "Detailed diagram showing CPU, memory, and I/O device interactions"
         },
         video: {
@@ -36,13 +38,13 @@ const initialSyllabusData = [
         },
         youtube: {
           title: "Deep Dive into Computer Architecture",
-          url: "https://www.youtube.com/watch?v=1I5ZMmrOfnA"
+          url: "https://www.youtube.com/watch?v=6_PHIL4LZEU"
         },
-        video: {
+        /*video: {
           url: "media/topic1_ca1.mp4",
           type: "mp4",
           alt: "Comprehensive Computer Architecture Overview Video"
-        },
+        },*/
         table: {
           headers: ["Component", "Description", "Importance"],
           rows: [
@@ -60,17 +62,13 @@ const initialSyllabusData = [
         },
         additionalResources: [
           {
-            title: "Comprehensive Guide to Computer Architecture",
-            url: "https://www.computerarchitectureguide.com/"
-          },
-          {
-            title: "MIT OpenCourseWare - Computer System Design",
-            url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures/"
-          },
-          {
-            title: "Harvard CS50 - Computer Science Fundamentals",
-            url: "https://cs50.harvard.edu/"
-          }
+            title: "Computer Architecture - Wikipedia",
+            url: "https://en.wikipedia.org/wiki/Computer_architecture"
+        },
+        {
+            title: "MIT OpenCourseWare - Computer Architecture",
+            url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-spring-2017/"
+        }
         ]
       },
       {
@@ -96,7 +94,7 @@ const initialSyllabusData = [
           "Cost-performance analysis ensures that system enhancements align with budget constraints and desired outcomes."
         ],
         image: {
-          url: "https://example.com/quantitative-techniques-diagram.png",
+          url: "https://i0.wp.com/revisesociology.com/wp-content/uploads/2017/11/quantitative-research-stages1.png?resize=689%2C1525&ssl=1",
           alt: "Diagram illustrating quantitative techniques in computer design"
         },
         // video: {
@@ -121,21 +119,18 @@ const initialSyllabusData = [
         },
         additionalResources: [
           {
-            title: "Quantitative Approach to Computer System Design",
-            url: "https://www.computerdesignquantitative.com/"
+            title: "Computer Architecture: A Quantitative Approach (PDF)",
+            url: "https://acs.pub.ro/~cpop/SMPA/Computer%20Architecture%20A%20Quantitative%20Approach%20%285th%20edition%29.pdf"
           },
           {
-            title: "MIT OpenCourseWare - Performance Engineering",
-            url: "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-172-performance-engineering/"
+           title: "MIT OpenCourseWare - Performance Engineering of Software Systems",
+            url: "https://ocw.mit.edu/courses/6-172-performance-engineering-of-software-systems-fall-2018/"
           },
           {
-            title: "Stanford CS - Computer Architecture",
-            url: "https://cs.stanford.edu/"
-          },
-          {
-            title: "Carnegie Mellon University - Computer Systems",
-            url: "https://cs.cmu.edu/"
+            title : "Stanford EE282: Computer Systems Architecture",
+            url: "https://web.stanford.edu/class/ee282/"
           }
+         
         ]
       },
       {
@@ -161,14 +156,14 @@ const initialSyllabusData = [
           "Performance bottlenecks can be identified and addressed through proper measurement."
         ],
         image: {
-          url: "https://example.com/performance-measurement-diagram.png",
+          url: "https://www.cutter.com/sites/default/files/architecture/fulltext/reports/2015/02/index/ear1502fig12.gif",
           alt: "Diagram illustrating performance measurement and reporting"
         },
-        video: {
+       /* video: {
           url: "performance-measurement.mp4",
           type: "mp4",
           alt: "Introduction to Performance Measurement Video"
-        },
+        },*/
         youtube: {
           title: "Measuring and Reporting Performance in Computer Systems",
           url: " https://www.youtube.com/watch?v=5ayaVunXFUY "
@@ -186,21 +181,17 @@ const initialSyllabusData = [
       },
       additionalResources: [
         {
-          title: "Performance Measurement Techniques",
-          url: "https://www.performancemeasurement.com/"
+          title: "Performance of Computer in Computer Organization – GeeksforGeeks",
+          url: "https://www.geeksforgeeks.org/computer-organization-performance-of-computer/"
         },
         {
-          title: "MIT OpenCourseWare - System Performance",
-          url: "https://ocw.mit.edu/courses/system-performance/"
+          title: "Performance Metrics – Computer Architecture – University of Maryland",
+          url: "https://www.cs.umd.edu/~meesh/411/CA-online/chapter/performance-metrics/index.html"
         },
         {
-          title: "Stanford CS - Performance Analysis",
-          url: "https://cs.stanford.edu/performance-analysis/"
-        },
-        {
-          title: "Carnegie Mellon University - Performance Engineering",
-          url: "https://cs.cmu.edu/performance-engineering/"
-        }
+            title: "Measuring and Reporting Performance of Benchmarks – University of Maryland",
+            url: "https://www.cs.umd.edu/~meesh/411/website/projects/morebenchmarks/measure.html"
+          }
       ]
   },
   {
@@ -229,14 +220,14 @@ const initialSyllabusData = [
       "Vectorization enables parallel processing of data, utilizing modern CPU capabilities for faster computations."
     ],
     image: {
-      url: "https://example.com/compiler-optimization-diagram.png",
+      url: "https://miro.medium.com/v2/resize%3Afit%3A1024/1%2AYwKWGQlVE7JRWPY9DJTR5g.png",
       alt: "Diagram illustrating compiler optimization techniques"
     },
-    video: {
+    /*video: {
       url: "compiler-optimization.mp4",
       type: "mp4",
       alt: "Introduction to Compiler Techniques Video"
-    },
+    },*/
     youtube: {
       title: "Compiler Optimization Techniques Explained",
       url: "https://www.youtube.com/watch?v=ljrEMCbjaeE"
@@ -257,28 +248,12 @@ const initialSyllabusData = [
     },
     additionalResources: [
       {
-        title: "Compiler Optimization Techniques",
-        url: "https://www.compileroptimization.com/"
+        title: "Code Optimization in Compiler Design – GeeksforGeeks",
+        url: "https://www.geeksforgeeks.org/code-optimization-in-compiler-design/"
       },
       {
-        title: "MIT OpenCourseWare - Advanced Compiler Design",
-        url: "https://ocw.mit.edu/courses/compiler-design/"
-      },
-      {
-        title: "Stanford CS - Compiler Construction",
-        url: "https://cs.stanford.edu/compiler-construction/"
-      },
-      {
-        title: "Carnegie Mellon University - Compiler Engineering",
-        url: "https://cs.cmu.edu/compiler-engineering/"
-      },
-      {
-        title: "LLVM Project - Compiler Infrastructure",
-        url: "https://llvm.org/"
-      },
-      {
-        title: "GCC Compiler Optimization Options",
-        url: "https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html"
+        title: "CS262A Berkeley - Compiler Design Project Report",
+        url: "https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F18/projects/reports/project2_report_ver3.pdf"
       }
     ]
   }
@@ -314,14 +289,14 @@ const initialSyllabusData = [
         "Modern CPUs implement techniques like out-of-order execution and speculative execution to optimize pipelining."
     ],
     image: {
-        url: "https://example.com/pipelining-diagram.png",
+        url: "https://miro.medium.com/v2/resize%3Afit%3A600/1%2AsMPldPSHvPr1OKLJD99OQA.jpeg",
         alt: "Diagram illustrating the stages of instruction pipelining"
     },
-    video: {
+  /*  video: {
         url: "pipelining-concepts.mp4",
         type: "mp4",
         alt: "Video on Pipelining Basics"
-    },
+    },*/
     youtube: {
         title: "Pipelining in Computer Architecture",
         url: " https://www.youtube.com/watch?v=nv0yAm5gc-E"
@@ -338,20 +313,21 @@ const initialSyllabusData = [
         ]
     },
     additionalResources: [
-        {
-            title: "Pipelining in Computer Architecture - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/pipelining-in-computer-architecture/"
-        },
-        {
-            title: "Understanding Pipeline Hazards",
-            url: "https://www.example.com/pipeline-hazards"
-        },
-        {
-            title: "Advanced Pipelining Techniques",
-            url: "https://www.example.com/advanced-pipelining"
-        }
+      {
+        title: "Pipelining in Computer Architecture – GeeksforGeeks",
+        url: "https://www.geeksforgeeks.org/pipelined-architecture-with-its-diagram/"
+      },
+      {
+        title: "Computer Organization – Pipelining – TutorialsPoint",
+        url: "https://www.tutorialspoint.com/what-is-pipelining-in-computer-architecture"
+      },
+      {
+        title: "Pipelining: Hazards and Performance – NPTEL",
+        url: "https://nptel.ac.in/courses/106102062"
+      }
     ]
-        },
+  },
+
         {
           id: "topic6",
           title: "Instruction and arithmetic pipeline",
@@ -374,7 +350,7 @@ const initialSyllabusData = [
         "Modern processors often combine pipelining with advanced techniques like out-of-order execution and speculative execution to further optimize efficiency."
     ],
     image: {
-        url: "https://example.com/instruction-arithmetic-pipeline-diagram.png",
+        url: "https://sdmntpreastus2.oaiusercontent.com/files/00000000-6f20-61f6-a8f0-09a2bdecc7bd/raw?se=2025-05-02T11%3A06%3A39Z&sp=r&sv=2024-08-04&sr=b&scid=24d9e832-1982-53b5-9469-6ee188ae0a19&skoid=ac1d63ad-0c69-4017-8785-7a50eb04382c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T09%3A20%3A52Z&ske=2025-05-03T09%3A20%3A52Z&sks=b&skv=2024-08-04&sig=B9yTX87Y11bcdshqoEgXBYftcQyBvsR3UZuH9tP1qio%3D",
         alt: "Diagram illustrating instruction and arithmetic pipelines"
     },
     // video: {
@@ -395,24 +371,17 @@ const initialSyllabusData = [
         ]
     },
     additionalResources: [
-        {
-            title: "In-depth Study on Instruction and Arithmetic Pipelines - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/instruction-and-arithmetic-pipelines/"
-        },
-        {
-            title: "Pipeline Architecture in Modern Computer Systems",
-            url: "https://www.example.com/pipeline-architecture"
-        },
-        {
-            title: "Advanced Pipeline Techniques and Optimization",
-            url: "https://www.example.com/advanced-pipeline-techniques"
-        },
-        {
-            title: "Computer Organization and Design - Instruction Pipelining",
-            url: "https://www.example.com/instruction-pipelining"
-        }
+      {
+        title: "TutorialsPoint – Arithmetic Pipeline in Computer Architecture",
+        url: "https://www.tutorialspoint.com/what-is-arithmetic-pipeline-in-computer-architecture"
+    },
+    {
+        title: "GeeksforGeeks – Arithmetic Pipeline and Instruction Pipeline",
+        url: "https://www.geeksforgeeks.org/arithmetic-pipeline-and-instruction-pipeline/"
+    }
     ]
         },
+
         {
           id: "topic7",
           title: "Data hazards, control hazards and structural hazards",
@@ -428,20 +397,25 @@ const initialSyllabusData = [
     ],
     keyPoints: [
         "Data Hazards occur when instructions depend on the results of previous instructions still in the pipeline.",
-        "Control Hazards arise from branch instructions that alter the flow of execution, causing delays in instruction fetching.",
-        "Structural Hazards happen when different instructions require the same hardware resource simultaneously.",
-        "Techniques like forwarding, stalling, and branch prediction help mitigate the effects of hazards.",
-        "Efficient hazard resolution increases pipeline throughput and overall CPU performance."
+"Control Hazards arise from branch instructions that alter the flow of execution, causing delays in instruction fetching.",
+"Structural Hazards happen when different instructions require the same hardware resource simultaneously.",
+"Techniques like forwarding, stalling, and branch prediction help mitigate the effects of hazards.",
+"Efficient hazard resolution increases pipeline throughput and overall CPU performance.",
+"There are three types of data hazards: Read After Write (RAW), Write After Read (WAR), and Write After Write (WAW).",
+"Pipeline stalls (also called bubbles) are intentional delays introduced to resolve hazards safely.",
+"Control hazards are often reduced using branch prediction and speculative execution.",
+"Out-of-order execution can help reduce the impact of data hazards by allowing independent instructions to proceed.",
+"Modern CPUs use complex scheduling logic to detect and resolve hazards dynamically during execution."
     ],
     image: {
-        url: "https://example.com/hazards-diagram.png",
+        url: "https://res.cloudinary.com/witspry/image/upload/witscad/public/content/courses/computer-architecture/structural-dependency-scenario.png",
         alt: "Diagram illustrating different types of pipeline hazards"
     },
-    video: {
+   /* video: {
         url: "pipeline-hazards.mp4",
         type: "mp4",
         alt: "Detailed video on Data, Control, and Structural Hazards"
-    },
+    },*/
     youtube: {
         title: "Pipeline Hazards Explained",
         url: " https://www.youtube.com/watch?v=8yxrT1isnpE "
@@ -456,22 +430,18 @@ const initialSyllabusData = [
         ]
     },
     additionalResources: [
-        {
-            title: "Comprehensive Guide to Pipeline Hazards - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/pipeline-hazards-in-computer-architecture/"
-        },
-        {
-            title: "Hazard Detection and Resolution Techniques",
-            url: "https://www.example.com/hazard-detection"
-        },
-        {
-            title: "Advanced Methods for Minimizing Pipeline Stalls",
-            url: "https://www.example.com/pipeline-optimization"
-        },
-        {
-            title: "Computer Architecture: Pipeline Hazards and Solutions",
-            url: "https://www.example.com/pipeline-hazards-solutions"
-        }
+      {
+        title: "Wikipedia – Hazard (Computer Architecture)",
+        url: "https://en.wikipedia.org/wiki/Hazard_(computer_architecture)"
+    },
+    {
+        title: "CSBranch – Pipeline Hazards: Data, Control, Structural",
+        url: "https://csbranch.com/index.php/2024/09/07/pipeline-hazards-data-control-structural/"
+    },
+    {
+        title: "GeeksforGeeks – Pipelining: Dependencies and Data Hazards",
+        url: "https://www.geeksforgeeks.org/computer-organization-and-architecture-pipelining-set-2-dependencies-and-data-hazard/"
+    }
     ]
         },
         {
@@ -500,14 +470,14 @@ const initialSyllabusData = [
         "Hazard Detection Units identify and manage potential hazards in real-time, maintaining efficient operation."
     ],
     image: {
-        url: "https://example.com/hazard-handling-diagram.png",
+        url: "https://sdmntprwestus2.oaiusercontent.com/files/00000000-a998-61f8-894c-db2627e1615a/raw?se=2025-05-02T12%3A53%3A27Z&sp=r&sv=2024-08-04&sr=b&scid=da1feb6e-b57a-5b66-8fe2-56dfc674f32d&skoid=b53ae837-f585-4db7-b46f-2d0322fce5a9&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T02%3A47%3A58Z&ske=2025-05-03T02%3A47%3A58Z&sks=b&skv=2024-08-04&sig=TLcrTfPOhllB3x37joDVgr3YBzszkXdVb6UNW5s6JGc%3D",
         alt: "Diagram showing techniques for handling pipeline hazards"
     },
-    video: {
+  /*  video: {
         url: "hazard-handling.mp4",
         type: "mp4",
         alt: "In-depth video on techniques for handling hazards"
-    },
+    },*/
     youtube: {
         title: "Handling Pipeline Hazards Effectively",
         url: " https://www.youtube.com/watch?v=Gp2cwH740O0 "
@@ -524,22 +494,14 @@ const initialSyllabusData = [
         ]
     },
     additionalResources: [
-        {
-            title: "Techniques for Pipeline Hazard Resolution - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/techniques-for-pipeline-hazard-resolution/"
-        },
-        {
-            title: "Effective Methods for Handling Pipeline Hazards",
-            url: "https://www.example.com/hazard-handling-methods"
-        },
-        {
-            title: "Advanced Pipeline Optimization Techniques",
-            url: "https://www.example.com/pipeline-optimization"
-        },
-        {
-            title: "Computer Architecture: Hazard Handling Strategies",
-            url: "https://www.example.com/hazard-strategies"
-        }
+      {
+        title: "Advanced Pipeline Optimization Techniques",
+        url: "https://en.wikipedia.org/wiki/Hazard_(computer_architecture)"
+    },
+    {
+        title: "Computer Architecture: Hazard Handling Strategies",
+        url: "https://www.geeksforgeeks.org/data-hazards-and-its-handling-methods/"
+    }
     ]
         },
         {
@@ -581,14 +543,14 @@ const initialSyllabusData = [
         "Minimizing exception overhead requires optimizing detection and resolution mechanisms."
     ],
     image: {
-        url: "https://example.com/exception-handling-diagram.png",
+        url: "https://image1.slideserve.com/2770623/exception-handling-l.jpg",
         alt: "Diagram showing exception handling flow"
     },
-    video: {
+    /*video: {
         url: "exception-handling.mp4",
         type: "mp4",
         alt: "In-depth video on exception handling mechanisms"
-    },
+    },*/
     youtube: {
         title: "Exception Handling in Computer Systems",
 url: "https://www.youtube.com/watch?v=mfFEKcKUpUE&t=434s"
@@ -604,22 +566,18 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Exception Handling in Modern Processors - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/exception-handling-in-computer-architecture/"
-        },
-        {
-            title: "Understanding Interrupts and Exceptions",
-            url: "https://www.example.com/interrupts-exceptions"
-        },
-        {
-            title: "Advanced Exception Management Techniques",
-            url: "https://www.example.com/advanced-exceptions"
-        },
-        {
-            title: "Computer Architecture: Exception Handling Strategies",
-            url: "https://www.example.com/exception-strategies"
-        }
+      {
+        title: "Understanding Interrupts and Exceptions",
+        url: "https://www.geeksforgeeks.org/interrupts-and-exceptions/"
+      },
+      {
+        title: "Advanced Exception Management Techniques",
+        url: "https://library.fiveable.me/advanced-computer-architecture/unit-3/exception-handling-pipelined-processors/study-guide/ulz8mSCscBUvbxNp"
+      },
+      {
+        title: "Computer Architecture: Exception Handling Strategies",
+        url: "https://en.wikipedia.org/wiki/Exception_handling"
+      }
     ]
         },
         {
@@ -656,14 +614,14 @@ title: "Exception Types Table",
         "Case studies of modern CPUs showcase successful pipeline optimization strategies."
     ],
     image: {
-        url: "https://example.com/pipeline-optimization-diagram.png",
+        url: "https://kanerika.com/wp-content/uploads/2024/05/Best-Data-Pipeline-Optimization-Strategies-visual-selection.svg",
         alt: "Diagram illustrating various pipeline optimization techniques"
     },
-    video: {
+   /* video: {
         url: "pipeline-optimization.mp4",
         type: "mp4",
         alt: "Detailed video on pipeline optimization methods"
-    },
+    },*/
     youtube: {
         title: "Pipeline Optimization Techniques Explained",
         url: " https://www.youtube.com/watch?v=mUBkoy0hRWc"
@@ -680,22 +638,14 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Pipeline Optimization Techniques - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/pipeline-optimization/"
-        },
-        {
-            title: "Advanced CPU Pipeline Strategies",
-            url: "https://www.example.com/cpu-pipeline-strategies"
-        },
-        {
-            title: "Modern Processor Design and Optimization",
-            url: "https://www.example.com/processor-optimization"
-        },
-        {
-            title: "Pipeline Efficiency and Performance Analysis",
-            url: "https://www.example.com/pipeline-performance"
-        }
+      {
+        title: "Advanced Pipeline Optimization Techniques – Fiveable",
+        url: "https://library.fiveable.me/advanced-computer-architecture/unit-3/advanced-pipeline-optimizations/study-guide/SKbZn9MIPRm2U1bQ"
+      },
+      {
+        title: "Pipeline Optimization Techniques – Medium",
+        url: "https://medium.com/@deepak.jayabalan/pipeline-optimization-techniques-eb11b48ce941"
+      }
     ]
         }
       ],
@@ -739,14 +689,14 @@ title: "Exception Types Table",
               "Understanding memory properties helps in designing efficient computer systems."
           ],
           image: {
-              url: "https://example.com/memory-hierarchy-diagram.png",
+              url: "https://media.geeksforgeeks.org/wp-content/uploads/20250111112435920586/Memory-Hierarchy-Design.web",
               alt: "Diagram illustrating memory hierarchy and its properties"
           },
-          video: {
+          /*video: {
               url: "memory-hierarchy.mp4",
               type: "mp4",
               alt: "Detailed video on hierarchical memory technology"
-          },
+          },*/
           youtube: {
               title: "Hierarchical Memory Explained",
               url: " https://www.youtube.com/watch?v=DH_VcjjTOq0 "
@@ -761,22 +711,22 @@ title: "Exception Types Table",
               ]
           },
           additionalResources: [
-              {
-                  title: "Memory Hierarchy Design - GeeksforGeeks",
-                  url: "https://www.geeksforgeeks.org/memory-hierarchy-design/"
-              },
-              {
-                  title: "Advanced Cache Coherence Strategies",
-                  url: "https://www.example.com/cache-coherence"
-              },
-              {
-                  title: "Locality Properties in Memory Systems",
-                  url: "https://www.example.com/locality-properties"
-              },
-              {
-                  title: "Efficient Memory Management Techniques",
-                  url: "https://www.example.com/memory-management"
-              }
+            {
+              title: "Memory Hierarchy Design and Its Characteristics – GeeksforGeeks",
+              url: "https://www.geeksforgeeks.org/memory-hierarchy-design-and-its-characteristics/"
+            },
+            {
+              title: "Inclusion, Coherence and Locality Properties – Scribd",
+              url: "https://www.scribd.com/document/504504329/Inclusion-Coherence-and-Locality-Properties"
+            },
+            {
+              title: "Memory Hierarchy Technology in Computer Architecture – IncludeHelp",
+              url: "https://www.includehelp.com/basics/memory-hierarchy-technology-in-computer-architecture.aspx"
+            },
+            {
+              title: "Locality of Reference – Wikipedia",
+              url: "https://en.wikipedia.org/wiki/Locality_of_reference"
+            }
           ]
         },
           {
@@ -803,14 +753,15 @@ title: "Exception Types Table",
               "Understanding the structure and operation of different cache organizations is essential for optimizing memory system performance."
             ],
             "image": {
-              "url": "https://example.com/cache-memory-diagram.png",
+              "url": "https://www.gatevidyalay.com/wp-content/uploads/2018/06/Cache-Memory-Location.png?ezimgfmt=rs%3A281x253%2Frscb1%2Fngcb1%2FnotWebP",
               "alt": "Diagram illustrating the structural differences between direct-mapped, fully associative, and set-associative cache organizations."
             },
+            /*
             "video": {
               "url": "cache-memory.mp4",
               "type": "mp4",
               "alt": "A detailed video explaining the internal workings of direct-mapped, fully associative, and set-associative caches, along with examples of address mapping."
-            },
+            },*/
             "youtube": {
               "title": "Cache Memory Explained: Organizations",
               "url": "https://www.youtube.com/watch?v=OfqzoQ9Kw9k"
@@ -847,16 +798,16 @@ title: "Exception Types Table",
             },
             "additionalResources": [
               {
-                "title": "Cache Memory Design - GeeksforGeeks",
-                "url": "https://www.geeksforgeeks.org/cache-memory-design/"
+                title: "Cache Memory in Computer Organization – GeeksforGeeks",
+                url: "https://www.geeksforgeeks.org/cache-memory-in-computer-organization/"
               },
               {
-                "title": "Cache Organization Strategies: A Detailed Analysis",
-                "url": "https://www.example.com/cache-organization-detailed"
+                title: "Cache Organization – GeeksforGeeks",
+                url: "https://www.geeksforgeeks.org/cache-organization-set-1-introduction/"
               },
               {
-                "title": "Understanding Address Mapping in Cache Memory",
-                "url": "https://www.example.com/cache-address-mapping"
+                title: "Basics of Cache Memory – University of Maryland",
+                url: "https://www.cs.umd.edu/~meesh/411/CA-online/chapter/basics-of-cache-memory/index.html"
               }
             ]
           },
@@ -887,14 +838,14 @@ title: "Exception Types Table",
     "Software and hardware prefetching approaches exist, each with its own trade-offs."
   ],
   "image": {
-    "url": "https://example.com/cache-miss-reduction.png",
+    "url": "https://media.geeksforgeeks.org/wp-content/uploads/20200414101524/Cache_Design.png",
     "alt": "Diagram illustrating various techniques for reducing cache misses."
   },
-  "video": {
+  /*"video": {
     "url": "cache-miss-reduction.mp4",
     "type": "mp4",
     "alt": "Detailed video explaining techniques to reduce compulsory, capacity, and conflict misses."
-  },
+  },*/
   "youtube": {
     "title": "Cache Miss Reduction Techniques",
     "url": "https://www.youtube.com/watch?v=OfqzoQ9Kw9k&t=119"
@@ -913,20 +864,24 @@ title: "Exception Types Table",
   },
   "additionalResources": [
     {
-      "title": "Techniques to Reduce Cache Misses - Example Source",
-      "url": "https://www.example.com/cache-miss-reduction"
+      "title": "Basic Cache Optimization Techniques – GeeksforGeeks",
+      "url": "https://www.geeksforgeeks.org/basic-cache-optimization-techniques/"
     },
     {
-      "title": "Cache Prefetching Strategies - Advanced Concepts",
-      "url": "https://www.example.com/cache-prefetching"
+      "title": "Loop Nest Optimization – Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Loop_nest_optimization"
     },
     {
-      "title": "Loop Transformations and Cache Performance",
-      "url": "https://www.example.com/loop-transformations"
+      "title": "Loop Unrolling – Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Loop_unrolling"
     },
     {
-        "title": "Replacement Policies and Cache Efficiency",
-        "url": "https://www.example.com/cache-replacement-policies"
+      "title": "Hardware Scout – Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hardware_scout"
+    },
+    {
+      "title": "Adaptive Replacement Cache – Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Adaptive_replacement_cache"
     }
   ]
 },
@@ -960,14 +915,14 @@ title: "Exception Types Table",
         "Proper memory management prevents fragmentation and optimizes resource use."
     ],
     image: {
-        url: "https://example.com/virtual-memory-diagram.png",
+        url: "https://computationstructures.org/lectures/vm/slides/Slide07.png",
         alt: "Diagram illustrating virtual memory organization and management"
     },
-    video: {
+    /*video: {
         url: "virtual-memory.mp4",
         type: "mp4",
         alt: "Detailed video on virtual memory systems and replacement policies"
-    },
+    },*/
     youtube: {
         title: "Virtual Memory Explained",
         url: "https://www.youtube.com/watch?v=o2_iCzS9-ZQ"
@@ -986,22 +941,26 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Virtual Memory - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/virtual-memory/"
-        },
-        {
-            title: "Memory Management Techniques",
-            url: "https://www.example.com/memory-management"
-        },
-        {
-            title: "Page Replacement Algorithms",
-            url: "https://www.example.com/page-replacement"
-        },
-        {
-            title: "Virtual Memory and Performance",
-            url: "https://www.example.com/virtual-memory-performance"
-        }
+      {
+        "title": "Virtual Memory in Operating System – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/virtual-memory-in-operating-system/"
+      },
+      {
+        "title": "Page Replacement Algorithms in Operating Systems – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/page-replacement-algorithms-in-operating-systems/"
+      },
+      {
+        "title": "Virtual Memory I – University of Maryland",
+        "url": "https://www.cs.umd.edu/~meesh/411/CA-online/chapter/virtual-memory-i/index.html"
+      },
+      {
+        "title": "Virtual Memory – Operating Systems Course Notes – University of Illinois at Chicago",
+        "url": "https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/9_VirtualMemory.html"
+      },
+      {
+        "title": "Page Replacement Algorithm – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Page_replacement_algorithm"
+      }
     ]
         }
       ],
@@ -1037,14 +996,14 @@ title: "Exception Types Table",
         "ILP significantly boosts performance in high-speed computing systems."
     ],
     image: {
-        url: "https://example.com/ilp-diagram.png",
+        url: "https://www.cs.cmu.edu/afs/cs/academic/class/15828-s98/lectures/0112/img012.GIF",
         alt: "Diagram illustrating instruction-level parallelism"
     },
-    video: {
+    /*video: {
         url: "ilp-video.mp4",
         type: "mp4",
         alt: "Detailed video on instruction-level parallelism"
-    },
+    }, */
     youtube: {
         title: "Instruction-Level Parallelism Explained",
         url: " https://www.youtube.com/watch?v=pLWRAVUr4uI"
@@ -1062,22 +1021,22 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Instruction-Level Parallelism - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/instruction-level-parallelism/"
-        },
-        {
-            title: "ILP Techniques and Challenges",
-            url: "https://www.example.com/ilp-techniques"
-        },
-        {
-            title: "Advanced Processor Design",
-            url: "https://www.example.com/processor-design"
-        },
-        {
-            title: "Out-of-Order Execution and ILP",
-            url: "https://www.example.com/o-o-o-execution"
-        }
+      {
+        "title": "Instruction Level Parallelism – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/instruction-level-parallelism/"
+      },
+      {
+        "title": "Instruction-Level Parallelism – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Instruction-level_parallelism"
+      },
+      {
+        "title": "Instruction-Level Parallelism – ScienceDirect Topics",
+        "url": "https://www.sciencedirect.com/topics/computer-science/instruction-level-parallelism"
+      },
+      {
+        "title": "Instruction-Level Parallelism – Medium Article",
+        "url": "https://kattavinay2002.medium.com/instruction-level-parallelism-a8d34b45e42a"
+      }
     ]
         },
         {
@@ -1106,14 +1065,14 @@ title: "Exception Types Table",
         "Software pipelining rearranges loops for parallel execution."
     ],
     image: {
-        url: "https://example.com/increasing-ilp-diagram.png",
+        url: "https://image.slideserve.com/388021/instruction-level-parallelism-l.jpg", 
         alt: "Diagram showing techniques for increasing ILP"
     },
-    video: {
+    /*video: {
         url: "ilp-techniques-video.mp4",
         type: "mp4",
         alt: "Detailed video on techniques for increasing ILP"
-    },
+    }, */
     youtube: {
         title: "Techniques for Increasing ILP",
         url: " https://www.youtube.com/watch?v=Ut8wY6qtie4 "
@@ -1134,22 +1093,22 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Techniques for Increasing ILP - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/techniques-for-increasing-ilp/"
-        },
-        {
-            title: "Advanced ILP Techniques",
-            url: "https://www.example.com/advanced-ilp"
-        },
-        {
-            title: "Dynamic Scheduling and ILP",
-            url: "https://www.example.com/dynamic-scheduling"
-        },
-        {
-            title: "Out-of-Order Execution in Modern Processors",
-            url: "https://www.example.com/o-o-o-execution"
-        }
+      {
+        "title": "Understanding Instruction-Level Parallelism – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/instruction-level-parallelism/"
+      },
+      {
+        "title": "In-Depth Overview of ILP Concepts – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Instruction-level_parallelism"
+      },
+      {
+        "title": "Instruction-Level Parallelism in Modern CPUs – ScienceDirect",
+        "url": "https://www.sciencedirect.com/topics/computer-science/instruction-level-parallelism"
+      },
+      {
+        "title": "Beginner’s Guide to Instruction-Level Parallelism – Medium",
+        "url": "https://kattavinay2002.medium.com/instruction-level-parallelism-a8d34b45e42a"
+      }
     ]
         },
         {
@@ -1176,14 +1135,14 @@ title: "Exception Types Table",
         "Modern high-performance processors often combine both superscalar and superpipelined approaches."
     ],
     image: {
-        url: "https://example.com/superscalar-superpipelined-diagram.png",
+        url: "https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-01f4-622f-922e-39f9d8ed2ba4/raw?se=2025-05-02T16%3A48%3A12Z&sp=r&sv=2024-08-04&sr=b&scid=6efda36e-bc4f-5b74-9fda-dc94b9b32f66&skoid=d958ec58-d47c-4d2f-a9f2-7f3e03fdcf72&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-05-02T02%3A46%3A34Z&ske=2025-05-03T02%3A46%3A34Z&sks=b&skv=2024-08-04&sig=zKnDwjF93dt0/Hi4ISGi/DUaB%2BUhceps6axmfM0WcXU%3D",
         alt: "Diagram illustrating superscalar and superpipelined architectures"
     },
-    video: {
+   /* video: {
         url: "superscalar-superpipelined-video.mp4",
         type: "mp4",
         alt: "Detailed video on superscalar and superpipelined techniques"
-    },
+    },*/
     youtube: {
         title: "Superscalar and Superpipelined Architectures Explained",
         url: "https://www.youtube.com/watch?v=6PKi2kiEThk"
@@ -1200,18 +1159,18 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Superscalar and Superpipelined Architectures - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/superscalar-and-superpipelined-architectures/"
-        },
-        {
-            title: "Advanced Concepts in Processor Design",
-            url: "https://www.example.com/processor-design"
-        },
-        {
-            title: "Instruction-Level Parallelism in Modern CPUs",
-            url: "https://www.example.com/ilp-modern-cpus"
-        }
+      {
+        "title": "Superscalar Processor – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Superscalar_processor?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Superpipeline and Superscalar Architectures – SlideShare",
+        "url": "https://www.slideshare.net/ishaqahmad3154/superscalar-superpipeline-processor?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Superscalar vs Superpipelined Approach – AP PGECET",
+        "url": "https://www.appgecet.co.in/superscalar-vs-super-pipelined-approach-understanding-the-differences/?utm_source=chatgpt.com"
+      }
     ]
         },
         {
@@ -1238,14 +1197,14 @@ title: "Exception Types Table",
         "VLIW processors often require advanced static scheduling techniques for optimal performance."
     ],
     image: {
-        url: "https://example.com/vliw-architecture-diagram.png",
+        url: "https://media.geeksforgeeks.org/wp-content/uploads/20201030224132/BlockDiagramofVLIW.jpg",
         alt: "Diagram illustrating VLIW processor architecture"
     },
-    video: {
+    /*video: {
         url: "vliw-architecture-video.mp4",
         type: "mp4",
         alt: "Detailed video on VLIW architecture"
-    },
+    }, */
     youtube: {
         title: "VLIW Architecture Explained",
         url: " https://www.youtube.com/watch?v=3re04MxFtnU "
@@ -1262,18 +1221,18 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "VLIW Architecture - GeeksforGeeks",
-            url: "https://www.geeksfor geeks.org/vliw-architecture/"
-        },
-        {
-            title: "Understanding VLIW Processors",
-            url: "https://www.example.com/vliw-processors"
-        },
-        {
-            title: "VLIW and Instruction-Level Parallelism",
-            url: "https://www.example.com/vliw-ilp"
-        }
+      {
+        "title": "VLIW Architecture – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/very-long-instruction-word-vliw-architecture/?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Very Long Instruction Word – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Very_long_instruction_word?utm_source=chatgpt.com"
+      },
+      {
+        "title": "What is the VLIW Architecture? – TutorialsPoint",
+        "url": "https://www.tutorialspoint.com/what-is-the-vliw-architecture?utm_source=chatgpt.com"
+      }
     ]
         }
       ],
@@ -1306,14 +1265,14 @@ title: "Exception Types Table",
         "Challenges include handling memory bandwidth, synchronization, and load balancing."
     ],
     image: {
-        url: "https://example.com/array-vector-diagram.png",
+        url: "https://www.teach-ict.com/as_as_computing/ocr/H447/F453/3_3_3/parallel_processors/miniweb/images/array-processor.gif",
         alt: "Diagram illustrating array and vector processor architectures"
     },
-    video: {
+    /*video: {
         url: "array-vector-processors-video.mp4",
         type: "mp4",
         alt: "Detailed video on array and vector processors"
-    },
+    }, */
     youtube: {
         title: "Array and Vector Processors Explained",
         url: " https://www.youtube.com/watch?v=DGc_HEuaJhk"
@@ -1330,18 +1289,22 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Array Processors - GeeksforGeeks",
-            url: "https://www.geeksforgeeks.org/array-processors/"
-        },
-        {
-            title: "Vector Processing - Tutorialspoint",
-            url: "https://www.tutorialspoint.com/vector-processing"
-        },
-        {
-            title: "Understanding SIMD and Vector Architectures",
-            url: "https://www.example.com/simd-vector"
-        }
+      {
+        "title": "Array and Vector Processing – Teach-ICT",
+        "url": "https://www.teach-ict.com/as_as_computing/ocr/2016/AS2016/1.1.2/parallel/miniweb/pg3.htm?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Vector Processor vs Scalar Processor – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/vector-processor-vs-scalar-processor/?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Vector (Array) Processor and its Types – Studytonight",
+        "url": "https://www.studytonight.com/computer-architecture/array-processor?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Vector Processor – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Vector_processor?utm_source=chatgpt.com"
+      }
     ]
         }
       ],
@@ -1374,14 +1337,14 @@ title: "Exception Types Table",
               "Advanced techniques like hyper-threading and multicore processors enhance parallelism."
           ],
           image: {
-              url: "https://example.com/parallel-architecture-diagram.png",
+              url: "https://www.researchgate.net/profile/Foteini-Strati-2/publication/358119371/figure/fig1/AS:1116456372699137@1643195350458/A-taxonomy-of-parallel-processor-architectures.ppm",
               alt: "Diagram illustrating different types of parallel architectures"
           },
-          video: {
+          /*video: {
               url: "parallel-architecture-video.mp4",
               type: "mp4",
               alt: "Detailed video on multiprocessor architectures"
-          },
+          },*/
           youtube: {
               title: "Multiprocessor Architectures Explained",
               url: " https://www.youtube.com/watch?v=qEx2fV9qrcI "
@@ -1398,18 +1361,26 @@ title: "Exception Types Table",
               ]
           },
           additionalResources: [
-              {
-                  title: "Introduction to Parallel Computing",
-                  url: "https://www.parallel-computing-tutorial.com/"
-              },
-              {
-                  title: "Flynn's Taxonomy Explained",
-                  url: "https://www.geeksforgeeks.org/flynns-taxonomy/"
-              },
-              {
-                  title: "Shared vs Distributed Memory Systems",
-                  url: "https://www.example.com/shared-distributed-memory"
-              }
+            {
+              "title": "Flynn's Taxonomy – Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Flynn%27s_taxonomy?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Computer Architecture | Flynn's Taxonomy – GeeksforGeeks",
+              "url": "https://www.geeksforgeeks.org/computer-architecture-flynns-taxonomy/?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Taxonomy of Parallel Computers – Cornell Virtual Workshop",
+              "url": "https://cvw.cac.cornell.edu/parallel/hpc/taxonomy-parallel-computers?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Multiprocessor System Architecture – Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Multiprocessor_system_architecture?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Flynn's Taxonomy and Classification of Parallel Systems – Fiveable",
+              "url": "https://library.fiveable.me/parallel-and-distributed-computing/unit-2/flynns-taxonomy-classification-parallel-systems/study-guide/Ohzf44x4HCtFZRjK?utm_source=chatgpt.com"
+            }
           ]
         },
         {
@@ -1436,14 +1407,14 @@ title: "Exception Types Table",
               "Barrier synchronization and spinlocks are common techniques for coordinating parallel processes."
           ],
           image: {
-              url: "https://example.com/shared-memory-architecture-diagram.png",
+              url: "https://images.slideplayer.com/34/10161132/slides/slide_3.jpg",
               alt: "Diagram illustrating centralized shared-memory architecture"
           },
-          video: {
+         /* video: {
               url: "shared-memory-architecture-video.mp4",
               type: "mp4",
               alt: "Detailed video on centralized shared-memory architecture"
-          },
+          },*/
           youtube: {
               title: "Shared-Memory Architecture Explained",
               url: " https://www.youtube.com/watch?v=BUFbnisqkAM "
@@ -1461,18 +1432,26 @@ title: "Exception Types Table",
               ]
           },
           additionalResources: [
-              {
-                  title: "Shared-Memory Multiprocessors",
-                  url: "https://www.shared-memory-tutorial.com/"
-              },
-              {
-                  title: "Memory Consistency Models Explained",
-                  url: "https://www.geeksforgeeks.org/memory-consistency-models/"
-              },
-              {
-                  title: "Interconnection Networks in Parallel Systems",
-                  url: "https://www.example.com/interconnection-networks"
-              }
+            {
+              "title": "Centralized Shared-Memory Architectures – ECE UNM",
+              "url": "https://ece-research.unm.edu/jimp/611/slides/chap8_2.html?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Synchronization, Memory Consistency Models, and MP Example – UC Berkeley",
+              "url": "https://people.eecs.berkeley.edu/~pattrsn/252F96/Lecture19.pdf?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Shared Memory Architectures – Fiveable",
+              "url": "https://library.fiveable.me/parallel-and-distributed-computing/unit-2/shared-memory-architectures/study-guide/JUXzwFyTO97WUwOP?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Multiprocessors and Thread-Level Parallelism – George Mason University",
+              "url": "https://cs.gmu.edu/~menasce/cs465/slides/CAQA5e_ch5.pdf?utm_source=chatgpt.com"
+            },
+            {
+              "title": "Shared Memory and Shared Memory Consistency – University of Ottawa",
+              "url": "https://www.site.uottawa.ca/~mbolic/elg7187/Josip_assignment_elg7187_columns_corrected.pdf?utm_source=chatgpt.com"
+            }
           ]
         },
         {
@@ -1500,14 +1479,14 @@ title: "Exception Types Table",
         "Techniques like memory replication and caching optimize performance in DSM systems."
     ],
     image: {
-        url: "https://example.com/dsm-architecture-diagram.png",
+        url: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200611194511/3331.png",
         alt: "Diagram illustrating distributed shared-memory architecture"
     },
-    video: {
+    /*video: {
         url: "dsm-architecture-video.mp4",
         type: "mp4",
         alt: "Detailed video on distributed shared-memory architecture"
-    },
+    }, */
     youtube: {
         title: "Distributed Shared-Memory Systems Explained",
         url: " https://www.youtube.com/watch?v=fmDfKw7AEQU"
@@ -1525,18 +1504,22 @@ title: "Exception Types Table",
         ]
     },
     additionalResources: [
-        {
-            title: "Distributed Shared Memory Tutorial",
-            url: "https://www.dsm-tutorial.com/"
-        },
-        {
-            title: "Cluster Computing Overview",
-            url: "https://www.example-cluster-computing.com/"
-        },
-        {
-            title: "Interconnection Networks in Distributed Systems",
-            url: "https://www.example.com/interconnection-networks"
-        }
+      {
+        "title": "Distributed Shared Memory – Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Distributed_shared_memory?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Architecture of Distributed Shared Memory (DSM) – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/architecture-of-distributed-shared-memorydsm/?utm_source=chatgpt.com"
+      },
+      {
+        "title": "An Overview of Cluster Computing – GeeksforGeeks",
+        "url": "https://www.geeksforgeeks.org/an-overview-of-cluster-computing/?utm_source=chatgpt.com"
+      },
+      {
+        "title": "Shared and Distributed Memory in Parallel Computing – Medium",
+        "url": "https://afzalbadshah.medium.com/shared-and-distributed-memory-in-parallel-computing-4478468799f9?utm_source=chatgpt.com"
+      }
     ]
         },
         {
@@ -1565,14 +1548,14 @@ title: "Exception Types Table",
               "These architectures often require specialized programming models and hardware."
             ],
             "image": {
-              "url": "https://example.com/non-von-neumann-architectures.png",
+              "url": "https://miro.medium.com/v2/resize%3Afit%3A1200/0%2AFn7GvNHDHmj17lT6.png",
               "alt": "Diagram illustrating dataflow, reduction, and systolic architectures."
             },
-            "video": {
+            /*"video": {
               "url": "non-von-neumann-architectures.mp4",
               "type": "mp4",
               "alt": "Detailed video explaining dataflow, reduction, and systolic architectures and their differences from Von Neumann."
-            },
+            },*/
             "youtube": {
               "title": "Non-Von Neumann Architectures Explained",
               "url": "https://www.youtube.com/watch?v=OfqzoQ9Kw9k&t=7"
@@ -1588,20 +1571,12 @@ title: "Exception Types Table",
             },
             "additionalResources": [
               {
-                "title": "Dataflow Architectures - Principles and Design",
-                "url": "https://www.example.com/dataflow-architectures"
+                "title": "Dataflow Architecture – Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Dataflow_architecture?utm_source=chatgpt.com"
               },
               {
-                "title": "Reduction Machines - A Comprehensive Overview",
-                "url": "https://www.example.com/reduction-machines"
-              },
-              {
-                "title": "Systolic Arrays - Concepts and Applications",
-                "url": "https://www.example.com/systolic-arrays"
-              },
-              {
-                  "title": "Beyond Von Neumann: Alternative Computing Models",
-                  "url": "https://www.example.com/beyond-von-neumann"
+                "title": "Parallel Processing – Systolic Arrays – GeeksforGeeks",
+                "url": "https://www.geeksforgeeks.org/parallel-processing-systolic-arrays/?utm_source=chatgpt.com"
               }
             ]
           }
@@ -1609,4 +1584,3 @@ title: "Exception Types Table",
       ],
   }
 ];
-
