@@ -198,7 +198,7 @@ const initialSyllabusData = [
     id: "topic4",
     title: "Compiler Techniques for Improving Performance",
     completed: false,
-    CO: "1",
+    co: "PCC-CS402.CO1",
     description: "Compiler techniques play a vital role in enhancing the performance of computer programs by optimizing code execution, minimizing resource usage, and improving overall efficiency. These techniques ensure that the software runs faster, consumes fewer resources, and delivers a better user experience. Understanding these techniques is essential for writing high-performance software, especially in fields requiring intensive computations and real-time performance.",
     objectives: [
       "Understand the role of compilers in performance optimization",
