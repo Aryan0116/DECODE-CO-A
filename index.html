@@ -921,6 +921,20 @@
                 align-items: center;
             }
         }
+        @media (max-width: 768px) {
+  .cursor,
+  .cursor-dot {
+    display: none !important;
+  }
+}
+
+/* Alternative approach using hover capability detection */
+@media (hover: none) and (pointer: coarse) {
+  .cursor,
+  .cursor-dot {
+    display: none !important;
+  }
+}
     </style>
 </head>
 
@@ -943,8 +957,8 @@
                 <a href="#" class="nav-link">Home</a>
                 <a href="https://decodecoa-quizee.vercel.app/" class="nav-link">Quiz</a>
                 <a href="https://decodecoa-forum.vercel.app/" class="nav-link">Discussion</a>
-                <a href="books/indexbook.html" class="nav-link">Notes</a>
-                <a href="simulation/simulation.html" class="nav-link">Simulation</a>
+                <a href="https://decodecoa-notes.vercel.app/" class="nav-link">Notes</a>
+                <a href="https://decodecoa-simulation.vercel.app/" class="nav-link">Simulation</a>
                 <a href="https://decodecoa-exam.vercel.app/" class="nav-link">Exams</a>
                 <div class="nav-buttons">
                     <button class="nav-btn theme-toggle">🌓</button>
@@ -1031,7 +1045,7 @@
                 <div class="preview-content">
                     <h3>Study Notes</h3>
                     <p>Access comprehensive study materials and notes covering all key topics in Computer Organization and Architecture.</p>
-                    <a href="books/indexbook.html" class="preview-link">View Notes →</a>
+                    <a href="https://decodecoa-notes.vercel.app/" class="preview-link">View Notes →</a>
                 </div>
             </div>
 
@@ -1042,7 +1056,7 @@
                 <div class="preview-content">
                     <h3>Interactive Simulations</h3>
                     <p>Visualize complex concepts through our interactive simulations that bring theoretical concepts to life.</p>
-                    <a href="simulation/simulation.html" class="preview-link">Try Simulations →</a>
+                    <a href="https://decodecoa-simulation.vercel.app/" class="preview-link">Try Simulations →</a>
                 </div>
             </div>
 
@@ -1173,14 +1187,14 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <p><a href="#">Home</a></p>
-                <p><a href="books/indexbook.html">Resources</a></p>
+                <p><a href="https://decodecoa-notes.vercel.app/">Resources</a></p>
                 <p><a href="#footer">Contact</a></p>
             </div>
             <div class="footer-section">
                 <h3>Resources</h3>
                 <p><a href="https://decodecoa-quizee.vercel.app/">Quiz</a></p>
                 <p><a href="https://decodecoa-forum.vercel.app/">Discussion</a></p>
-                <p><a href="books/indexbook.html">Notes</a></p>
+                <p><a href="https://decodecoa-notes.vercel.app/">Notes</a></p>
                 <p><a href="https://decodecoa-exam.vercel.app/">Exams</a></p>
             </div>
             <div class="footer-section">
