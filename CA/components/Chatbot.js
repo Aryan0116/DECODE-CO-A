@@ -538,7 +538,7 @@ User question: ${userMessage}${emojiContext}`;
                       <i className="fas fa-times text-xs"></i>
                     </button>
                   </div>
-                  <div className="grid grid-cols-8 gap-10">
+                  <div className="grid grid-cols-8 gap-19">
                     {[
                       // COA-specific emojis first
                       '💻', '🧠', '⚡', '💾', '🔧', '⚙️', '📊', '📈',
@@ -580,7 +580,7 @@ User question: ${userMessage}${emojiContext}`;
                   value={inputMessage}
                   onChange={handleInputChange}
                   placeholder="Ask about Computer Organization & Architecture... 🤖"
-                  className="w-full resize-none outline-none py-3 px-4 bg-transparent dark:text-white rounded-l-2xl max-h-32 text-sm"
+                  className="w-full resize-none outline-none py-1 px-3 bg-transparent dark:text-white rounded-l-2xl max-h-32 text-sm"
                   style={{ height: `${initialInputHeight}px` }}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 768) {
