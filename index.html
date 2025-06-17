@@ -693,43 +693,67 @@
         
         .member-img {
     width: 100%;
-    height: 250px; /* Fixed height for consistency */
+    height: 300px; /* Optimal height for most portrait/square images */
     position: relative;
-    overflow: hidden;
     display: flex;
-    align-items: flex-start; /* Align to top instead of center */
+    align-items: center;
     justify-content: center;
     background: var(--card-bg);
+    padding: 12px; /* Balanced padding */
+    overflow: hidden; /* Ensures clean edges */
+    border-radius: 8px; /* Optional: adds subtle rounding */
 }
 
 .member-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover ensures full container fill */
-    object-position: center top; /* Position from center-top, crops bottom naturally */
-    transition: transform 0.5s ease;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* Better visual balance - covers container */
+    object-position: center top; /* Focus on upper portion for portraits */
+    transition: transform 0.3s ease;
     display: block;
+    border-radius: 4px; /* Subtle image rounding */
 }
 
-/* Alternative with slightly more height for better proportions */
-.member-img-alt {
+/* Hover effect for better interactivity */
+.member-img:hover img {
+    transform: scale(1.05);
+}
+
+/* Alternative version for cases where you want to preserve full image */
+.member-img-contain {
     width: 100%;
-    height: 280px; /* Consistent height */
+    height: 280px;
     position: relative;
-    overflow: hidden;
     display: flex;
-    align-items: flex-start; /* Align to top */
+    align-items: center;
     justify-content: center;
     background: var(--card-bg);
+    padding: 16px;
+    overflow: hidden;
+    border-radius: 8px;
 }
 
-.member-img-alt img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Fills container completely */
-    object-position: center 15%; /* Positions image slightly from top, crops mainly from bottom */
-    transition: transform 0.5s ease;
+.member-img-contain img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Shows full image without cropping */
+    object-position: center;
+    transition: transform 0.3s ease;
     display: block;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1)); /* Subtle shadow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .member-img,
+    .member-img-contain {
+        height: 240px; /* Slightly smaller on mobile */
+        padding: 10px;
+    }
 }
 
         .team-member:hover .member-img img {
