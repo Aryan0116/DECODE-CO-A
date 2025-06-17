@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DECODE CO-A</title>
     <link rel="icon" type="image/png" href="favicon.png" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
 
     <style>
         :root[data-theme="dark"] {
@@ -986,15 +988,187 @@
     display: none !important;
   }
 }
+/* Enhanced Animation Styles */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-in-up {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .slide-in-down {
+            opacity: 0;
+            transform: translateY(-60px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateX(0) translateY(0) scale(1) !important;
+        }
+        
+        /* Staggered animation delays */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+        
+        /* Enhanced card hover effects */
+        .card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--card-hover-shadow);
+        }
+        
+        /* Enhanced nav preview cards */
+        .nav-preview-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .nav-preview-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        /* Floating animation for icons */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Enhanced team member cards */
+        .team-member, .team-mentor {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .team-member:hover, .team-mentor:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        /* Pulse animation for badges */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .mentor-badge, .card-badge {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Loading animation overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(124, 58, 237, 0.3);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Smooth section transitions */
+        section {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        section.visible {
+            opacity: 1;
+        }
+        
+        /* Enhanced mobile responsiveness */
+        @media (max-width: 768px) {
+            .slide-in-left, .slide-in-right {
+                transform: translateY(40px);
+            }
+            
+            .slide-in-up, .slide-in-down {
+                transform: translateY(30px);
+            }
+        }
+        
+        /* Reveal animation for text */
+        .text-reveal {
+            overflow: hidden;
+        }
+        
+        .text-reveal-content {
+            transform: translateY(100%);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .text-reveal.animate-in .text-reveal-content {
+            transform: translateY(0);
+        }
     </style>
 </head>
 
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    
     <div id="particles-js"></div>
     <div class="cursor"></div>
     <div class="cursor-dot"></div>
 
-    <nav class="navbar">
+    <nav class="navbar slide-in-down">
         <div class="nav-container">
             <a href="#" class="logo">
                 <img src="favicon.png" alt="Logo" width="40" height="40" class="d-inline-block align-top">
@@ -1021,32 +1195,20 @@
     <div class="menu-overlay"></div>
 
     <section class="hero">
-        <h1>Welcome to DECODE CO-A</h1>
-        <p style="
-  font-size: 18px;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeSlideIn 1s ease-out forwards;
-">
-  Project Title: Development of Interactive Teaching-Learning Web Application for Computer Organization and Architecture
-</p>
+        <h1 class="slide-in-up">Welcome to DECODE CO-A</h1>
+        <p class="slide-in-up stagger-1" style="
+          font-size: 18px;
+          font-weight: bold;
+          font-family: Arial, sans-serif;
+        ">
+          Project Title: Development of Interactive Teaching-Learning Web Application for Computer Organization and Architecture
+        </p>
 
-<style>
-@keyframes fadeSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-</style>
-
-        <p>Your comprehensive learning platform for Computer Organization and Architecture. Master the fundamentals of
+        <p class="slide-in-up stagger-2">Your comprehensive learning platform for Computer Organization and Architecture. Master the fundamentals of
             computing systems through interactive lessons, practical examples, and exam preparation resources.</p>
 
         <div class="cards-container">
-            <a href="CO/index.html" class="card">
+            <a href="CO/index.html" class="card scale-in stagger-3">
                 <div class="card-content">
                     <div class="icon">💻</div>
                     <h2>Computer Organization</h2>
@@ -1054,7 +1216,7 @@
                 </div>
             </a>
 
-            <a href="CA/index.html" class="card">
+            <a href="CA/index.html" class="card scale-in stagger-4">
                 <div class="card-content">
                     <div class="icon">🔧</div>
                     <h2>Computer Architecture</h2>
@@ -1065,9 +1227,9 @@
     </section>
 
     <section class="nav-preview">
-        <h2>Explore Our Resources</h2>
+        <h2 class="slide-in-down">Explore Our Resources</h2>
         <div class="nav-preview-cards">
-            <div class="nav-preview-card">
+            <div class="nav-preview-card slide-in-left stagger-1">
                 <div class="preview-img">
                     <img src="quiz.png" alt="Quiz Platform Preview">
                 </div>
@@ -1078,7 +1240,7 @@
                 </div>
             </div>
 
-            <div class="nav-preview-card">
+            <div class="nav-preview-card slide-in-up stagger-2">
                 <div class="preview-img">
                     <img src="discussion.png" alt="Discussion Forum Preview">
                 </div>
@@ -1089,7 +1251,7 @@
                 </div>
             </div>
 
-            <div class="nav-preview-card">
+            <div class="nav-preview-card slide-in-right stagger-3">
                 <div class="preview-img">
                     <img src="notes.png" alt="Study Notes Preview">
                 </div>
@@ -1100,7 +1262,7 @@
                 </div>
             </div>
 
-            <div class="nav-preview-card">
+            <div class="nav-preview-card slide-in-left stagger-4">
                 <div class="preview-img">
                     <img src="simulation.png" alt="Simulation Preview">
                 </div>
@@ -1111,8 +1273,7 @@
                 </div>
             </div>
 
-            <div class="nav-preview-card">
-                <!-- <div class="card-badge">NEW</div> -->
+            <div class="nav-preview-card slide-in-right stagger-5">
                 <div class="preview-img">
                     <img src="exam.png" alt="Exam Preparation Preview">
                 </div>
@@ -1126,22 +1287,22 @@
     </section>
 
     <section class="about">
-        <h2>Why Choose DECODE CO-A?</h2>
-        <p>Our platform is designed by experts in the field to make Computer Organization and Architecture accessible, engaging, and enjoyable for students at all levels.</p>
+        <h2 class="slide-in-up">Why Choose DECODE CO-A?</h2>
+        <p class="slide-in-up stagger-1">Our platform is designed by experts in the field to make Computer Organization and Architecture accessible, engaging, and enjoyable for students at all levels.</p>
         <div class="features">
-            <div class="feature">
+            <div class="feature slide-in-left stagger-1">
                 <h3>Interactive Learning</h3>
                 <p>Engage with interactive simulations and hands-on exercises to better understand complex concepts.</p>
             </div>
-            <div class="feature">
+            <div class="feature slide-in-right stagger-2">
                 <h3>Comprehensive Content</h3>
                 <p>From basic principles to advanced topics, covering both theoretical and practical aspects.</p>
             </div>
-            <div class="feature">
+            <div class="feature slide-in-left stagger-3">
                 <h3>Expert Support</h3>
                 <p>Get guidance from experienced professionals and connect with a community of learners.</p>
             </div>
-            <div class="feature">
+            <div class="feature slide-in-right stagger-4">
                 <h3>Practical Projects</h3>
                 <p>Apply your knowledge through real-world projects and assignments.</p>
             </div>
@@ -1149,9 +1310,9 @@
     </section>
 
     <section class="team-section">
-        <h2>Meet Our Team</h2>
+        <h2 class="slide-in-down">Meet Our Team</h2>
         <div class="team-container">
-            <div class="team-member">
+            <div class="team-member scale-in stagger-1">
                 <div class="member-img">
                     <img src="public/images/Aryan.jpg" alt="Team Member 1">
                 </div>
@@ -1166,9 +1327,9 @@
                 </div>
             </div>
 
-            <div class="team-member">
+            <div class="team-member scale-in stagger-2">
                 <div class="member-img">
-                    <img src="public/images/Himanshu.jpeg" alt="Team Member 2" style="height: fit-content;">
+                    <img src="public/images/Himanshu.jpeg" alt="Team Member 2">
                 </div>
                 <div class="member-info">
                     <h3 class="member-name">HIMANSHU SHARMA</h3>
@@ -1180,7 +1341,7 @@
                 </div>
             </div>
 
-            <div class="team-member">
+            <div class="team-member scale-in stagger-3">
                 <div class="member-img">
                     <img src="public/images/Ahona1.jpeg" alt="Team Member 3">
                 </div>
@@ -1195,9 +1356,9 @@
                 </div>
             </div>
 
-            <div class="team-member">
+            <div class="team-member scale-in stagger-4">
                 <div class="member-img">
-                    <img src="public/images/Raushan.jpeg" alt="Team Member 4" style="height: fit-content;">
+                    <img src="public/images/Raushan.jpeg" alt="Team Member 4">
                 </div>
                 <div class="member-info">
                     <h3 class="member-name">RAUSHAN KUMAR</h3>
@@ -1209,32 +1370,32 @@
                     </div>
                 </div>
             </div>
+            
             <div class="mentor-wrapper">
-            <div class="team-mentor">
-                <div class="member-img">
-                    <img src="public/images/sir.jpg" alt="Team Mentor">
-                </div>
-                <div class="member-info">
-                    <div class="mentor-badge">MENTOR</div>
-                    <h3 class="member-name">SWAPAN SHAKHARI</h3>
-                    <p class="member-role">Computer Science Professor</p>
-                    <div class="member-social">
-                        <a href="https://www.linkedin.com/in/swapan-shakhari/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://scholar.google.co.in/citations?user=r-ByO34AAAAJ&hl=en" class="social-link"><i class="fas fa-graduation-cap"></i>
-</a>
-                        <a href="https://sites.google.com/view/swapan-shakhari/home" class="social-link"><i class="fas fa-globe"></i></a>
+                <div class="team-mentor scale-in stagger-5">
+                    <div class="member-img">
+                        <img src="public/images/sir.jpg" alt="Team Mentor">
+                    </div>
+                    <div class="member-info">
+                        <div class="mentor-badge">MENTOR</div>
+                        <h3 class="member-name">SWAPAN SHAKHARI</h3>
+                        <p class="member-role">Computer Science Professor</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/swapan-shakhari/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://scholar.google.co.in/citations?user=r-ByO34AAAAJ&hl=en" class="social-link"><i class="fas fa-graduation-cap"></i></a>
+                            <a href="https://sites.google.com/view/swapan-shakhari/home" class="social-link"><i class="fas fa-globe"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div></div>
+            </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer slide-in-up">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>About DECODE CO-A</h3>
-                <p>Dedicated to making computer organization and architecture learning accessible and engaging for
-                    everyone.</p>
+                <p>Dedicated to making computer organization and architecture learning accessible and engaging for everyone.</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -1258,12 +1419,21 @@
             <p>&copy; 2025 DECODE CO-A. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
+        // Loading overlay
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loading-overlay').classList.add('hidden');
+                initializeAnimations();
+            }, 1000);
+        });
+
         // Particles.js configuration
         particlesJS('particles-js', {
             particles: {
                 number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#4CAF50' },  // Initial Color
+                color: { value: '#4CAF50' },
                 shape: { type: 'circle' },
                 opacity: { value: 0.5, random: false },
                 size: { value: 3, random: true },
@@ -1281,23 +1451,26 @@
             retina_detect: true
         });
 
+        // Enhanced cursor
         const cursor = document.querySelector('.cursor');
         const cursorDot = document.querySelector('.cursor-dot');
 
-        gsap.set([cursor, cursorDot], { xPercent: -50, yPercent: -50 });
+        if (cursor && cursorDot) {
+            gsap.set([cursor, cursorDot], { xPercent: -50, yPercent: -50 });
 
-        let xTo = gsap.quickTo(cursor, "x", { duration: 0.6, ease: "power3" });
-        let yTo = gsap.quickTo(cursor, "y", { duration: 0.6, ease: "power3" });
+            let xTo = gsap.quickTo(cursor, "x", { duration: 0.6, ease: "power3" });
+            let yTo = gsap.quickTo(cursor, "y", { duration: 0.6, ease: "power3" });
 
-        let xToDot = gsap.quickTo(cursorDot, "x", { duration: 0.2, ease: "power3" });
-        let yToDot = gsap.quickTo(cursorDot, "y", { duration: 0.2, ease: "power3" });
+            let xToDot = gsap.quickTo(cursorDot, "x", { duration: 0.2, ease: "power3" });
+            let yToDot = gsap.quickTo(cursorDot, "y", { duration: 0.2, ease: "power3" });
 
-        window.addEventListener("mousemove", e => {
-            xTo(e.clientX);
-            yTo(e.clientY);
-            xToDot(e.clientX);
-            yToDot(e.clientY);
-        });
+            window.addEventListener("mousemove", e => {
+                xTo(e.clientX);
+                yTo(e.clientY);
+                xToDot(e.clientX);
+                yToDot(e.clientY);
+            });
+        }
 
         // Theme Toggle
         const themeToggle = document.querySelector('.theme-toggle');
@@ -1307,13 +1480,15 @@
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
             html.setAttribute('data-theme', newTheme);
 
-            // Update particles color based on theme
-            const particleColor = newTheme === 'dark' ? '#4CAF50' : '#2E7D32'; // Green shades for contrast
-            pJSDom[0].pJS.particles.color.value = particleColor;
-            pJSDom[0].pJS.particles.line_linked.color = particleColor;
-            pJSDom[0].pJS.fn.particlesRefresh(); // Properly refresh particles
+            const particleColor = newTheme === 'dark' ? '#4CAF50' : '#2E7D32';
+            if (window.pJSDom && window.pJSDom[0]) {
+                pJSDom[0].pJS.particles.color.value = particleColor;
+                pJSDom[0].pJS.particles.line_linked.color = particleColor;
+                pJSDom[0].pJS.fn.particlesRefresh();
+            }
         });
 
+        // Navbar scroll effect
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1339,7 +1514,6 @@
         closeMenuBtn.addEventListener('click', toggleMenu);
         menuOverlay.addEventListener('click', toggleMenu);
 
-        // Close menu on link click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -1348,48 +1522,163 @@
             });
         });
 
-        // Smooth reveal animation for nav items
-        function animateNavItems() {
-            const navItems = document.querySelectorAll('.nav-link, .nav-btn');
-            navItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                item.style.transition = 'all 0.3s ease';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                }, 100 * index);
-            });
-        }
+        // Enhanced Animation System
+        function initializeAnimations() {
+            // GSAP ScrollTrigger setup
+            gsap.registerPlugin(ScrollTrigger);
 
-        // Animate elements on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.feature, .nav-preview-card, .team-member, .team-mentor');
-            
+            // Animate hero section
+            gsap.timeline()
+                .to('.navbar', { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" })
+                .to('.hero h1', { opacity: 1, y: 0, duration: 1, ease: "power2.out" }, "-=0.3")
+                .to('.hero p', { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", stagger: 0.2 }, "-=0.5")
+                .to('.card', { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.7)", stagger: 0.2 }, "-=0.3");
+
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
+                        const element = entry.target;
+                        element.classList.add('animate-in');
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            const animatedElements = document.querySelectorAll(`
+                .slide-in-left, .slide-in-right, .slide-in-up, .slide-in-down,
+                .fade-in, .scale-in, .feature, .nav-preview-card,
+                .team-member, .team-mentor
+            `);
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Section visibility observer
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
                     }
                 });
             }, { threshold: 0.1 });
+
+            document.querySelectorAll('section').forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Enhanced hover effects for interactive elements
+            const interactiveElements = document.querySelectorAll('.card, .nav-preview-card, .team-member, .team-mentor');
             
-            elements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(20px)';
-                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(element);
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    gsap.to(element, { 
+                        scale: 1.05, 
+                        y: -10, 
+                        duration: 0.3, 
+                        ease: "power2.out" 
+                    });
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    gsap.to(element, { 
+                        scale: 1, 
+                        y: 0, 
+                        duration: 0.3, 
+                        ease: "power2.out" 
+                    });
+                });
+            });
+
+            // Parallax effect for hero section
+            gsap.to('.hero::before', {
+                yPercent: -50,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: '.hero',
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            // Stagger animations for grid layouts
+            ScrollTrigger.batch('.nav-preview-card', {
+                onEnter: (elements) => {
+                    gsap.from(elements, {
+                        opacity: 0,
+                        y: 60,
+                        stagger: 0.15,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
+                },
+                once: true
+            });
+
+            ScrollTrigger.batch('.feature', {
+                onEnter: (elements) => {
+                    gsap.from(elements, {
+                        opacity: 0,
+                        x: (index) => index % 2 === 0 ? -60 : 60,
+                        stagger: 0.2,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
+                },
+                once: true
+            });
+
+            ScrollTrigger.batch('.team-member, .team-mentor', {
+                onEnter: (elements) => {
+                    gsap.from(elements, {
+                        opacity: 0,
+                        scale: 0.8,
+                        stagger: 0.1,
+                        duration: 0.6,
+                        ease: "back.out(1.7)"
+                    });
+                },
+                once: true
             });
         }
 
-        // Run animations on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            animateNavItems();
-            animateOnScroll();
+        // Performance optimization
+        let ticking = false;
+        
+        function updateOnScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    // Scroll-based animations here
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', updateOnScroll, { passive: true });
+
+        // Preload critical images
+        const criticalImages = [
+            'favicon.png',
+            'quiz.png',
+            'discussion.png',
+            'notes.png',
+            'simulation.png',
+            'exam.png'
+        ];
+
+        criticalImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
         });
     </script>
 </body>
-
 </html>
